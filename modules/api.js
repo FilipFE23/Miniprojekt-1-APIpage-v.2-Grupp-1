@@ -8,12 +8,19 @@
 const API_KEY = "5261d802270baa988556276b1069665e";
 
 
-
-
-///////////////////////////////////////////////////////////////////////////////////
-// Returnera promise för hämtning av väderinformation för en angiven stad.
 /*
-Parameter till callbackfunktionen - Array med objekt med följande properties:
+    getWeatherForecastByCity(cityName)
+    Returnerar Promise med 5-dygnsprognos för väder i de städer vars namn matchar cityName
+
+
+    ANVÄNDNINGS-EXEMPEL:  (logga temperaturen vid första prognostillfället för 10 januari i första staden vars namn matchar "Stockholm")
+    -------------------
+    getWeatherForecastByCity("Stockholm").then((weatherSearchResult) => {
+        console.log(weatherSearchResult[0].forecasts["2024-01-10"][0].temperature);
+    });
+
+
+Parameter weatherSearchResult som skickas till callbackfunktionen ovan - Array med objekt för varje plats/stad med följande properties:
     location: objekt med info om platsen vädenprognosen gäller: {
         cityName:               Namn på staden
         countryName:            Namn på landet staden ligger i
@@ -38,15 +45,13 @@ Parameter till callbackfunktionen - Array med objekt med följande properties:
         snowAmount:             snömängd i mm
         rainAmount:             regnmängd i mm
         weatherType:            Objekt: main = vädertyp (t.ex "Clouds"), description = kort beskrivning (t.ex "overcast clouds"), icon = ID för väder-ikon från API utan filändelse och sökväg (t.ex "02n")
+                                För betydelse av ID, se https://openweathermap.org/weather-conditions
     }
-
-    Exempel:
-    getWeatherForecastByCity("Stockholm").then((weatherSearchResult) => {
-        console.log(weatherSearchResult[0].forecasts["2024-01-08"][0].temperature);
-    });
-    ... för att logga temperaturen vid första prognostillfället för 8 januari i första staden som matchar "Stockholm" som namn
-
 */
+
+
+///////////////////////////////////////////////////////////////////////////////////
+// Returnera promise för hämtning av väderinformation för en angiven stad.
 async function getWeatherForecastByCity(cityName) {
     const requestURL = new URL('http://api.openweathermap.org/geo/1.0/direct');
     requestURL.searchParams.append("q", cityName);
@@ -119,7 +124,7 @@ async function getWeatherForecasts(weatherForecast) {
                 windSpeed: forecastTime.wind.speed, // Sekundmeter
                 windSpeedGust: forecastTime.wind.gust,
                 windDirectionDegrees: forecastTime.wind.deg, // Nord = 0, Öst = 90, Syd = 180, Väst 270
-                rainOrSnowChance: forecastTime.pop * 100,
+                rainOrSnowChance: (forecastTime.pop * 100).toFixed(1),
                 snowAmount: (forecastTime.snow !== undefined ? forecastTime.snow['3h'] : 0),
                 rainAmount: (forecastTime.rain !== undefined ? forecastTime.rain['3h'] : 0),
                 weatherType: forecastTime.weather,

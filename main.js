@@ -2,7 +2,7 @@
 import { getWeatherForecastByCity } from '../modules/api.js';
 
 
-// ETT SNABBT FUL-TEST! - ta bort eller skriv om & flytta... 
+// ETT SNABBT FUL-TEST! - demo/test av getWeatherForecastByCity(), ta bort sen... 
 getWeatherForecastByCity("Malmö").then((weatherSearchResult) => {
     const outputBox = document.querySelector("#homeresultsdiv");
     outputBox.innerHTML = "";
@@ -16,8 +16,8 @@ getWeatherForecastByCity("Malmö").then((weatherSearchResult) => {
         resultBox.appendChild(cityBox);
         resultBox.appendChild(forecastsBox);
         cityBox.innerHTML += `<h2>${weather.location.cityName} (${weather.location.countryName})</h2>`;
-        cityBox.innerHTML += `<div>Solen går upp: ${weather.location.sunrise}</div>`;
-        cityBox.innerHTML += `<div>Solen går ner: ${weather.location.sunset}</div>`;
+        cityBox.innerHTML += `<div>Sunrise: ${weather.location.sunrise}</div>`;
+        cityBox.innerHTML += `<div>Sunset: ${weather.location.sunset}</div>`;
         // varje dag det finns väderprognos för staden
         for (const forecastDay in weather.forecasts) {
             const forecastDayBox = document.createElement("div");
@@ -34,18 +34,18 @@ getWeatherForecastByCity("Malmö").then((weatherSearchResult) => {
                 forecastBox.style.padding = "0.5rem";
                 forecastBox.style.backgroundColor = (rowCount++ % 2 ? "rgb(140,140,140)" : "rgb(160,160,160)");
                 forecastBox.innerHTML += `<h4>${forecast.time} - ${forecast.weatherType[0].description}</h4>`;
-                forecastBox.innerHTML += `<img src="https://openweathermap.org/img/wn/${forecast.weatherType[0].icon}.png" alt="${forecast.weatherType[0].description}">`;
+                forecastBox.innerHTML += `<img src="https://openweathermap.org/img/wn/${forecast.weatherType[0].icon}${rowCount == 1 ? "@2x" : ""}.png" alt="${forecast.weatherType[0].description}">`;
                 forecastBox.innerHTML += `<span>Cloud coverage: ${forecast.cloudinessPercent}%</span>`;
                 forecastBox.innerHTML += `<span>Temperature: ${forecast.temperature}°C (${forecast.temperatureFeelsLike}°C)</span>`;
-                forecastBox.innerHTML += `<span>Wind: ${forecast.windSpeed} m/s (${forecast.windSpeedGust} m/s) - ${forecast.windDirectionDegrees}°</span>`;
+                forecastBox.innerHTML += `<span>Wind: ${forecast.windSpeed} m/s (${forecast.windSpeedGust} m/s)</span>`;
                 forecastBox.innerHTML += `<img src="./images/direction-arrow.png" alt="Wind direction ${forecast.windDirectionDegrees} degrees" style="transform: rotate(${forecast.windDirectionDegrees}deg)">`;
-                forecastBox.innerHTML += `<span>Visibility range: ${forecast.visibilityMeters} m</span>`;
+                forecastBox.innerHTML += `<span>Visibility range: ${forecast.visibilityMeters}m</span>`;
                 forecastBox.innerHTML += `<span>Precipitation: ${forecast.rainOrSnowChance}%</span>`;
                 if (forecast.snowAmount > 0) {
-                    forecastBox.innerHTML += `<div>Snow: ${forecast.snowAmount} mm</div>`;
+                    forecastBox.innerHTML += `<span>Snow: ${forecast.snowAmount} mm</span>`;
                 }
                 else if (forecast.rainAmount > 0) {
-                    forecastBox.innerHTML += `<div>Rain: ${forecast.rainAmount} mm</div>`;
+                    forecastBox.innerHTML += `<span>Rain: ${forecast.rainAmount} mm</span>`;
                 }
 
             }
@@ -64,7 +64,18 @@ getWeatherForecastByCity("Malmö").then((weatherSearchResult) => {
 });
 
 /*
-Parameter som skickas till callbackfunktionen ovan - Array med objekt med följande properties:
+    getWeatherForecastByCity(cityName)
+    Returnerar Promise med 5-dygnsprognos för väder i de städer vars namn matchar cityName
+
+
+    ANVÄNDNINGS-EXEMPEL:  (logga temperaturen vid första prognostillfället för 10 januari i första staden vars namn matchar "Stockholm")
+    -------------------
+    getWeatherForecastByCity("Stockholm").then((weatherSearchResult) => {
+        console.log(weatherSearchResult[0].forecasts["2024-01-10"][0].temperature);
+    });
+
+
+Parameter weatherSearchResult som skickas till callbackfunktionen ovan - Array med objekt för varje plats/stad med följande properties:
     location: objekt med info om platsen vädenprognosen gäller: {
         cityName:               Namn på staden
         countryName:            Namn på landet staden ligger i
@@ -89,11 +100,6 @@ Parameter som skickas till callbackfunktionen ovan - Array med objekt med följa
         snowAmount:             snömängd i mm
         rainAmount:             regnmängd i mm
         weatherType:            Objekt: main = vädertyp (t.ex "Clouds"), description = kort beskrivning (t.ex "overcast clouds"), icon = ID för väder-ikon från API utan filändelse och sökväg (t.ex "02n")
+                                För betydelse av ID, se https://openweathermap.org/weather-conditions
     }
-
-    EXEMPEL:  (logga temperaturen vid första prognostillfället för 8 januari i första staden [0] som matchar "Stockholm" som namn)
-    --------
-    getWeatherForecastByCity("Stockholm").then((weatherSearchResult) => {
-        console.log(weatherSearchResult[0].forecasts["2024-01-09"][0].temperature);
-    });
 */

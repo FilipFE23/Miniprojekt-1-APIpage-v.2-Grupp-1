@@ -28,6 +28,11 @@ img{
   display: none;
 }
 
+.flexbox{
+  display: flex;
+  
+}
+
 
 
 /********************* MEDIA QUERIES *************/

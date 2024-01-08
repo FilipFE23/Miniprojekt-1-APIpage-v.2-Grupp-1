@@ -33,7 +33,8 @@ getWeatherForecastByCity("Malmö").then((weatherSearchResult) => {
                 forecastBox.style.margin = "0.2rem";
                 forecastBox.style.padding = "0.5rem";
                 forecastBox.style.backgroundColor = (rowCount++ % 2 ? "rgb(140,140,140)" : "rgb(160,160,160)");
-                forecastBox.innerHTML += `<h4>${forecast.dateTime} - ${forecast.weatherType[0].description}</h4>`;
+                forecastBox.innerHTML += `<h4>${forecast.time} - ${forecast.weatherType[0].description}</h4>`;
+                forecastBox.innerHTML += `<img src="https://openweathermap.org/img/wn/${forecast.weatherType[0].icon}.png" alt="${forecast.weatherType[0].description}">`;
                 forecastBox.innerHTML += `<span>Cloud coverage: ${forecast.cloudinessPercent}%</span>`;
                 forecastBox.innerHTML += `<span>Temperature: ${forecast.temperature}°C (${forecast.temperatureFeelsLike}°C)</span>`;
                 forecastBox.innerHTML += `<span>Wind: ${forecast.windSpeed} m/s (${forecast.windSpeedGust} m/s) - ${forecast.windSpeedGust}°</span>`;

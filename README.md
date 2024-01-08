@@ -1,1 +1,1 @@
-# Miniprojekt_1_-_APIpage_v.2_Grupp_1
+# Miniprojekt 1 - APIpage v.2 Grupp 1

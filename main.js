@@ -37,7 +37,8 @@ getWeatherForecastByCity("Malmö").then((weatherSearchResult) => {
                 forecastBox.innerHTML += `<img src="https://openweathermap.org/img/wn/${forecast.weatherType[0].icon}.png" alt="${forecast.weatherType[0].description}">`;
                 forecastBox.innerHTML += `<span>Cloud coverage: ${forecast.cloudinessPercent}%</span>`;
                 forecastBox.innerHTML += `<span>Temperature: ${forecast.temperature}°C (${forecast.temperatureFeelsLike}°C)</span>`;
-                forecastBox.innerHTML += `<span>Wind: ${forecast.windSpeed} m/s (${forecast.windSpeedGust} m/s) - ${forecast.windSpeedGust}°</span>`;
+                forecastBox.innerHTML += `<span>Wind: ${forecast.windSpeed} m/s (${forecast.windSpeedGust} m/s) - ${forecast.windDirectionDegrees}°</span>`;
+                forecastBox.innerHTML += `<img src="./images/direction-arrow.png" alt="Wind direction ${forecast.windDirectionDegrees} degrees" style="transform: rotate(${forecast.windDirectionDegrees}deg)">`;
                 forecastBox.innerHTML += `<span>Visibility range: ${forecast.visibilityMeters} m</span>`;
                 forecastBox.innerHTML += `<span>Precipitation: ${forecast.rainOrSnowChance}%</span>`;
                 if (forecast.snowAmount > 0) {

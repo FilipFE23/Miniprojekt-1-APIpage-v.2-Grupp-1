@@ -1,0 +1,36 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 14px;
+  font-family: "x", sans-serif;
+  color: #000000;
+}
+
+img{
+  max-width:100%;
+}
+
+.page-wrapper {
+  margin: 0 auto 0 auto;
+}
+
+.hide{
+  display: none;
+}
+
+
+
+/********************* MEDIA QUERIES *************/
+
+@media only screen and (min-width: 575px) {
+
+}
+
+/* Desktop Styles */
+@media only screen and (min-width: 1024px){
+
+}

@@ -2,7 +2,7 @@
   Versionshantering-projekt 1 (FE23)
   Miniprojekt 1 : APIpage v.2
   Grupp 1
-*/
+**************************************/
 
 * {
   box-sizing: border-box;
@@ -11,56 +11,199 @@
 }
 
 html {
-  font-size: 14px;
-  font-family: "x", sans-serif;
-  color: #000000;
+  font-family: 'Inter', sans-serif;
+  color:#3b3b76;
+  height: 100%;
 }
 
 img {
   max-width: 100%;
 }
 
-.page-wrapper {
+/* h1, h2, h3, h4, h5, h6{
+
+}
+
+p {
+  margin-bottom:15px;
+}
+p:nth-last-child(1) {
+  margin-bottom:0;
+} */
+
+.wrapper {
   margin: 0 auto 0 auto;
+  width:90vw;
 }
 
 .hide {
   display: none;
 }
 
-nav input {
+
+/****** Header Menu *******/
+
+/*** Desk ****/
+.top-nav {
   display: flex;
-  justify-content: center;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  background-color:#3b3b76;
+  color: #FFF;
+  height: 50px;
+  padding: 1.4em;
+}
+.top-nav a {
+  color: #FFF;
+  text-decoration: none;
+  font-weight: bold;
+}
+.top-nav a:hover {
+  color: #e2a266;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+
+.menu ul {
+  display: flex;
+  flex-direction: row;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.menu > ul > li {
+  margin: 0 1rem;
+  overflow: hidden;
+  font-weight: normal;
+}
+.menu > ul >li a{
+  overflow: hidden;
+  color: #e9dfd7;
+  font-weight: normal;
+ 
+  text-decoration: none;
+}
+.menu >ul > li a:hover{
+  overflow: hidden;
+  color: #e2a266;
+  font-weight: normal;
+
+}
+
+.menu-button-container {
+  display: none;
+  height: 100%;
+  width: 30px;
+  cursor: pointer;
   flex-direction: column;
-  align-items: center;
-  margin-top: 40px;
-}
-
-nav {
-  display: flex;
   justify-content: center;
-  padding: 0 100px;
-  gap: 25px;
-  background-color: black;
-}
-
-nav a {
-  font-size: 1.3rem;
-  border-radius: 15px;
-  display: flex;
   align-items: center;
-  font-family: "Courier New", Courier, monospace;
-  font-weight: 700;
-  text-align: center;
-  color: white;
 }
 
-/********************* MEDIA QUERIES *************/
+#menu-toggle {
+  display: none;
+}
+
+.menu-button,
+.menu-button::before,
+.menu-button::after {
+  display: block;
+  background-color: #e2a266;
+  position: absolute;
+  height: 3px;
+  width: 30px;
+  transition: transform 400ms cubic-bezier(0.23, 1, 0.32, 1);
+  border-radius: 2px;
+}
+
+.menu-button::before {
+  content: '';
+  margin-top: -8px;
+}
+
+.menu-button::after {
+  content: '';
+  margin-top: 8px;
+}
+
+#menu-toggle:checked + .menu-button-container .menu-button::before {
+  margin-top: 0px;
+  transform: rotate(405deg);
+}
+
+#menu-toggle:checked + .menu-button-container .menu-button {
+  /* background: rgba(255, 255, 255, 0); */
+  background: #3b3b76;
+}
+
+#menu-toggle:checked + .menu-button-container .menu-button::after {
+  margin-top: 0px;
+  transform: rotate(-405deg);
+}
+
+/******* Mobile ****/
+@media (max-width: 700px) {
+  .menu-button-container {
+    display: flex;
+  }
+  .menu {
+    position: absolute;
+    top: 0;
+    margin-top: 50px;
+    left: 0;
+    width: 100%;
+  }
+  .menu ul {
+    width: 100%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  #menu-toggle ~ .menu ul li {
+    height: 0;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    transition: height 400ms cubic-bezier(0.23, 1, 0.32, 1);
+  }
+  #menu-toggle:checked ~ .menu ul li {
+    border: 1px solid #333;
+    border: 1px solid #535378;
+    height: 2.5em;
+    padding: 0.5em;
+    transition: height 400ms cubic-bezier(0.23, 1, 0.32, 1);
+  }
+  .menu > ul > li {
+    display: flex;
+    justify-content: center;
+    margin: 0;
+    padding: 0.5em 0;
+    width: 100%;
+    color: #e9dfd7;
+    background: #3b3b76;
+  }
+  .menu > ul >li a{
+    /* color: white; */
+    color: #e9dfd7;
+    text-decoration: none;
+  }
+
+  .menu > ul > li:not(:last-child) {
+    border-bottom: 1px solid #444;
+  }
+}
+
+
+/********************* MEDIA QUERIES ****************/
 
 @media only screen and (max-width: 575px) {
-  nav a {
-    font-size: 10px;
-  }
+
+}
+@media only screen and (min-width: 700) {
+
 }
 
 /* Desktop Styles */

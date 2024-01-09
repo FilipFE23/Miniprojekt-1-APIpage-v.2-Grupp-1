@@ -438,7 +438,7 @@ async function fetchJSON(url, callbackFunc) {
 
 
 ///////////////////////////////////////////////////////////////////////////////////
-// Felhantering - skall denna ligga här eller närmare gränssnittet?
+// Felhantering
 function errorHandlerAPI(error) {
     if (error instanceof APIFetchError) {
         if (error.statusCode == 1) {
@@ -465,4 +465,4 @@ class APIFetchError extends Error {
 }
 
 
-export { getWeatherForecastByCity, getCurrentWeatherByCity, getCurrentPollutionByCity, getPollutionForecastByCity, APIFetchError }
+export { getWeatherForecastByCity, getCurrentWeatherByCity, getCurrentPollutionByCity, getPollutionForecastByCity }

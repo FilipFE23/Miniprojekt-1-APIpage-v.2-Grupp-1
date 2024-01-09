@@ -87,6 +87,8 @@ function buildWeatherForecastsCallback(weatherSearchResult) {
 }
 
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////
+// Callback-funktion för att visa nuvarande väder från sökresultat på städer
 function buildCurrentWeatherCallback(weatherSearchResult) {
     const outputBox = document.querySelector("#homeresultsdiv");
 

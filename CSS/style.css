@@ -12,7 +12,8 @@
 
 html {
   font-family: 'Inter', sans-serif;
-  color:#3b3b76;
+  /* color:#3b3b76; */
+  color:#444;
   height: 100%;
 }
 
@@ -20,10 +21,22 @@ img {
   max-width: 100%;
 }
 
-/* h1, h2, h3, h4, h5, h6{
 
+h1, h2, h3, h4, h5, h6{
+margin:0.5em 0 0.5em 0;
 }
 
+h1{
+  font-size: 1.3rem;
+  margin:1em 0 0.5em 0;
+}
+/* h3{
+  font-size: 1.3rem;
+  margin:1em 0 0.5em 0;
+  color:#e2a266
+} */
+
+/* 
 p {
   margin-bottom:15px;
 }
@@ -43,19 +56,18 @@ p:nth-last-child(1) {
 
 /****** Header Menu *******/
 
-/*** Desk ****/
 .top-nav {
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
   background-color:#3b3b76;
-  color: #FFF;
+  color: #fff;
   height: 50px;
   padding: 1.4em;
 }
 .top-nav a {
-  color: #FFF;
+  color: #fff;
   text-decoration: none;
   font-weight: bold;
 }
@@ -65,42 +77,11 @@ p:nth-last-child(1) {
   font-weight: bold;
 }
 
+.menu {
+  top: 0;
+  left: 0;
+  margin-top: 50px;
 
-.menu ul {
-  display: flex;
-  flex-direction: row;
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-}
-
-.menu > ul > li {
-  margin: 0 1rem;
-  overflow: hidden;
-  font-weight: normal;
-}
-.menu > ul >li a{
-  overflow: hidden;
-  color: #e9dfd7;
-  font-weight: normal;
- 
-  text-decoration: none;
-}
-.menu >ul > li a:hover{
-  overflow: hidden;
-  color: #e2a266;
-  font-weight: normal;
-
-}
-
-.menu-button-container {
-  display: none;
-  height: 100%;
-  width: 30px;
-  cursor: pointer;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
 }
 
 #menu-toggle {
@@ -144,24 +125,111 @@ p:nth-last-child(1) {
   transform: rotate(-405deg);
 }
 
-/******* Mobile ****/
-@media (max-width: 700px) {
-  .menu-button-container {
-    display: flex;
-  }
+
+.menu-button-container {
+  display: flex;
+  height: 100%;
+  width: 30px;
+  cursor: pointer;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.menu ul {
+  width: 100%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.menu > ul >li a{
+  /* color: white; */
+  color: #e9dfd7;
+  text-decoration: none;
+  font-weight: normal;
+}
+
+.menu >ul > li a:hover{
+  overflow: hidden;
+  color: #e2a266;
+  font-weight: normal;
+}
+
+
+.menu > ul > li {
+  display: flex;
+  justify-content: center;
+  margin: 0;
+  padding: 0.5em 0;
+  color: #e9dfd7;
+  background: #3b3b76;
+  overflow: hidden;
+}
+
+.menu > ul > li:not(:last-child) {
+  border-bottom: 1px solid #444;
+}
+
+
+/*************** WEATHER ********************/
+
+.currentweather-city{
+  padding:10px;
+  margin:20px 0 0 0;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+}
+.weather-city{
+  padding:10px;
+  margin:20px 0 0 0;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+}
+
+.currentweather-city-weather > div:first-child {
+  font-size:1em;
+}
+.currentweather-city-weather > div{
+  font-size:0.8em;
+}
+
+
+
+.weather-forecasts-day{
+  padding:5px;
+  margin:5px 0 0 0;
+  border-bottom:1px solid #535378;
+  /* box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px; */
+}
+
+.currentweather-city h3{
+  font-size: 1.3rem;
+  margin:0 0 0.5em 0;
+  color:#e2a266
+}
+.weather-city h3{
+  margin:0 0 0.5em 0;
+  font-size: 1em;
+  margin:1em 0 0.5em 0;
+  /* color:#e2a266 */
+
+}
+
+
+/********************* MEDIA QUERIES ****************/
+
+/******* Special for Mobile menu ****/
+@media only screen and (max-width: 700px) {
   .menu {
     position: absolute;
-    top: 0;
-    margin-top: 50px;
-    left: 0;
     width: 100%;
   }
-  .menu ul {
-    width: 100%;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  
+  .menu > ul > li {
+    width: 100%; 
   }
+
   #menu-toggle ~ .menu ul li {
     height: 0;
     margin: 0;
@@ -176,36 +244,46 @@ p:nth-last-child(1) {
     padding: 0.5em;
     transition: height 400ms cubic-bezier(0.23, 1, 0.32, 1);
   }
-  .menu > ul > li {
-    display: flex;
-    justify-content: center;
-    margin: 0;
-    padding: 0.5em 0;
-    width: 100%;
-    color: #e9dfd7;
-    background: #3b3b76;
-  }
-  .menu > ul >li a{
-    /* color: white; */
-    color: #e9dfd7;
-    text-decoration: none;
-  }
-
-  .menu > ul > li:not(:last-child) {
-    border-bottom: 1px solid #444;
-  }
 }
 
 
-/********************* MEDIA QUERIES ****************/
-
-@media only screen and (max-width: 575px) {
-
-}
-@media only screen and (min-width: 700) {
-
-}
 
 /* Desktop Styles */
+
+@media only screen and (min-width: 701px) {
+  .menu-button-container {
+    display: none;
+  }
+  
+  .menu {
+    margin-top: 0px;
+  }
+
+  .menu ul {
+    display: flex;
+    flex-direction: row;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+  .menu > ul > li {
+    display:block;
+    margin: 0 1rem;
+    overflow: hidden;
+    font-weight: normal;
+  }
+
+  .menu > ul >li a{
+    overflow: hidden;
+  }
+
+  .search-container{
+    width: 60%;
+    width: 60vw;
+    display: block;
+  }
+
+}
+
 @media only screen and (min-width: 1024px) {
 }

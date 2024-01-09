@@ -193,6 +193,8 @@ function buildPollutionForecastCallback(pollutionData) {
 }
 
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////
+// Visa felmeddelande överst på sidan
 function showErrorMessage(errorText) {
     const errorBox = document.querySelector("#errorsection");
 
@@ -206,8 +208,12 @@ function showErrorMessage(errorText) {
     // alert(errorText);
 }
 
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////
+// Rensa ev. felmeddelanden
 function clearErrorMessages() {
     document.querySelector("#errorsection").innerHTML = "";
+    errorBox.classList.add("hide");
 }
 
 export { buildWeatherForecastsCallback, buildCurrentWeatherCallback, buildCurrentPollutionCallback, buildPollutionForecastCallback, showErrorMessage, clearErrorMessages }

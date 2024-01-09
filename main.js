@@ -1,6 +1,6 @@
 
-import { getWeatherForecastByCity, getCurrentWeatherByCity, getCurrentPollutionByCity, getPollutionForecastByCity } from '../modules/api.js';
-import { buildWeatherForecastsCallback, buildCurrentWeatherCallback, buildCurrentPollutionCallback, buildPollutionForecastCallback } from '../modules/interface.js';
+import { getWeatherForecastByCity, getCurrentWeatherByCity, getCurrentPollutionByCity, getPollutionForecastByCity, APIFetchError } from '../modules/api.js';
+import { buildWeatherForecastsCallback, buildCurrentWeatherCallback, buildCurrentPollutionCallback, buildPollutionForecastCallback, showErrorMessage } from '../modules/interface.js';
 
 
 // Submit handler för väder-sökning, behöver få FORM i html-filen först
@@ -74,3 +74,21 @@ document.querySelectorAll("body > header > nav > a").forEach((menuLink) => {
         }
     });
 });
+
+
+function searchErrorHandler(error) {
+    if (error instanceof APIFetchError) {
+        if (error.errorCode == 1) {
+            showErrorMessage(error.message);
+        }
+        else if (error.errorCode == 2) {
+            showErrorMessage(error.message);
+        }
+        else {
+            console.error("Search error:", error.errorCode, error.message);
+        }
+    }
+    else {
+        console.error("General error:", error);
+    }
+}

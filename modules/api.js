@@ -5,6 +5,7 @@
 */
 
 import { timestampToTime, timestampToDate } from '../modules/utilities.js';
+import { showErrorMessage } from '../modules/interface.js';
 
 
 const API_KEY = "5261d802270baa988556276b1069665e";
@@ -51,29 +52,34 @@ async function getCurrentPollutionByCity(cityName, maxResults = 5) {
 ///////////////////////////////////////////////////////////////////////////////////
 // Bygg array med nuvarande föroreningar-info för platser med angivna koordinater
 async function getCurrentPollutionByCoords(cityCoordsList) {
-    if (Array.isArray(cityCoordsList) && (cityCoordsList.length > 0)) {
-        const countryNames = new Intl.DisplayNames(['en'], { type: 'region' });
-        const cityPollution = [];
+    try {
+        if (Array.isArray(cityCoordsList) && (cityCoordsList.length > 0)) {
+            const countryNames = new Intl.DisplayNames(['en'], { type: 'region' });
+            const cityPollution = [];
 
-        for (const cityCoords of cityCoordsList) {
-            const requestURL = new URL("http://api.openweathermap.org/data/2.5/air_pollution");
-            requestURL.searchParams.append("lat", cityCoords.lat);
-            requestURL.searchParams.append("lon", cityCoords.lon);
-            requestURL.searchParams.append("appid", API_KEY);
+            for (const cityCoords of cityCoordsList) {
+                const requestURL = new URL("http://api.openweathermap.org/data/2.5/air_pollution");
+                requestURL.searchParams.append("lat", cityCoords.lat);
+                requestURL.searchParams.append("lon", cityCoords.lon);
+                requestURL.searchParams.append("appid", API_KEY);
 
-            const pollution = await fetchJSON(requestURL, getCurrentPollution);
-            pollution.location = {
-                cityName: cityCoords.name,
-                country: cityCoords.country,
-                countryName: countryNames.of(cityCoords.country),
-                state: cityCoords.state,
+                const pollution = await fetchJSON(requestURL, getCurrentPollution);
+                pollution.location = {
+                    cityName: cityCoords.name,
+                    country: cityCoords.country,
+                    countryName: countryNames.of(cityCoords.country),
+                    state: cityCoords.state,
+                }
+                cityPollution.push(pollution);
             }
-            cityPollution.push(pollution);
+            return cityPollution;
         }
-        return cityPollution;
+        else {
+            throw new APIFetchError("No city matches your search. Try something else?", 1);
+        }
     }
-    else {
-        console.error("Fel - ingen stad matchar angivet sök-kriterie.");
+    catch (error) {
+        errorHandlerAPI(error);
     }
 }
 
@@ -138,30 +144,35 @@ async function getPollutionForecastByCity(cityName, maxResults = 5) {
 ///////////////////////////////////////////////////////////////////////////////////
 // Bygg array med prognos för föroreningar för platser med angivna koordinater
 async function getPollutionForecastByCoords(cityCoordsList) {
-    if (Array.isArray(cityCoordsList) && (cityCoordsList.length > 0)) {
-        const countryNames = new Intl.DisplayNames(['en'], { type: 'region' });
-        const cityPollution = [];
+    try {
+        if (Array.isArray(cityCoordsList) && (cityCoordsList.length > 0)) {
+            const countryNames = new Intl.DisplayNames(['en'], { type: 'region' });
+            const cityPollution = [];
 
-        for (const cityCoords of cityCoordsList) {
-            const requestURL = new URL("http://api.openweathermap.org/data/2.5/air_pollution/forecast");
-            requestURL.searchParams.append("lat", cityCoords.lat);
-            requestURL.searchParams.append("lon", cityCoords.lon);
-            requestURL.searchParams.append("appid", API_KEY);
+            for (const cityCoords of cityCoordsList) {
+                const requestURL = new URL("http://api.openweathermap.org/data/2.5/air_pollution/forecast");
+                requestURL.searchParams.append("lat", cityCoords.lat);
+                requestURL.searchParams.append("lon", cityCoords.lon);
+                requestURL.searchParams.append("appid", API_KEY);
 
-            const pollutionResult = {};
-            pollutionResult.location = {
-                cityName: cityCoords.name,
-                country: cityCoords.country,
-                countryName: countryNames.of(cityCoords.country),
-                state: cityCoords.state,
+                const pollutionResult = {};
+                pollutionResult.location = {
+                    cityName: cityCoords.name,
+                    country: cityCoords.country,
+                    countryName: countryNames.of(cityCoords.country),
+                    state: cityCoords.state,
+                }
+                pollutionResult.pollution = await fetchJSON(requestURL, getPollutionForecast);
+                cityPollution.push(pollutionResult);
             }
-            pollutionResult.pollution = await fetchJSON(requestURL, getPollutionForecast);
-            cityPollution.push(pollutionResult);
+            return cityPollution;
         }
-        return cityPollution;
+        else {
+            throw new APIFetchError("No city matches your search. Try something else?", 1);
+        }
     }
-    else {
-        console.error("Fel - ingen stad matchar angivet sök-kriterie.");
+    catch (error) {
+        errorHandlerAPI(error);
     }
 }
 
@@ -201,22 +212,27 @@ async function getCurrentWeatherByCity(cityName, maxResults = 5) {
 ///////////////////////////////////////////////////////////////////////////////////
 // Bygg array med nuvarande väder-info för platser med angivna koordinater
 async function getCurrentWeatherByCoords(cityCoordsList) {
-    if (Array.isArray(cityCoordsList) && (cityCoordsList.length > 0)) {
-        const cityWeather = [];
-        for (const cityCoords of cityCoordsList) {
-            const requestURL = new URL("https://api.openweathermap.org/data/2.5/weather");
-            requestURL.searchParams.append("units", "metric");
-            requestURL.searchParams.append("lat", cityCoords.lat);
-            requestURL.searchParams.append("lon", cityCoords.lon);
-            requestURL.searchParams.append("appid", API_KEY);
+    try {
+        if (Array.isArray(cityCoordsList) && (cityCoordsList.length > 0)) {
+            const cityWeather = [];
+            for (const cityCoords of cityCoordsList) {
+                const requestURL = new URL("https://api.openweathermap.org/data/2.5/weather");
+                requestURL.searchParams.append("units", "metric");
+                requestURL.searchParams.append("lat", cityCoords.lat);
+                requestURL.searchParams.append("lon", cityCoords.lon);
+                requestURL.searchParams.append("appid", API_KEY);
 
-            const weather = await fetchJSON(requestURL, getCurrentWeather);
-            cityWeather.push(weather);
+                const weather = await fetchJSON(requestURL, getCurrentWeather);
+                cityWeather.push(weather);
+            }
+            return cityWeather;
         }
-        return cityWeather;
+        else {
+            throw new APIFetchError("No city matches your search. Try something else?", 1);
+        }
     }
-    else {
-        console.error("Fel - ingen stad matchar angivet sök-kriterie.");
+    catch (error) {
+        errorHandlerAPI(error);
     }
 }
 
@@ -266,15 +282,15 @@ async function getCurrentWeather(weatherData) {
 /*
     getWeatherForecastByCity(cityName)
     Returnerar Promise med 5-dygnsprognos för väder i de städer vars namn matchar cityName
-
-
+ 
+ 
     ANVÄNDNINGS-EXEMPEL:  (logga temperaturen vid första prognostillfället för 10 januari i första staden vars namn matchar "Stockholm")
     -------------------
     getWeatherForecastByCity("Stockholm").then((weatherSearchResult) => {
         console.log(weatherSearchResult[0].forecasts["2024-01-10"][0].temperature);
     });
-
-
+ 
+ 
 Parameter weatherSearchResult som skickas till callbackfunktionen ovan - Array med objekt för varje plats/stad med följande properties:
     location: objekt med info om platsen vädenprognosen gäller: {
         cityName:               Namn på staden
@@ -318,22 +334,27 @@ async function getWeatherForecastByCity(cityName, maxResults = 5) {
 ///////////////////////////////////////////////////////////////////////////////////
 // Bygg array med väderdata för platser med angivna koordinater
 async function getWeatherForecastsByCoords(cityCoordsList) {
-    if (Array.isArray(cityCoordsList) && (cityCoordsList.length > 0)) {
-        const cityForecasts = [];
-        for (const cityCoords of cityCoordsList) {
-            const requestURL = new URL("http://api.openweathermap.org/data/2.5/forecast");
-            requestURL.searchParams.append("units", "metric");
-            requestURL.searchParams.append("lat", cityCoords.lat);
-            requestURL.searchParams.append("lon", cityCoords.lon);
-            requestURL.searchParams.append("appid", API_KEY);
+    try {
+        if (Array.isArray(cityCoordsList) && (cityCoordsList.length > 0)) {
+            const cityForecasts = [];
+            for (const cityCoords of cityCoordsList) {
+                const requestURL = new URL("http://api.openweathermap.org/data/2.5/forecast");
+                requestURL.searchParams.append("units", "metric");
+                requestURL.searchParams.append("lat", cityCoords.lat);
+                requestURL.searchParams.append("lon", cityCoords.lon);
+                requestURL.searchParams.append("appid", API_KEY);
 
-            const forecast = await fetchJSON(requestURL, getWeatherForecasts);
-            cityForecasts.push(forecast);
+                const forecast = await fetchJSON(requestURL, getWeatherForecasts);
+                cityForecasts.push(forecast);
+            }
+            return cityForecasts;
         }
-        return cityForecasts;
+        else {
+            throw new APIFetchError("No city matches your search. Try something else?", 1);
+        }
     }
-    else {
-        console.error("Fel - ingen stad matchar angivet sök-kriterie.");
+    catch (error) {
+        errorHandlerAPI(error);
     }
 }
 
@@ -387,9 +408,6 @@ async function getWeatherForecasts(weatherForecast) {
         }
 
     }
-    else {
-        console.error("Fel - inga prognoser mottagna!");
-    }
     return forecastResult;
 }
 
@@ -423,9 +441,16 @@ async function fetchJSON(url, callbackFunc) {
 // Felhantering - skall denna ligga här eller närmare gränssnittet?
 function errorHandlerAPI(error) {
     if (error instanceof APIFetchError) {
-        console.error("MovieAPI Error:", error.errorCode, error.message);
+        if (error.statusCode == 1) {
+            showErrorMessage(error.message);
+        }
+        else {
+            showErrorMessage(`${error.message} (${error.statusCode})`);
+            console.error("API Response Error:", error.statusCode, error.message);
+        }
     }
     else {
+        showErrorMessage(`An error occurred. Try again later?`);
         console.error("General error:", error);
     }
 }
@@ -440,4 +465,4 @@ class APIFetchError extends Error {
 }
 
 
-export { getWeatherForecastByCity, getCurrentWeatherByCity, getCurrentPollutionByCity, getPollutionForecastByCity }
+export { getWeatherForecastByCity, getCurrentWeatherByCity, getCurrentPollutionByCity, getPollutionForecastByCity, APIFetchError }

@@ -187,9 +187,34 @@ pollutionData - array med (stad)objekt som innehåller:
     }
 }
 */
-function buildPollutionForecastCallback(pollutionData) {
+function buildPollutionForecastCallback(pollutionCities) {
     const outputBox = document.querySelector("#pollutionresultsdiv");
-    console.log("Pollution Forecast Data", pollutionData);
+    //    console.log("Pollution Forecast Data", pollutionCities);
+
+    if (getValueIsSet(pollutionCities, 1, true)) {
+        for (const cityPollutionData of pollutionCities) {
+            console.log("PollutionData", cityPollutionData);
+            const cityForecastsBox = createContainerElement('article', '', 'pollution-forecast-city', outputBox);
+            createTextElement('h3', `${cityPollutionData.location.cityName} (${cityPollutionData.location.state !== undefined ? cityPollutionData.location.state + "," : ""} ${cityPollutionData.location.countryName})`, '', '', 'pollution-forecast-city-name', cityForecastsBox);
+
+            for (const pollutionData of cityPollutionData.pollution) {
+                const forecastBox = createContainerElement('div', '', 'pollution-forecast-item', cityForecastsBox);
+                const forecastDataBox = createContainerElement('div', '', 'pollution-forecast-data', forecastBox);
+                const pollutantsBox = createContainerElement('div', '', 'pollution-forecast-pollutants', forecastBox);
+
+                createTextElement('div', `${pollutionData.date} ${pollutionData.time}`, '', '', 'pollution-forecast-datetime', forecastDataBox);
+                createTextElement('div', `${pollutionData.qualityIndex}`, '0', '', ['pollution-forecast-quality-index', `pollution-forecast-quality-index-${pollutionData.qualityIndex}`], forecastDataBox);
+                createTextElementWithTitle('div', "Carbon monoxide:", `${pollutionData.pollutants.co} μg/m3`, '-', '', 'pollution-forecast-pollutants-type', pollutantsBox);
+                createTextElementWithTitle('div', "Nitrogen monoxide:", `${pollutionData.pollutants.no} μg/m3`, '-', '', 'pollution-forecast-pollutants-type', pollutantsBox);
+                createTextElementWithTitle('div', "Nitrogen dioxide:", `${pollutionData.pollutants.no2} μg/m3`, '-', '', 'pollution-forecast-pollutants-type', pollutantsBox);
+                createTextElementWithTitle('div', "Ozone:", `${pollutionData.pollutants.o3} μg/m3`, '-', '', 'pollution-forecast-pollutants-type', pollutantsBox);
+                createTextElementWithTitle('div', "Sulphur dioxide:", `${pollutionData.pollutants.so2} μg/m3`, '-', '', 'pollution-forecast-pollutants-type', pollutantsBox);
+                createTextElementWithTitle('div', "Fine particles matter:", `${pollutionData.pollutants.pm2_5} μg/m3`, '-', '', 'pollution-forecast-pollutants-type', pollutantsBox);
+                createTextElementWithTitle('div', "Coarse particulate matter:", `${pollutionData.pollutants.pm10} μg/m3`, '-', '', 'pollution-forecast-pollutants-type', pollutantsBox);
+                createTextElementWithTitle('div', "Ammonia:", `${pollutionData.pollutants.nh3} μg/m3`, '-', '', 'pollution-forecast-pollutants-type', pollutantsBox);
+            }
+        }
+    }
 }
 
 

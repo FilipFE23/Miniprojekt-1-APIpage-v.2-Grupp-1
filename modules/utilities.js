@@ -72,7 +72,7 @@ export function createTextElementWithTitle(elementType, textTitle, textContent, 
 // Lägg till CSS-klasser till ett element.
 export function addIdentifiersToElement(targetElement, classesToAdd = '', elementId = '') {
     if (classesToAdd.length > 0) {
-        if (Array.isArray(classesToAdd)) {
+        if (getValueIsSet(classesToAdd, 1, true)) {
             targetElement.classList.add(...classesToAdd);
         }
         else if (getValueIsSet(classesToAdd)) {

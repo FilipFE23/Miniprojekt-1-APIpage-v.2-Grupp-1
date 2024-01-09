@@ -49,20 +49,171 @@ Parameter weatherSearchResult som skickas till callbackfunktionen ovan - Array m
     }
 */
 
+/*
+POLLUTION RESULT: 
+{
+    location = {
+        cityName:       Name of city (in English),
+        country:        country code,
+        countryName:    Name of country (in English)
+        state:          Name of state, if applicable (in English)
+    }
+    qualityIndex : [1, 2, 3, 4, 5] 1 = Good, 2 = Fair, 3 = Moderate, 4 = Poor, 5 = Very Poor
+    pollutants = {
+        "co":       concentration of CO (Carbon monoxide), μg/m3
+        "no":       concentration of NO (Nitrogen monoxide), μg/m3
+        "no2":      concentration of NO2 (Nitrogen dioxide), μg/m3
+        "o3":       concentration of O3 (Ozone), μg/m3
+        "so2":      concentration of SO2 (Sulphur dioxide), μg/m3
+        "pm2_5":     concentration of PM2.5 (Fine particles matter), μg/m3
+        "pm10":     concentration of PM10 (Coarse particulate matter), μg/m3
+        "nh3":      concentration of NH3 (Ammonia), μg/m3
+      }
+}
+*/
 
 ///////////////////////////////////////////////////////////////////////////////////
-// Returnera promise för hämtning av väderinformation för en angiven stad.
-async function getWeatherForecastByCity(cityName) {
+// NUVARANDE FÖRORENINGAR: Returnera promise för hämtning av nuvarande föroreningar för en angiven stad.
+async function getCurrentPollutionByCity(cityName, maxResults = 5) {
     const requestURL = new URL('http://api.openweathermap.org/geo/1.0/direct');
     requestURL.searchParams.append("q", cityName);
-    requestURL.searchParams.append("limit", 5);
+    requestURL.searchParams.append("limit", maxResults);
+    requestURL.searchParams.append("appid", API_KEY);
+    return fetchJSON(requestURL, getCurrentPollutionByCoords);
+}
+
+
+///////////////////////////////////////////////////////////////////////////////////
+// NUVARANDE FÖRORENINGAR: Bygg array med nuvarande föroreningar-info för platser med angivna koordinater
+async function getCurrentPollutionByCoords(cityCoordsList) {
+    if (Array.isArray(cityCoordsList) && (cityCoordsList.length > 0)) {
+        const countryNames = new Intl.DisplayNames(['en'], { type: 'region' });
+        const cityPollution = [];
+
+        for (const cityCoords of cityCoordsList) {
+            const requestURL = new URL("http://api.openweathermap.org/data/2.5/air_pollution");
+            requestURL.searchParams.append("lat", cityCoords.lat);
+            requestURL.searchParams.append("lon", cityCoords.lon);
+            requestURL.searchParams.append("appid", API_KEY);
+
+            const pollution = await fetchJSON(requestURL, getCurrentPollution);
+            pollution.location = {
+                cityName: cityCoords.name,
+                country: cityCoords.country,
+                countryName: countryNames.of(cityCoords.country),
+                state: cityCoords.state,
+            }
+            cityPollution.push(pollution);
+        }
+        return cityPollution;
+    }
+    else {
+        console.error("Fel - ingen stad matchar angivet sök-kriterie.");
+    }
+}
+
+
+///////////////////////////////////////////////////////////////////////////////////
+// NUVARANDE FÖRORENINGAR: Sammanställ info om föroreningar på en plats
+async function getCurrentPollution(pollutionData) {
+    const pollution = pollutionData.list[0];
+    const pollutionResult = {
+        date: timestampToDate(pollution.dt),
+        time: timestampToTime(pollution.dt),
+        qualityIndex: (pollution.main.aqi !== undefined ? pollution.main.aqi : 0),
+        pollutants: pollution.components,
+    };
+    return pollutionResult;
+}
+
+
+
+///////////////////////////////////////////////////////////////////////////////////
+// NUVARANDE: Returnera promise för hämtning av nuvarande väder för en angiven stad.
+async function getCurrentWeatherByCity(cityName, maxResults = 5) {
+    const requestURL = new URL('http://api.openweathermap.org/geo/1.0/direct');
+    requestURL.searchParams.append("q", cityName);
+    requestURL.searchParams.append("limit", maxResults);
+    requestURL.searchParams.append("appid", API_KEY);
+    return fetchJSON(requestURL, getCurrentWeatherByCoords);
+}
+
+
+///////////////////////////////////////////////////////////////////////////////////
+// NUVARANDE: Bygg array med nuvarande väder-info för platser med angivna koordinater
+async function getCurrentWeatherByCoords(cityCoordsList) {
+    if (Array.isArray(cityCoordsList) && (cityCoordsList.length > 0)) {
+        const cityWeather = [];
+        for (const cityCoords of cityCoordsList) {
+            const requestURL = new URL("https://api.openweathermap.org/data/2.5/weather");
+            requestURL.searchParams.append("units", "metric");
+            requestURL.searchParams.append("lat", cityCoords.lat);
+            requestURL.searchParams.append("lon", cityCoords.lon);
+            requestURL.searchParams.append("appid", API_KEY);
+
+            const weather = await fetchJSON(requestURL, getCurrentWeather);
+            cityWeather.push(weather);
+        }
+        return cityWeather;
+    }
+    else {
+        console.error("Fel - ingen stad matchar angivet sök-kriterie.");
+    }
+}
+
+
+///////////////////////////////////////////////////////////////////////////////////
+// NUVARANDE: Sammanställ väder-info om nuvarande väder på sökt plats
+async function getCurrentWeather(weatherData) {
+    let weatherResult = {};
+    if (weatherData.cod == 200) {
+        const countryNames = new Intl.DisplayNames(['en'], { type: 'region' });
+        const forecastDay = timestampToDate(weatherData.dt);
+        const forecastTime = timestampToTime(weatherData.dt);
+
+        // Info om platsen
+        weatherResult.location = {
+            cityName: weatherData.name,
+            countryName: countryNames.of(weatherData.sys.country),
+            sunrise: timestampToTime(weatherData.sys.sunrise),
+            sunset: timestampToTime(weatherData.sys.sunset),
+        };
+
+        // Väder-info
+        weatherResult.weather = {
+            date: forecastDay,
+            time: forecastTime,
+            cloudinessPercent: (weatherData.clouds.all !== undefined ? weatherData.clouds.all : 0),
+            temperature: weatherData.main.temp,
+            temperatureFeelsLike: weatherData.main.feels_like,
+            humidityPercent: weatherData.main.humidity,
+            pressure: weatherData.main.pressure,
+            visibilityMeters: weatherData.visibility,
+            windSpeed: weatherData.wind.speed,
+            windSpeedGust: weatherData.wind.gust,
+            windDirectionDegrees: weatherData.wind.deg, // Nord = 0, Öst = 90, Syd = 180, Väst 270
+            snowAmount: (weatherData.snow !== undefined ? weatherData.snow['1h'] : 0),
+            rainAmount: (weatherData.rain !== undefined ? weatherData.rain['1h'] : 0),
+            weatherType: weatherData.weather,
+        }
+    }
+    return weatherResult;
+}
+
+
+///////////////////////////////////////////////////////////////////////////////////
+// PROGNOS: Returnera promise för hämtning av väderinformation för en angiven stad.
+async function getWeatherForecastByCity(cityName, maxResults = 5) {
+    const requestURL = new URL('http://api.openweathermap.org/geo/1.0/direct');
+    requestURL.searchParams.append("q", cityName);
+    requestURL.searchParams.append("limit", maxResults);
     requestURL.searchParams.append("appid", API_KEY);
     return fetchJSON(requestURL, getWeatherForecastsByCoords);
 }
 
 
 ///////////////////////////////////////////////////////////////////////////////////
-// Bygg array med väderdata för platser med angivna koordinater
+// PROGNOS: Bygg array med väderdata för platser med angivna koordinater
 async function getWeatherForecastsByCoords(cityCoordsList) {
     if (Array.isArray(cityCoordsList) && (cityCoordsList.length > 0)) {
         const cityForecasts = [];
@@ -85,7 +236,7 @@ async function getWeatherForecastsByCoords(cityCoordsList) {
 
 
 ///////////////////////////////////////////////////////////////////////////////////
-// Bygg väderprognos för angiven plats
+// PROGNOS: Bygg väderprognos för angiven plats
 async function getWeatherForecasts(weatherForecast) {
     let forecastResult = {};
 
@@ -121,7 +272,7 @@ async function getWeatherForecasts(weatherForecast) {
                 humidityPercent: forecastTime.main.humidity,
                 pressure: forecastTime.main.pressure,
                 visibilityMeters: forecastTime.visibility,
-                windSpeed: forecastTime.wind.speed, // Sekundmeter
+                windSpeed: forecastTime.wind.speed,
                 windSpeedGust: forecastTime.wind.gust,
                 windDirectionDegrees: forecastTime.wind.deg, // Nord = 0, Öst = 90, Syd = 180, Väst 270
                 rainOrSnowChance: (forecastTime.pop * 100).toFixed(1),
@@ -198,4 +349,4 @@ class APIFetchError extends Error {
 }
 
 
-export { getWeatherForecastByCity }
+export { getWeatherForecastByCity, getCurrentWeatherByCity, getCurrentPollutionByCity }

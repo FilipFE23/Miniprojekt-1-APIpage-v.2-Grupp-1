@@ -6,7 +6,7 @@
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////
-// Skapa ett wrapper-element
+// Skapa ett wrapper/container-element
 export function createContainerElement(elementType = 'div', elementId = '', cssClass = '', parentContainer = null) {
     const containerElement = document.createElement(elementType);
     addIdentifiersToElement(containerElement, cssClass, elementId);
@@ -18,7 +18,7 @@ export function createContainerElement(elementType = 'div', elementId = '', cssC
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////
-// Returnera ett nytt bild-element
+// Skapa ett nytt bild-element
 export function createImageElement(imageUrl, altText, noImageUrl = '', elementId = '', cssClass = '', parentContainer = null) {
     const imageElement = document.createElement("img");
     imageElement.alt = (getValueIsSet(altText) ? altText : "No image description");
@@ -49,7 +49,7 @@ export function createTextElement(elementType, textContent, textNoContent = '', 
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////
-// Skapa ett element med textinnehåll
+// Skapa ett element med textinnehåll och en rubriks-etikett före
 export function createTextElementWithTitle(elementType, textTitle, textContent, textNoContent = '', elementId = '', cssClass = '', parentContainer = null) {
     const textElement = document.createElement(elementType);
     const titleElement = document.createElement('span');
@@ -88,5 +88,5 @@ export function addIdentifiersToElement(targetElement, classesToAdd = '', elemen
 //////////////////////////////////////////////////////////////////////////////////////////////////////
 // Kolla om parametern innehåller ett värde av tillräcklig längd
 export function getValueIsSet(valueToCheck, minLength = 1, isArray = false) {
-    return (valueToCheck !== undefined) && (valueToCheck !== null) && (valueToCheck.length >= minLength) && (!isArray || Array.isArray(valueToCheck));
+    return (valueToCheck !== undefined) && (valueToCheck !== null) && (valueToCheck.length >= minLength) && (!isArray || (isArray && Array.isArray(valueToCheck)));
 }

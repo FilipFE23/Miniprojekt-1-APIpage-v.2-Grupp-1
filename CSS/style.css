@@ -16,32 +16,53 @@ html {
   color: #000000;
 }
 
-img{
-  max-width:100%;
+img {
+  max-width: 100%;
 }
 
 .page-wrapper {
   margin: 0 auto 0 auto;
 }
 
-.hide{
+.hide {
   display: none;
 }
 
-.flexbox{
+nav input {
   display: flex;
-  
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 40px;
 }
 
+nav {
+  display: flex;
+  justify-content: center;
+  padding: 0 100px;
+  gap: 25px;
+  background-color: black;
+}
 
+nav a {
+  font-size: 1.3rem;
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  font-family: "Courier New", Courier, monospace;
+  font-weight: 700;
+  text-align: center;
+  color: white;
+}
 
 /********************* MEDIA QUERIES *************/
 
-@media only screen and (min-width: 575px) {
-
+@media only screen and (max-width: 575px) {
+  nav a {
+    font-size: 10px;
+  }
 }
 
 /* Desktop Styles */
-@media only screen and (min-width: 1024px){
-
+@media only screen and (min-width: 1024px) {
 }

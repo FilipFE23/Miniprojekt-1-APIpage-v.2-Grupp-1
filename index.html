@@ -7,19 +7,21 @@
     <script type="module" src="./main.js" defer></script>
     <title>Document</title>
   </head>
+
   <body>
     <header>
       <h1 id="headertitle"></h1>
 
       <nav>
-        <a href=""> Home</a>
+        <a class="nav__links" href=""> Home</a>
         <a href="">Air-pollution</a>
         <a href="">About us</a>
         <a href="">Contact</a>
       </nav>
+      <input type="text" placeholder="search" id="pullutionsection" />
     </header>
 
-    <main>
+    <main class="wrapper">
       <section id="homesection">
         <h2 id="hometitle"></h2>
 
@@ -30,8 +32,6 @@
 
       <section id="pullutionsection">
         <h2 id="pullutiontitle"></h2>
-
-        <input type="text" placeholder="search" id="pullutionsection" />
 
         <div id="pollutionresultsdiv"></div>
       </section>

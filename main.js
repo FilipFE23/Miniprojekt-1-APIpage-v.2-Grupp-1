@@ -1,6 +1,6 @@
 
 import { getWeatherForecastByCity, getCurrentWeatherByCity, getCurrentPollutionByCity, getPollutionForecastByCity } from '../modules/api.js';
-import { buildWeatherForecastsCallback, buildCurrentWeatherCallback, buildCurrentPollutionCallback, buildPollutionForecastCallback, clearErrorMessages } from '../modules/interface.js';
+import { buildWeatherForecastsCallback, buildCurrentWeatherCallback, buildCurrentPollutionCallback, buildPollutionForecastCallback, showErrorMessage, clearErrorMessages } from '../modules/interface.js';
 
 
 // Submit handler för väder-sökning
@@ -8,13 +8,18 @@ document.querySelector("#homeform").addEventListener("submit", (event) => {
     event.preventDefault();
     const searchInput = document.querySelector("#homesearch").value.trim();
 
-    document.querySelector("#homeresultsdiv").innerHTML = "";
-    clearErrorMessages();
+    if (searchInput.length > 0) {
+        document.querySelector("#homeresultsdiv").innerHTML = "";
+        clearErrorMessages();
 
-    // Nuvarande väder
-    getCurrentWeatherByCity(searchInput, 1).then(buildCurrentWeatherCallback);
-    // Femdygnsprognos
-    getWeatherForecastByCity(searchInput).then(buildWeatherForecastsCallback);
+        // Nuvarande väder
+        getCurrentWeatherByCity(searchInput, 1).then(buildCurrentWeatherCallback);
+        // Femdygnsprognos
+        getWeatherForecastByCity(searchInput).then(buildWeatherForecastsCallback);
+    }
+    else {
+        showErrorMessage("Please enter the name of a town or county to search for.");
+    }
 });
 
 
@@ -25,13 +30,18 @@ document.querySelector("#pullutionform").addEventListener("submit", (event) => {
     event.preventDefault();
     const searchInput = document.querySelector("#pullutionsearch").value.trim();
 
-    document.querySelector("#pollutionresultsdiv").innerHTML = "";
-    clearErrorMessages();
+    if (searchInput.length > 0) {
+        document.querySelector("#pollutionresultsdiv").innerHTML = "";
+        clearErrorMessages();
 
-    // Nuvarande föroreningar
-    getCurrentPollutionByCity(searchInput).then(buildCurrentPollutionCallback);
-    // Prognos för föroreningar
-    getPollutionForecastByCity(searchInput).then(buildPollutionForecastCallback);
+        // Nuvarande föroreningar
+        getCurrentPollutionByCity(searchInput).then(buildCurrentPollutionCallback);
+        // Prognos för föroreningar
+        getPollutionForecastByCity(searchInput).then(buildPollutionForecastCallback);
+    }
+    else {
+        showErrorMessage("Please enter the name of a town or county to search for.");
+    }
 });
 
 

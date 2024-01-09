@@ -213,7 +213,7 @@ function showErrorMessage(errorText) {
 // Rensa ev. felmeddelanden
 function clearErrorMessages() {
     document.querySelector("#errorsection").innerHTML = "";
-    errorBox.classList.add("hide");
+    document.querySelector("#errorsection").classList.add("hide");
 }
 
 export { buildWeatherForecastsCallback, buildCurrentWeatherCallback, buildCurrentPollutionCallback, buildPollutionForecastCallback, showErrorMessage, clearErrorMessages }

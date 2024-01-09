@@ -1,9 +1,9 @@
 
 import { getWeatherForecastByCity, getCurrentWeatherByCity, getCurrentPollutionByCity, getPollutionForecastByCity } from '../modules/api.js';
-import { buildWeatherForecastsCallback, buildCurrentWeatherCallback, buildCurrentPollutionCallback, buildPollutionForecastCallback, showErrorMessage } from '../modules/interface.js';
+import { buildWeatherForecastsCallback, buildCurrentWeatherCallback, buildCurrentPollutionCallback, buildPollutionForecastCallback } from '../modules/interface.js';
 
 
-// Submit handler för väder-sökning, behöver få FORM i html-filen först
+// Submit handler för väder-sökning
 document.querySelector("#homeform").addEventListener("submit", (event) => {
     event.preventDefault();
     const searchInput = document.querySelector("#homesearch").value.trim();
@@ -19,7 +19,7 @@ document.querySelector("#homeform").addEventListener("submit", (event) => {
 
 
 
-// Submit handler för föroreningar-sökning, behöver få FORM i html-filen först
+// Submit handler för föroreningar-sökning
 document.querySelector("#pullutionform").addEventListener("submit", (event) => {
     event.preventDefault();
     const searchInput = document.querySelector("#pullutionsearch").value.trim();
@@ -34,8 +34,8 @@ document.querySelector("#pullutionform").addEventListener("submit", (event) => {
 
 
 
-// Navlänkar - visa rätt sektion
-document.querySelectorAll("body > header > nav > a").forEach((menuLink) => {
+// Navlänkar - visa vald sid-sektion
+document.querySelectorAll("#headernav a").forEach((menuLink) => {
     menuLink.addEventListener("click", (event) => {
         event.preventDefault();
 

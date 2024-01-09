@@ -1,6 +1,6 @@
 
-import { getWeatherForecastByCity, getCurrentWeatherByCity, getCurrentPollutionByCity } from '../modules/api.js';
-import { buildWeatherForecastsCallback, buildCurrentWeatherCallback, buildCurrentPollutionCallback } from '../modules/interface.js';
+import { getWeatherForecastByCity, getCurrentWeatherByCity, getCurrentPollutionByCity, getPollutionForecastByCity } from '../modules/api.js';
+import { buildWeatherForecastsCallback, buildCurrentWeatherCallback, buildCurrentPollutionCallback, buildPollutionForecastCallback } from '../modules/interface.js';
 
 
 // ETT SNABBT FUL-TEST! - demo/test av getWeatherForecastByCity(), ta bort sen... 
@@ -15,10 +15,14 @@ import { buildWeatherForecastsCallback, buildCurrentWeatherCallback, buildCurren
 */
 const cityName = "Malmö";
 document.querySelector("#homeresultsdiv").innerHTML = "";
+// Nuvarande väder
 getCurrentWeatherByCity(cityName, 1).then(buildCurrentWeatherCallback);
+// Femdygnsprognos
 getWeatherForecastByCity(cityName).then(buildWeatherForecastsCallback);
 
 document.querySelector("#pollutionresultsdiv").innerHTML = "";
+// Nuvarande föroreningar
 getCurrentPollutionByCity("Malmö").then(buildCurrentPollutionCallback);
-
+// Prognos för föroreningar
+getPollutionForecastByCity("Malmö").then(buildPollutionForecastCallback);
 

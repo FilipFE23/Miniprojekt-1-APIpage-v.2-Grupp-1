@@ -72,8 +72,12 @@ POLLUTION RESULT:
 }
 */
 
+/**********************************************************************************
+ * FÖRORENINGAR
+ **********************************************************************************/
+
 ///////////////////////////////////////////////////////////////////////////////////
-// NUVARANDE FÖRORENINGAR: Returnera promise för hämtning av nuvarande föroreningar för en angiven stad.
+// NUVARANDE: Returnera promise för hämtning av nuvarande föroreningar för en angiven stad.
 async function getCurrentPollutionByCity(cityName, maxResults = 5) {
     const requestURL = new URL('http://api.openweathermap.org/geo/1.0/direct');
     requestURL.searchParams.append("q", cityName);
@@ -84,7 +88,7 @@ async function getCurrentPollutionByCity(cityName, maxResults = 5) {
 
 
 ///////////////////////////////////////////////////////////////////////////////////
-// NUVARANDE FÖRORENINGAR: Bygg array med nuvarande föroreningar-info för platser med angivna koordinater
+// NUVARANDE: Bygg array med nuvarande föroreningar-info för platser med angivna koordinater
 async function getCurrentPollutionByCoords(cityCoordsList) {
     if (Array.isArray(cityCoordsList) && (cityCoordsList.length > 0)) {
         const countryNames = new Intl.DisplayNames(['en'], { type: 'region' });
@@ -114,7 +118,7 @@ async function getCurrentPollutionByCoords(cityCoordsList) {
 
 
 ///////////////////////////////////////////////////////////////////////////////////
-// NUVARANDE FÖRORENINGAR: Sammanställ info om föroreningar på en plats
+// NUVARANDE: Sammanställ info om föroreningar på en plats
 async function getCurrentPollution(pollutionData) {
     const pollution = pollutionData.list[0];
     const pollutionResult = {
@@ -126,6 +130,68 @@ async function getCurrentPollution(pollutionData) {
     return pollutionResult;
 }
 
+
+///////////////////////////////////////////////////////////////////////////////////
+// PROGNOS: Returnera promise för hämtning av prognos för föroreningar för en angiven stad.
+async function getPollutionForecastByCity(cityName, maxResults = 5) {
+    const requestURL = new URL('http://api.openweathermap.org/geo/1.0/direct');
+    requestURL.searchParams.append("q", cityName);
+    requestURL.searchParams.append("limit", maxResults);
+    requestURL.searchParams.append("appid", API_KEY);
+    return fetchJSON(requestURL, getPollutionForecastByCoords);
+}
+
+///////////////////////////////////////////////////////////////////////////////////
+// PROGNOS: Bygg array med prognos för föroreningar för platser med angivna koordinater
+async function getPollutionForecastByCoords(cityCoordsList) {
+    if (Array.isArray(cityCoordsList) && (cityCoordsList.length > 0)) {
+        const countryNames = new Intl.DisplayNames(['en'], { type: 'region' });
+        const cityPollution = [];
+
+        for (const cityCoords of cityCoordsList) {
+            const requestURL = new URL("http://api.openweathermap.org/data/2.5/air_pollution/forecast");
+            requestURL.searchParams.append("lat", cityCoords.lat);
+            requestURL.searchParams.append("lon", cityCoords.lon);
+            requestURL.searchParams.append("appid", API_KEY);
+
+            const pollutionResult = {};
+            pollutionResult.location = {
+                cityName: cityCoords.name,
+                country: cityCoords.country,
+                countryName: countryNames.of(cityCoords.country),
+                state: cityCoords.state,
+            }
+            pollutionResult.pollution = await fetchJSON(requestURL, getPollutionForecast);
+            cityPollution.push(pollutionResult);
+        }
+        return cityPollution;
+    }
+    else {
+        console.error("Fel - ingen stad matchar angivet sök-kriterie.");
+    }
+}
+
+///////////////////////////////////////////////////////////////////////////////////
+// PROGNOS: Sammanställ prognoser om föroreningar på en plats
+async function getPollutionForecast(pollutionData) {
+    console.log("POLLUTION FORECAST", pollutionData);
+    const pollutionResults = [];
+    for (const pollution of pollutionData.list) {
+        const pollutionResult = {
+            date: timestampToDate(pollution.dt),
+            time: timestampToTime(pollution.dt),
+            qualityIndex: (pollution.main.aqi !== undefined ? pollution.main.aqi : 0),
+            pollutants: pollution.components,
+        };
+        pollutionResults.push(pollutionResult);
+    }
+    return pollutionResults;
+}
+
+
+/**********************************************************************************
+ * VÄDER
+ **********************************************************************************/
 
 
 ///////////////////////////////////////////////////////////////////////////////////
@@ -349,4 +415,4 @@ class APIFetchError extends Error {
 }
 
 
-export { getWeatherForecastByCity, getCurrentWeatherByCity, getCurrentPollutionByCity }
+export { getWeatherForecastByCity, getCurrentWeatherByCity, getCurrentPollutionByCity, getPollutionForecastByCity }

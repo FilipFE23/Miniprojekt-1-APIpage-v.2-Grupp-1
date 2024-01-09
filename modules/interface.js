@@ -126,7 +126,7 @@ function buildCurrentWeatherCallback(weatherSearchResult) {
 
 
 /*
-pollutionData - array med objekt som innehåller: 
+pollutionData - array med (stad)objekt som innehåller: 
 {
     location = {
         cityName:       Name of city (in English),
@@ -147,11 +147,44 @@ pollutionData - array med objekt som innehåller:
       }
 }
 */
-
 function buildCurrentPollutionCallback(pollutionData) {
     const outputBox = document.querySelector("#pollutionresultsdiv");
     console.log("Current Pollution Data", pollutionData);
 }
 
 
-export { buildWeatherForecastsCallback, buildCurrentWeatherCallback, buildCurrentPollutionCallback }
+/*
+pollutionData - array med (stad)objekt som innehåller: 
+{
+    location = {
+        cityName:       Name of city (in English),
+        country:        country code,
+        countryName:    Name of country (in English)
+        state:          Name of state, if applicable (in English)
+    }
+    pollution = {       Array med prognos-objekt som innehåller följande
+        {
+            date:           Datum för prognosen
+            time:           Tidpunkt för prognosen
+            qualityIndex : [1, 2, 3, 4, 5] 1 = Good, 2 = Fair, 3 = Moderate, 4 = Poor, 5 = Very Poor
+            pollutants = {
+                "co":       concentration of CO (Carbon monoxide), μg/m3
+                "no":       concentration of NO (Nitrogen monoxide), μg/m3
+                "no2":      concentration of NO2 (Nitrogen dioxide), μg/m3
+                "o3":       concentration of O3 (Ozone), μg/m3
+                "so2":      concentration of SO2 (Sulphur dioxide), μg/m3
+                "pm2_5":     concentration of PM2.5 (Fine particles matter), μg/m3
+                "pm10":     concentration of PM10 (Coarse particulate matter), μg/m3
+                "nh3":      concentration of NH3 (Ammonia), μg/m3
+            }
+        }
+    }
+}
+*/
+function buildPollutionForecastCallback(pollutionData) {
+    const outputBox = document.querySelector("#pollutionresultsdiv");
+    console.log("Pollution Forecast Data", pollutionData);
+}
+
+
+export { buildWeatherForecastsCallback, buildCurrentWeatherCallback, buildCurrentPollutionCallback, buildPollutionForecastCallback }

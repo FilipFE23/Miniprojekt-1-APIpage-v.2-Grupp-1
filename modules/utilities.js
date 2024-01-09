@@ -90,3 +90,19 @@ export function addIdentifiersToElement(targetElement, classesToAdd = '', elemen
 export function getValueIsSet(valueToCheck, minLength = 1, isArray = false) {
     return (valueToCheck !== undefined) && (valueToCheck !== null) && (valueToCheck.length >= minLength) && (!isArray || (isArray && Array.isArray(valueToCheck)));
 }
+
+
+///////////////////////////////////////////////////////////////////////////////////
+// Konvertera Unix-timestamp till tid som en textsträng
+export function timestampToTime(timeStamp) {
+    const dateObj = new Date(timeStamp * 1000);
+    return dateObj.toLocaleTimeString('sv-SE');
+}
+
+
+///////////////////////////////////////////////////////////////////////////////////
+// Konvertera Unix-timestamp till datum som en textsträng
+export function timestampToDate(timeStamp) {
+    const dateObj = new Date(timeStamp * 1000);
+    return dateObj.toLocaleDateString('sv-SE');
+}

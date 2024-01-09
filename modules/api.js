@@ -4,6 +4,8 @@
     Funktionalitet för att hämta ut väderdata från API. 
 */
 
+import { timestampToTime, timestampToDate } from '../modules/utilities.js';
+
 
 const API_KEY = "5261d802270baa988556276b1069665e";
 
@@ -427,23 +429,6 @@ function errorHandlerAPI(error) {
         console.error("General error:", error);
     }
 }
-
-
-///////////////////////////////////////////////////////////////////////////////////
-// Konvertera UNIX-timestamp till tid som en textsträng
-function timestampToTime(timeStamp) {
-    const dateObj = new Date(timeStamp * 1000);
-    return dateObj.toLocaleTimeString('sv-SE');
-}
-
-
-///////////////////////////////////////////////////////////////////////////////////
-// Konvertera UNIX-timestamp till datum som en textsträng
-function timestampToDate(timeStamp) {
-    const dateObj = new Date(timeStamp * 1000);
-    return dateObj.toLocaleDateString('sv-SE');
-}
-
 
 
 class APIFetchError extends Error {

@@ -16,11 +16,15 @@ html {
   color:#444;
   height: 100%;
 }
+body{
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
 
 img {
   max-width: 100%;
 }
-
 
 h1, h2, h3, h4, h5, h6{
 margin:0.5em 0 0.5em 0;
@@ -47,6 +51,8 @@ p:nth-last-child(1) {
 .wrapper {
   margin: 0 auto 0 auto;
   width:90vw;
+  flex: 1 0 auto;
+
 }
 
 .hide {
@@ -81,7 +87,6 @@ p:nth-last-child(1) {
   top: 0;
   left: 0;
   margin-top: 50px;
-
 }
 
 #menu-toggle {
@@ -136,14 +141,12 @@ p:nth-last-child(1) {
   align-items: center;
 }
 
-
 .menu ul {
   width: 100%;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
-
 
 .menu > ul >li a{
   /* color: white; */
@@ -157,7 +160,6 @@ p:nth-last-child(1) {
   color: #e2a266;
   font-weight: normal;
 }
-
 
 .menu > ul > li {
   display: flex;
@@ -173,8 +175,136 @@ p:nth-last-child(1) {
   border-bottom: 1px solid #444;
 }
 
+/****Search ****/
+
+.searchForm{
+  display: flex;
+  gap:15px;
+  margin:10px 0 10px 0;
+  /* padding:20px; */
+}
+
+.search-query{
+  margin: 0 auto;
+  width: 100%;
+  height: 40px;
+  padding: 0 15px;
+  font-size: 1rem;
+  border: 1px solid #444;
+  border: 1px solid rgb(209,213,219);
+  outline: none;
+  border-radius: 1.2em;
+  box-shadow: rgba(213, 217, 217, .5) 0 2px 5px 0;
+}
+
+.search-button {
+  background-color: #FFFFFF;
+  background-color: rgb(249,250,251);
+  border: 1px solid rgb(209,213,219);
+  border-radius: .5rem;
+  border-radius: 1rem;
+  color: #111827;
+  font-size: .875rem;
+  font-weight: 600;
+  /* line-height: 1.25rem; */
+  padding: .75rem 1rem;
+  text-align: center;
+  text-decoration: none #D1D5DB solid;
+  text-decoration-thickness: auto;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.search-button:hover {
+  background-color: rgb(232, 234, 235);
+}
+
+.search-button:focus {
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+}
+
+.search-button :focus-visible {
+  box-shadow: none;
+}
+
+
 
 /*************** WEATHER ********************/
+
+/* .currentweather-city{
+
+} */
+
+.currentweather-city-name{
+  width:100%;
+  font-size: 1.3em;
+  margin:0.2 0 0.1em 0;
+  color:#e2a266
+}
+
+
+.currentweather-city-weather > div:first-child {
+  font-size:1em;
+}
+
+.weather-city-info, .currentweather-city-info{
+  display: flex;
+  flex-wrap: wrap;
+  gap:10px;
+}
+
+.weather-city > div{
+  font-size:0.8em;
+}
+.weather-city-info-name{
+  width:100%;
+  font-size: 1.3em;
+  /* margin:0.2 0 0.1em 0; */
+
+}
+
+
+
+.weather-forecasts-day{
+  /* border-top:1px solid #535378; */
+  border-bottom:1px solid #bfbfdc;
+
+  /* box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px; */
+
+}
+
+.weather-forecasts-day-title{
+  width:100%;
+  font-size: 1.2em;
+  font-weight: 600;
+  color:#e2a266;
+  color:#3B3B76;
+  border-bottom: 1px solid #ccc;
+  /* text-align: center; */
+  padding-bottom:3px;
+}
+
+.weather-forecasts-day-time{
+  border-bottom: 1px solid #444;
+  padding-bottom:10px;
+}
+.weather-forecasts-day-time-title{
+  width:100%;
+  font-size: 1.1em;
+  color:#e2a266;
+  
+}
+
+/* 
+.currentweather-city span{} */
+.currentweather-city-sunset span, .currentweather-city-sunrise span{ 
+  font-weight: 600;
+}
+
 
 .currentweather-city{
   padding:10px;
@@ -187,14 +317,6 @@ p:nth-last-child(1) {
   box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
 }
 
-.currentweather-city-weather > div:first-child {
-  font-size:1em;
-}
-.currentweather-city-weather > div{
-  font-size:0.8em;
-}
-
-
 
 .weather-forecasts-day{
   padding:5px;
@@ -203,18 +325,36 @@ p:nth-last-child(1) {
   /* box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px; */
 }
 
-.currentweather-city h3{
-  font-size: 1.3rem;
-  margin:0 0 0.5em 0;
-  color:#e2a266
-}
-.weather-city h3{
-  margin:0 0 0.5em 0;
-  font-size: 1em;
-  margin:1em 0 0.5em 0;
-  /* color:#e2a266 */
 
+
+/****Footer *****/
+
+.main-footer{
+  background-color:#3b3b76;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  height: 50px;
+  padding: 1.4em;
+  flex-shrink: 0;
 }
+
+.main-footer ul{
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  gap: 2px 15px;
+}
+
+.main-footer a{
+  color: #e2a266;
+}
+
+
 
 
 /********************* MEDIA QUERIES ****************/

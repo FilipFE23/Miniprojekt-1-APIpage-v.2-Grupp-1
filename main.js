@@ -1,6 +1,6 @@
 
 import { getWeatherForecastByCity, getCurrentWeatherByCity, getCurrentPollutionByCity, getPollutionForecastByCity } from '../modules/api.js';
-import { buildWeatherForecastsCallback, buildCurrentWeatherCallback, buildCurrentPollutionCallback, buildPollutionForecastCallback } from '../modules/interface.js';
+import { buildWeatherForecastsCallback, buildCurrentWeatherCallback, buildCurrentPollutionCallback, buildPollutionForecastCallback, clearErrorMessages } from '../modules/interface.js';
 
 
 // Submit handler för väder-sökning
@@ -9,6 +9,7 @@ document.querySelector("#homeform").addEventListener("submit", (event) => {
     const searchInput = document.querySelector("#homesearch").value.trim();
 
     document.querySelector("#homeresultsdiv").innerHTML = "";
+    clearErrorMessages();
 
     // Nuvarande väder
     getCurrentWeatherByCity(searchInput, 1).then(buildCurrentWeatherCallback);
@@ -25,6 +26,7 @@ document.querySelector("#pullutionform").addEventListener("submit", (event) => {
     const searchInput = document.querySelector("#pullutionsearch").value.trim();
 
     document.querySelector("#pollutionresultsdiv").innerHTML = "";
+    clearErrorMessages();
 
     // Nuvarande föroreningar
     getCurrentPollutionByCity(searchInput).then(buildCurrentPollutionCallback);
@@ -43,6 +45,8 @@ document.querySelectorAll("#headernav a").forEach((menuLink) => {
         const pollutionSection = document.querySelector("#pullutionsection");
         const aboutSection = document.querySelector("#aboutsection");
         const contactSection = document.querySelector("#contactsection");
+
+        clearErrorMessages();
 
         if (event.currentTarget.id == "headernavhome") {
             // Visa Home

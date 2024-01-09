@@ -194,8 +194,20 @@ function buildPollutionForecastCallback(pollutionData) {
 
 
 function showErrorMessage(errorText) {
+    const errorBox = document.querySelector("#errorsection");
+
+    if (errorText.length > 0) {
+        const errorMessage = document.createElement("div");
+        errorMessage.innerText = errorText;
+        errorBox.appendChild(errorMessage);
+        errorBox.classList.remove("hide");
+    }
     // TODO: Visa på sidan istället...
-    alert(errorText);
+    // alert(errorText);
 }
 
-export { buildWeatherForecastsCallback, buildCurrentWeatherCallback, buildCurrentPollutionCallback, buildPollutionForecastCallback, showErrorMessage }
+function clearErrorMessages() {
+    document.querySelector("#errorsection").innerHTML = "";
+}
+
+export { buildWeatherForecastsCallback, buildCurrentWeatherCallback, buildCurrentPollutionCallback, buildPollutionForecastCallback, showErrorMessage, clearErrorMessages }

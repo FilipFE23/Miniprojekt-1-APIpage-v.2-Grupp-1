@@ -130,7 +130,14 @@
 
 
 
-/********* Weather forecast *****/
+/********* Weather forecast Header *********************/
+.weather-city{
+  /* padding:10px; */
+  margin:20px 0 0 0;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+}
+
+
 .weather-city-info{
   display: flex;
   flex-wrap: wrap;
@@ -141,14 +148,19 @@
   width:100%;
   font-size: 1.3em;
   /* margin:0.2 0 0.1em 0; */
-
 }
 
-.weather-city{
-  /* padding:10px; */
-  margin:20px 0 0 0;
-  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+.weather-city-info-sunrise{
+  margin-right:1.5em;
 }
+.weather-city-info-sunrise span, .weather-city-info-sunset span{
+  font-weight: 500;
+  margin-right:5px;
+}
+
+
+
+
 
 .weather-forecasts-day-title{
   margin:5px 0 0 0;
@@ -165,11 +177,8 @@
 }
 
 
-.currentweather-city-weather-icon, .weather-forecasts-day-time-icon{
-  filter: drop-shadow(0 0 0.1rem rgb(78, 78, 78));
-}
 
-/*******************WEATHER FORECAST *****************************/
+/******************* WEATHER FORECAST DAILY*****************************/
 
 .weather-forecasts-day-title{
   width:100%;
@@ -229,6 +238,11 @@
   /* height:40px; */
   width:10px;
   flex:2;
+}
+
+
+.currentweather-city-weather-icon, .weather-forecasts-day-time-icon{
+  filter: drop-shadow(0 0 0.1rem rgb(78, 78, 78));
 }
 
 /*** TEMP ***/

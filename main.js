@@ -7,10 +7,10 @@ import { buildWeatherForecastsCallback, buildCurrentWeatherCallback, buildCurren
 document.querySelector("#homeform").addEventListener("submit", (event) => {
     event.preventDefault();
     const searchInput = document.querySelector("#homesearch").value.trim();
+    clearErrorMessages();
 
     if (searchInput.length > 0) {
         document.querySelector("#homeresultsdiv").innerHTML = "";
-        clearErrorMessages();
 
         // Nuvarande väder
         getCurrentWeatherByCity(searchInput, 1).then(buildCurrentWeatherCallback);
@@ -29,10 +29,10 @@ document.querySelector("#homeform").addEventListener("submit", (event) => {
 document.querySelector("#pullutionform").addEventListener("submit", (event) => {
     event.preventDefault();
     const searchInput = document.querySelector("#pullutionsearch").value.trim();
+    clearErrorMessages();
 
     if (searchInput.length > 0) {
         document.querySelector("#pollutionresultsdiv").innerHTML = "";
-        clearErrorMessages();
 
         // Nuvarande föroreningar
         getCurrentPollutionByCity(searchInput).then(buildCurrentPollutionCallback);

@@ -87,12 +87,12 @@ Pollution css
 
 @media only screen and (min-width: 701px) {
 
-  #pullutionsection{
+  /* #pullutionsection{
     display: flex;
     flex-wrap: wrap;
     align-items: flex-start;
     gap:1em;
-  }
+  } */
 
   #currentpollutionresultsdiv{
     width:45vw;

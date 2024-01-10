@@ -9,4 +9,41 @@
 
 .darkmode {
   background-color: black;
+  color:#e2a266;
+}
+
+.darkmode .search-query{
+  border: 2px solid #e2a266; 
+  border-radius: 0.5rem 0 0 0.5rem;
+  outline: none;
+  color: #e2a266; 
+  background-color: #000;;
+}
+
+.darkmode .search-button {
+  /* width: 40px;
+  height: 36px; */
+  border: 1px solid #e2a266;
+  background: #e2a266;
+  text-align: center;
+  color: #fff;
+  border-radius: 0 0.5rem 0.5rem 0;
+  cursor: pointer;
+  font-size: 20px;
+  font-size: 1em;
+  padding:10px;
+}
+
+.darkmode .weather-forecasts-day-time{
+  border-bottom:1px solid #e2a266;
+}
+
+.darkmode .weather-forecasts-day-title{
+  background-color: #4f4f9c;
+  /* background-color: #9a9acf; */
+  color:#fff;
+
+
+  border-bottom:1px solid #e0be9f;
+  cursor: pointer;
 }

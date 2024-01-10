@@ -8,6 +8,10 @@
 
 /*********SECTIONS - flyttar nog till egen css sen ************/
 
+/*********************
+  About
+************************/
+
 #aboutsection{
   background-image: url(../images/93-2000x1334.jpg);
   background-size: cover;
@@ -25,7 +29,6 @@
 
 
 /* Desktop Styles */
-
 @media only screen and (min-width: 701px) {
   #aboutsection{
     background-size: cover;
@@ -38,13 +41,10 @@
     max-width:700px;
     padding:0px;
   }
-
-  
-
 }
 
 
-/*****************/
+/********************************************************************/
 
 * {
   box-sizing: border-box;

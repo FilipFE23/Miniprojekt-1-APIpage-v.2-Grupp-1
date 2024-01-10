@@ -46,8 +46,13 @@ Pollution css
 
 
 
+
+
+/******** Poullution forecast ***********/
+
+
 .pollution-forecast-city{
-  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+  /* box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px; */
 
 }
 
@@ -55,16 +60,58 @@ Pollution css
 
 
 
-.currentweather-city-info > div{
-  font-size:0.9em;
-}
-
-
-.current-pollution-forecast-city-name{
+.pollution-forecast-datetime{
   width:100%;
-  font-size: 1.3em;
-  margin:0.2 0 0.1em 0;
-  color:#e2a266;
+  font-size: 1rem;
+  font-size: 0.9em;
+  font-weight: 500;
+  background-color: #3B3B76;
+  color:#fff;
+  padding:6px;
+  border-bottom:1px solid #bfbfdc;
+  text-align: center;
+  margin:0;
+  cursor: pointer;
+}
+.pollution-forecast-datetime:hover{
+  opacity: 0.75;
 }
 
+.pollution-forecast-quality-index{
+  display: none;
+}
+
+
+
+/********* Pollution forecast Header *********************/
+
+.pollution-forecast-city-name{
+  font-size: 1.3em;
+  padding:15px 0 0 15px;
+}
+
+
+
+/* .weather-forecasts-day-time-visibility,
+.weather-forecasts-day-time-rainsnow, 
+.weather-forecasts-day-time-clouds{
+  display: none;
+} */
+
+
+/********************* MEDIA QUERIES ****************/
+
+
+/* Desktop Styles */
+
+@media only screen and (min-width: 701px) {
+
+
+
+
+
+}
+
+@media only screen and (min-width: 1024px) {
+}
 

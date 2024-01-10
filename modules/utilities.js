@@ -120,7 +120,7 @@ export function timestampToDate(timeStamp) {
 
 ///////////////////////////////////////////////////////////////////////////////////
 // Konvertera Unix-timestamp till längre datum som en textsträng
-// T.ex: "Onsdag 10 januari"
+// T.ex: "Onsdag 10 januari" (sv-SE), Wednesday, January 10 (en-US)
 export function timestampToLongDate(timeStamp) {
     const dateObj = new Date(timeStamp * 1000);
     const formatOptions = {
@@ -128,5 +128,5 @@ export function timestampToLongDate(timeStamp) {
         month: 'long',
         day: 'numeric',
     };
-    return Intl.DateTimeFormat("sv-SE", formatOptions).format(dateObj);
+    return Intl.DateTimeFormat("en-US", formatOptions).format(dateObj);
 }

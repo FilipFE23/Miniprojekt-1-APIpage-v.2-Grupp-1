@@ -3,6 +3,7 @@ import { getWeatherForecastByCity, getCurrentWeatherByCity, getCurrentPollutionB
 import { buildWeatherForecastsCallback, buildCurrentWeatherCallback, buildCurrentPollutionCallback, buildPollutionForecastCallback, showErrorMessage, clearErrorMessages } from '../modules/interface.js';
 
 
+///////////////////////////////////////////////////////////////////////////////////
 // Submit handler för väder-sökning
 document.querySelector("#homeform").addEventListener("submit", (event) => {
     event.preventDefault();
@@ -23,8 +24,7 @@ document.querySelector("#homeform").addEventListener("submit", (event) => {
 });
 
 
-
-
+///////////////////////////////////////////////////////////////////////////////////
 // Submit handler för föroreningar-sökning
 document.querySelector("#pullutionform").addEventListener("submit", (event) => {
     event.preventDefault();
@@ -46,7 +46,7 @@ document.querySelector("#pullutionform").addEventListener("submit", (event) => {
 });
 
 
-
+///////////////////////////////////////////////////////////////////////////////////
 // Navlänkar - visa vald sid-sektion
 document.querySelectorAll("#headernav a").forEach((menuLink) => {
     menuLink.addEventListener("click", (event) => {
@@ -90,6 +90,8 @@ document.querySelectorAll("#headernav a").forEach((menuLink) => {
     });
 });
 
+
+///////////////////////////////////////////////////////////////////////////////////
 // Knapp för att växla darkmode
 document.querySelector("#darkmodebutton").addEventListener("click", (event) => {
     const darkMode = document.body.classList.contains("darkmode");
@@ -102,3 +104,10 @@ document.querySelector("#darkmodebutton").addEventListener("click", (event) => {
     event.target.innerText = (darkMode ? "Darkmode" : "Lightmode");
 });
 
+
+///////////////////////////////////////////////////////////////////////////////////
+// Submit av kontaktformuläret
+document.querySelector("#contactform").addEventListener("submit", (event) => {
+    event.preventDefault();
+    // ATT GÖRA: Fake-submit av formulär, rensa innehåll och visa "tack"-meddelande för användaren.
+});

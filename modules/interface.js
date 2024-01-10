@@ -79,7 +79,8 @@ function buildWeatherForecastsCallback(weatherSearchResult) {
                     createTextElementWithTitle('div', "Temperature:", `${forecast.temperature}°C (${forecast.temperatureFeelsLike}°C)`, '-', '', 'weather-forecasts-day-time-temp', forecastBox);
 
                     const windWrapperBox = createContainerElement('div', '', 'weather-forecasts-day-time-wind-wrapper', forecastBox);
-                    createTextElementWithTitle('span', "Wind:", `${forecast.windSpeed} m/s (${forecast.windSpeedGust} m/s)`, '-', '', 'weather-forecasts-day-time-wind', windWrapperBox);
+                    createTextElementWithTitle('span', "Wind:", `${forecast.windSpeed} m/s`, '-', '', 'weather-forecasts-day-time-wind', windWrapperBox);
+                    createTextElementWithTitle('span', "Wind gust:", `${forecast.windSpeedGust} m/s`, '-', '', 'weather-forecasts-day-time-wind-gust', windWrapperBox);
                     const windDirectionArrow = createImageElement(`./images/direction-arrow.png`, `Wind direction ${forecast.windDirectionDegrees} degrees`, '', '', 'weather-forecasts-day-time-wind-dir', windWrapperBox);
                     windDirectionArrow.style.transform = `rotate(${forecast.windDirectionDegrees}deg)`;
 
@@ -125,7 +126,8 @@ function buildCurrentWeatherCallback(weatherSearchResult) {
             createTextElementWithTitle('div', "Temperature:", `${weatherData.temperature}°C (${weatherData.temperatureFeelsLike}°C)`, '-', '', 'currentweather-city-weather-temp', cityWeatherBox);
 
             const windWrapperBox = createContainerElement('div', '', 'currentweather-city-weather-wind-wrapper', cityWeatherBox);
-            createTextElementWithTitle('span', "Wind:", `${weatherData.windSpeed} m/s (${weatherData.windSpeedGust} m/s)`, '-', '', 'currentweather-city-weather-wind', windWrapperBox);
+            createTextElementWithTitle('span', "Wind:", `${weatherData.windSpeed} m/s`, '-', '', 'currentweather-city-weather-wind', windWrapperBox);
+            createTextElementWithTitle('span', "Wind gust:", `${weatherData.windSpeedGust} m/s`, '-', '', 'currentweather-city-weather-wind-gust', windWrapperBox);
             const windDirectionArrow = createImageElement(`./images/direction-arrow.png`, `Wind direction ${weatherData.windDirectionDegrees} degrees`, '', '', 'currentweather-city-weather-wind-dir', windWrapperBox);
             windDirectionArrow.style.transform = `rotate(${weatherData.windDirectionDegrees}deg)`;
 
@@ -179,7 +181,7 @@ function buildCurrentPollutionCallback(pollutionData) {
         const forecastBox = createContainerElement('div', '', 'current-pollution-forecast-item', cityForecastsBox);
         const forecastDataBox = createContainerElement('div', '', 'current-pollution-forecast-data', forecastBox);
         const pollutantsBox = createContainerElement('div', '', 'current-pollution-forecast-pollutants', forecastBox);
-        
+
         createTextElement('div', `${pollutionData[0].date} ${pollutionData[0].time}`, '', '', 'current-pollution-forecast-datetime', forecastDataBox);
         createTextElement('div', `${pollutionData[0].qualityIndex}`, '0', '', 'current-pollution-forecast-quality-index', forecastDataBox);
         createTextElementWithTitle('div', "Carbon monoxide:", `${pollutionData[0].pollutants.co} μg/m3`, '-', '', 'current-pollution-forecast-pollutants-type', pollutantsBox);

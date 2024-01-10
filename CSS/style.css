@@ -270,6 +270,7 @@ p:nth-last-child(1) {
 
 .currentweather-city-sunset span, .currentweather-city-sunrise span{ 
   font-weight: 500;
+  margin-right:3px;
 }
 
 .currentweather-city-weather{
@@ -563,6 +564,11 @@ p:nth-last-child(1) {
     display: block;
   }
 
+
+  .currentweather-city-weather-icon {
+      height: auto;
+  }
+
   .weather-forecasts-day-time{
     padding:10px;
     display: flex;
@@ -593,7 +599,7 @@ p:nth-last-child(1) {
   }
 
   .weather-forecasts-day-time-icon{
-    flex:2;
+    flex:1.5;
   }
   
   .weather-forecasts-day-time-temp{

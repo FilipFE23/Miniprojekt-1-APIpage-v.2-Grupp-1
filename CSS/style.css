@@ -565,6 +565,35 @@ p:nth-last-child(1) {
   }
 
 
+    /****Weather****/
+    #homeresultsdiv{
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      align-items: flex-start;
+      gap:1em;
+    }
+
+    #homeresultsdiv article{
+      width: 30%;
+    }
+    #homeresultsdiv article:first-child{
+      width: 50%;
+      max-width: 500px;
+      
+    }
+    #homeresultsdiv article:nth-child(2){
+      width: 48%;
+      max-width: 500px;
+    }
+    /* #homeresultsdiv .weather-city-forecasts:first-child{
+      width: 50%;
+    } */
+    /* #homeresultsdiv > article{
+      width: 50%;
+    } */
+
+
   .currentweather-city-weather-icon {
       height: auto;
   }
@@ -599,7 +628,9 @@ p:nth-last-child(1) {
   }
 
   .weather-forecasts-day-time-icon{
-    flex:1.5;
+    flex:1;
+    /* height:30px;
+    width:30px; */
   }
   
   .weather-forecasts-day-time-temp{

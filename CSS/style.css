@@ -50,7 +50,7 @@ p:nth-last-child(1) {
 
 .wrapper {
   margin: 0 auto 0 auto;
-  width:97vw;
+  width:93vw;
   flex: 1 0 auto;
 
 }
@@ -368,6 +368,11 @@ p:nth-last-child(1) {
   /* box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px; */
 }
 
+
+.currentweather-city-weather-icon, .weather-forecasts-day-time-icon{
+  filter: drop-shadow(0 0 0.1rem rgb(78, 78, 78));
+}
+
 /**********/
 .weather-forecasts-day-title{
   width:100%;
@@ -570,6 +575,7 @@ p:nth-last-child(1) {
       display: flex;
       flex-wrap: wrap;
       justify-content: space-around;
+      justify-content:space-between;
       align-items: flex-start;
       gap:1em;
     }
@@ -579,7 +585,7 @@ p:nth-last-child(1) {
     }
     #homeresultsdiv article:first-child{
       width: 50%;
-      max-width: 500px;
+      /* max-width: 500px; */
       
     }
     #homeresultsdiv article:nth-child(2){
@@ -603,7 +609,7 @@ p:nth-last-child(1) {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    justify-content:space-around;
+    justify-content:space-aroundb;
     gap:0 10px;
   }
 

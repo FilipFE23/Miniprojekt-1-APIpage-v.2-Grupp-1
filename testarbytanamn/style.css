@@ -445,7 +445,6 @@ p:nth-last-child(1) {
 } 
 
 .weather-forecasts-day-time-wind-wrapper{
-
   display:flex;
   align-items: center;
   justify-content: center;

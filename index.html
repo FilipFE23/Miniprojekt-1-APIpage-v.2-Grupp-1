@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./css/mainstyles.css" />
     <link rel="stylesheet" href="./css/weather.css" />
+    <link rel="stylesheet" href="./css/pollution.css" />
     <link rel="stylesheet" href="./css/darkmode.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -56,9 +57,9 @@
       <section id="pullutionsection" class="hide">
         <h2 id="pullutiontitle">Air pollution</h2>
 
-        <form action="" id="pullutionform">
-          <input type="text" placeholder="search town/county" id="pullutionsearch" />
-          <button id="pullutionformbutton">search</button>
+        <form action="" id="pullutionform" class="searchForm">
+          <input type="text" placeholder="search town/county" id="pullutionsearch" class="search-query" />
+          <button id="pullutionformbutton" class="search-button">search</button>
         </form>
         <div id="currentpollutionresultsdiv"></div>
         <div id="pollutionresultsdiv"></div>

@@ -51,13 +51,13 @@ h1{
   color:#e2a266
 } */
 
-/* 
+
 p {
   margin-bottom:15px;
 }
 p:nth-last-child(1) {
   margin-bottom:0;
-} */
+}
 
 .wrapper {
   margin: 0 auto 0 auto;
@@ -320,6 +320,10 @@ p:nth-last-child(1) {
   box-shadow: none;
 } */
 
+
+#aboutsection{
+  max-width:700px;
+}
 
 
 /****Footer *****/

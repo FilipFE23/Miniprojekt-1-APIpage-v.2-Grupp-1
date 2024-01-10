@@ -18,6 +18,7 @@ html {
   color:#444;
   height: 100%;
 }
+
 body{
   height: 100vh;
   display: flex;
@@ -27,6 +28,14 @@ body{
 img {
   max-width: 100%;
 }
+
+.hide {
+  display: none;
+}
+/* .button{
+  display: none;
+} */
+
 
 h1, h2, h3, h4, h5, h6{
 margin:0.5em 0 0.5em 0;
@@ -57,9 +66,7 @@ p:nth-last-child(1) {
 
 }
 
-.hide {
-  display: none;
-}
+
 
 
 /****** Header Menu *******/
@@ -181,12 +188,15 @@ p:nth-last-child(1) {
 
 .searchForm{
   display: flex;
-  gap:15px;
-  margin:10px 0 10px 0;
+  position: relative;
+  width: 100%;
+
+  /* gap:15px;
+  margin:10px 0 10px 0; */
   /* padding:20px; */
 }
 
-.search-query{
+/* .search-query{
   margin: 0 auto;
   width: 100%;
   height: 40px;
@@ -197,20 +207,30 @@ p:nth-last-child(1) {
   outline: none;
   border-radius: 1.2em;
   box-shadow: rgba(213, 217, 217, .5) 0 2px 5px 0;
+} */
+.search-query{
+  width: 50vw;
+  font-size: 1em;
+  border: 2px solid #3b3b76; 
+  border-right: none;
+  padding: 5px;
+  border-radius: 5px 0 0 5px;
+  border-radius: 0.5rem 0 0 0.5rem;
+  outline: none;
+  color: #9DBFAF;
 }
 
-.search-button {
+
+/* .search-button {
   background-color: #FFFFFF;
   background-color: rgb(249,250,251);
   background-color: rgb(232, 234, 235);
-  
   border: 1px solid rgb(209,213,219);
   border-radius: .5rem;
   border-radius: 1rem;
   color: #111827;
   font-size: .875rem;
   font-weight: 600;
-  /* line-height: 1.25rem; */
   padding: .75rem 1rem;
   text-align: center;
   text-decoration: none #D1D5DB solid;
@@ -220,9 +240,34 @@ p:nth-last-child(1) {
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
-}
+} */
 
-.search-button:hover {
+.search-button {
+  /* width: 40px;
+  height: 36px; */
+  border: 1px solid #3b3b76;
+  background: #3b3b76;
+  text-align: center;
+  color: #fff;
+  border-radius: 0 0.5rem 0.5rem 0;
+  cursor: pointer;
+  font-size: 20px;
+  font-size: 1em;
+  padding:10px;
+}
+.search-button:hover{
+  opacity:0.75;
+
+}
+/* .wrap{
+  width: 30%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+} */
+
+/* .search-button:hover {
   background-color: rgb(211, 214, 215);
 }
 
@@ -233,7 +278,7 @@ p:nth-last-child(1) {
 
 .search-button :focus-visible {
   box-shadow: none;
-}
+} */
 
 
 

@@ -63,7 +63,6 @@ p:nth-last-child(1) {
   margin: 0 auto 0 auto;
   width:93vw;
   flex: 1 0 auto;
-
 }
 
 
@@ -183,6 +182,46 @@ p:nth-last-child(1) {
 .menu > ul > li:not(:last-child) {
   border-bottom: 1px solid #444;
 }
+
+
+#darkmodebutton{
+  background-color: #FFFFFF;
+  background-color: #e0be9f;
+  /* border: 1px solid rgb(209,213,219); */
+  border: 1px solid #a7672c;
+  
+  border-radius: .5rem;
+  /* box-sizing: border-box; */
+  color: #111827;
+  font-size: .875rem;
+  font-weight: 600;
+  /* line-height: 1.25rem; */
+  padding: .4rem 1rem;
+  text-align: center;
+  /* text-decoration: none #D1D5DB solid; */
+  text-decoration: none #D1D5DB solid;
+  text-decoration-thickness: auto;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+#darkmodebutton:hover {
+  background-color: rgb(249,250,251);
+  background-color: #e2a266;
+}
+
+#darkmodebuttonfocus {
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+}
+
+#darkmodebutton:focus-visible {
+  box-shadow: none;
+}
+
 
 /****Search ****/
 

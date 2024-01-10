@@ -5,8 +5,7 @@ Funktionalitet för att bygga gränssnitt här
 import { createContainerElement, createImageElement, createTextElement, createTextElementWithTitle, getValueIsSet } from '../modules/utilities.js';
 
 
-//////////////////////////////////////////////////////////////////////////////////////////////////////
-// Callback-funktion för att visa väderprognos från sökresultat på städer
+
 /*
 Parameter weatherSearchResult som skickas till callbackfunktionen är en Array med objekt för varje plats/stad med följande properties:
     location: objekt med info om platsen vädenprognosen gäller: {
@@ -18,7 +17,9 @@ Parameter weatherSearchResult som skickas till callbackfunktionen är en Array m
     forecasts: objekt med datum som property som innehåller en array av forecast-objekt med prognoser för den dagen {
         dateTime:               datum och tid för denna prognos som text
         date:                   datum för denna prognos som text
+        longDate:               datum i längre format typ "Onsdag 10 januari"
         time:                   klockslag för denna prognos som text
+        timeHour:               enbart timmen i klockslaget
         timeOfDay:              Tid på dygnet (Day/Night)
         cloudinessPercent:      molnighet i procent [0-100]
         temperature:            temperatur i celsius
@@ -36,6 +37,8 @@ Parameter weatherSearchResult som skickas till callbackfunktionen är en Array m
                                 För betydelse av ID, se https://openweathermap.org/weather-conditions
     }
 */
+//////////////////////////////////////////////////////////////////////////////////////////////////////
+// Callback-funktion för att visa väderprognos från sökresultat på städer
 function buildWeatherForecastsCallback(weatherSearchResult) {
     const outputBox = document.querySelector("#homeresultsdiv");
 

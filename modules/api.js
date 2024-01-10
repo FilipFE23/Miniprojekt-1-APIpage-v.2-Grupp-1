@@ -305,7 +305,9 @@ Parameter weatherSearchResult som skickas till callbackfunktionen ovan - Array m
     forecasts: objekt med datum som property som innehåller en array av forecast-objekt med prognoser för den dagen {
         dateTime:               datum och tid för denna prognos som text
         date:                   datum för denna prognos som text
+        longDate:               datum i längre format typ "Onsdag 10 januari"
         time:                   klockslag för denna prognos som text
+        timeHour:               enbart timmen i klockslaget
         timeOfDay:              Tid på dygnet (Day/Night)
         cloudinessPercent:      molnighet i procent [0-100]
         temperature:            temperatur i celsius

@@ -13,6 +13,7 @@
   </head>
 
   <body>
+<!-------------- header -------------->
     <header class="top-nav">
         <div>
           <a href="./">WeatherWhiz</a>
@@ -31,11 +32,13 @@
       </nav>
     </header>
 
+<!--------------- main --------------->
     <main class="wrapper">
       <h1>Ngn slags main header?</h1>
       <section id="errorsection" class="hide">
       </section>
-
+      
+<!------------ home ------------>
       <section id="homesection">
         <h2 id="hometitle"></h2>
         <form action="" id="homeform" class="searchForm">
@@ -45,6 +48,7 @@
         <div id="homeresultsdiv"></div>
       </section>
 
+<!--------- pollution --------->
       <section id="pullutionsection" class="hide">
         <h2 id="pullutiontitle">Air pollution</h2>
 
@@ -56,27 +60,32 @@
         <div id="pollutionresultsdiv"></div>
       </section>
 
+<!---------- about ---------->
       <section id="aboutsection" class="hide">
         <h2 id="abouttitle">About us</h2>
         <div id="aboutimage"></div>
-        <p id="aboutp"><!-- Denna bör nog vara en div med p-taggar i (istället för <br>)-->
+        
+        <div>
+          <p id="aboutp1">
           Welcome to WeatherWhiz, where weather reporting meets innovation!
           Established by a team of dedicated meteorology enthusiasts, we take
           immense pride in delivering accurate and timely weather information to
           empower individuals and businesses alike. With a team of seven
           passionate individuals, we've combined our expertise to create a
-          platform that goes beyond conventional forecasts. <br />
+          platform that goes beyond conventional forecasts. </p>
 
-          At WeatherWhiz, we believe that weather impacts everyone, influencing
+          <p id="aboutp2">At WeatherWhiz, we believe that weather impacts everyone, influencing
           daily decisions from what to wear to critical business planning. Our
           mission is to make weather information accessible, reliable, and
           insightful for everyone. We understand that precision matters, and
           that's why our team of meteorologists leverages cutting-edge
           technology and data analysis to provide you with the most up-to-date
-          and precise weather forecasts.
-        </p>
+          and precise weather forecasts.</p> 
+      </div>
+
       </section>
 
+<!--------- contact --------->
       <section id="contactsection" class="hide">
         <h2 id="contacttitle">Contact</h2>
 
@@ -94,6 +103,7 @@
       </section>
     </main>
 
+<!--------------- footer --------------->
     <footer class="main-footer">
       <ul>
         <li><a href="#"><i class="fa-brands fa-instagram"></i></a></li>

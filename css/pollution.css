@@ -8,12 +8,13 @@ Pollution css
 
 
 
+
 /**** Current pollution *****/
 .current-pollution-forecast-city{
   font-size: 1.15em;
   padding:1em;
   margin:20px 0 0 0;
-  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
 }
 
 
@@ -33,7 +34,6 @@ Pollution css
   content: "Forecast quality: ";
 }
 
-
 .current-pollution-forecast-pollutants{
   display: flex;
   flex-direction: column;
@@ -45,20 +45,11 @@ Pollution css
 }
 
 
-
-
-
 /******** Poullution forecast ***********/
 
-
 .pollution-forecast-city{
-  /* box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px; */
-
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
 }
-
-
-
-
 
 .pollution-forecast-datetime{
   width:100%;
@@ -81,22 +72,12 @@ Pollution css
   display: none;
 }
 
-
-
 /********* Pollution forecast Header *********************/
 
 .pollution-forecast-city-name{
   font-size: 1.3em;
   padding:15px 0 0 15px;
 }
-
-
-
-/* .weather-forecasts-day-time-visibility,
-.weather-forecasts-day-time-rainsnow, 
-.weather-forecasts-day-time-clouds{
-  display: none;
-} */
 
 
 /********************* MEDIA QUERIES ****************/
@@ -106,9 +87,24 @@ Pollution css
 
 @media only screen and (min-width: 701px) {
 
+  #pullutionsection{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap:1em;
+  }
 
+  #currentpollutionresultsdiv{
+    width:45vw;
+    margin:0;
+  }
+  #pollutionresultsdiv{
+    width:45vw;
 
-
+  }
+.current-pollution-forecast-city, .pollution-forecast-city-name{
+  margin-top:20px;
+}
 
 }
 

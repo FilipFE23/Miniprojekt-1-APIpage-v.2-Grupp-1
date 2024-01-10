@@ -102,6 +102,9 @@ document.querySelectorAll("#headernav a").forEach((menuLink) => {
             aboutSection.classList.add("hide");
             contactSection.classList.remove("hide");
         }
+
+        // Stäng burger-menyn efter ett menyval gjorts
+        document.querySelector("#menu-toggle").checked = false;
     });
 });
 

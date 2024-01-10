@@ -209,17 +209,38 @@ function buildPollutionForecastCallback(pollutionCities) {
     const outputBox = document.querySelector("#pollutionresultsdiv");
 
     if (getValueIsSet(pollutionCities, 1, true)) {
+        // Varje stad med sökresultat
+        let cityCount = 0;
         for (const cityPollutionData of pollutionCities) {
+            cityCount++;
             // console.log("PollutionData", cityPollutionData);
             const cityForecastsBox = createContainerElement('article', '', 'pollution-forecast-city', outputBox);
-            createTextElement('h3', `${cityPollutionData.location.cityName} (${cityPollutionData.location.state !== undefined ? cityPollutionData.location.state + "," : ""} ${cityPollutionData.location.countryName})`, '', '', 'pollution-forecast-city-name', cityForecastsBox);
 
+            const cityName = createTextElement('h3', `${cityPollutionData.location.cityName} (${cityPollutionData.location.state !== undefined ? cityPollutionData.location.state + "," : ""} ${cityPollutionData.location.countryName})`, '', '', 'pollution-forecast-city-name', cityForecastsBox);
+            const cityForecastsWrapper = createContainerElement('article', '', 'pollution-forecast-city-wrapper', cityForecastsBox);
+            cityName.addEventListener("click", (event) => {
+                cityForecastsWrapper.classList.toggle("hide");
+            });
+            if (cityCount > 1) {
+                cityForecastsWrapper.classList.add("hide");
+            }
+
+            let forecastCount = 0;
             for (const pollutionData of cityPollutionData.pollution) {
-                const forecastBox = createContainerElement('div', '', 'pollution-forecast-item', cityForecastsBox);
+                forecastCount++;
+                const forecastBox = createContainerElement('div', '', 'pollution-forecast-item', cityForecastsWrapper);
                 const forecastDataBox = createContainerElement('div', '', 'pollution-forecast-data', forecastBox);
                 const pollutantsBox = createContainerElement('div', '', 'pollution-forecast-pollutants', forecastBox);
 
-                createTextElement('div', `${pollutionData.date} ${pollutionData.time}`, '', '', 'pollution-forecast-datetime', forecastDataBox);
+                const forecastHeader = createTextElement('div', `${pollutionData.date} ${pollutionData.time}`, '', '', 'pollution-forecast-datetime', forecastDataBox);
+                forecastHeader.addEventListener("click", (event) => {
+                    pollutantsBox.classList.toggle("hide");
+                });
+                if (forecastCount > 1) {
+                    pollutantsBox.classList.add("hide");
+                }
+
+
                 createTextElement('div', `${pollutionData.qualityIndex}`, '0', '', ['pollution-forecast-quality-index', `pollution-forecast-quality-index-${pollutionData.qualityIndex}`], forecastDataBox);
                 createTextElementWithTitle('div', "Carbon monoxide:", `${pollutionData.pollutants.co} μg/m3`, '-', '', 'pollution-forecast-pollutants-type', pollutantsBox);
                 createTextElementWithTitle('div', "Nitrogen monoxide:", `${pollutionData.pollutants.no} μg/m3`, '-', '', 'pollution-forecast-pollutants-type', pollutantsBox);

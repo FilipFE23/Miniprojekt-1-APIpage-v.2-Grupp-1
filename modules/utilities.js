@@ -93,16 +93,40 @@ export function getValueIsSet(valueToCheck, minLength = 1, isArray = false) {
 
 
 ///////////////////////////////////////////////////////////////////////////////////
-// Konvertera Unix-timestamp till tid som en textsträng
+// Konvertera Unix-timestamp till tid som en textsträng (HH:MM:SS)
 export function timestampToTime(timeStamp) {
     const dateObj = new Date(timeStamp * 1000);
     return dateObj.toLocaleTimeString('sv-SE');
 }
 
+///////////////////////////////////////////////////////////////////////////////////
+// Konvertera Unix-timestamp till timme på dagen (t.ex kl "10")
+export function timestampToHour(timeStamp) {
+    const dateObj = new Date(timeStamp * 1000);
+    const formatOptions = {
+        hour: 'numeric',
+    };
+    return Intl.DateTimeFormat("sv-SE", formatOptions).format(dateObj);
+}
+
 
 ///////////////////////////////////////////////////////////////////////////////////
-// Konvertera Unix-timestamp till datum som en textsträng
+// Konvertera Unix-timestamp till datum som en textsträng (YYYY-MM-DD)
 export function timestampToDate(timeStamp) {
     const dateObj = new Date(timeStamp * 1000);
     return dateObj.toLocaleDateString('sv-SE');
+}
+
+
+///////////////////////////////////////////////////////////////////////////////////
+// Konvertera Unix-timestamp till längre datum som en textsträng
+// T.ex: "Onsdag 10 januari"
+export function timestampToLongDate(timeStamp) {
+    const dateObj = new Date(timeStamp * 1000);
+    const formatOptions = {
+        weekday: 'long',
+        month: 'long',
+        day: 'numeric',
+    };
+    return Intl.DateTimeFormat("sv-SE", formatOptions).format(dateObj);
 }

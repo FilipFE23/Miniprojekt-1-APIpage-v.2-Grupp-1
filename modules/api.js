@@ -4,7 +4,7 @@
     Funktionalitet för att hämta ut väderdata från API. 
 */
 
-import { timestampToTime, timestampToDate } from '../modules/utilities.js';
+import { timestampToTime, timestampToDate, timestampToLongDate, timestampToHour } from '../modules/utilities.js';
 import { showErrorMessage } from '../modules/interface.js';
 
 
@@ -90,7 +90,9 @@ async function getCurrentPollution(pollutionData) {
     const pollution = pollutionData.list[0];
     const pollutionResult = {
         date: timestampToDate(pollution.dt),
+        longDate: timestampToLongDate(pollution.dt),
         time: timestampToTime(pollution.dt),
+        timeHour: timestampToHour(pollution.dt),
         qualityIndex: (pollution.main.aqi !== undefined ? pollution.main.aqi : 0),
         pollutants: pollution.components,
     };
@@ -183,7 +185,9 @@ async function getPollutionForecast(pollutionData) {
     for (const pollution of pollutionData.list) {
         const pollutionResult = {
             date: timestampToDate(pollution.dt),
+            longDate: timestampToLongDate(pollution.dt),
             time: timestampToTime(pollution.dt),
+            timeHour: timestampToHour(pollution.dt),
             qualityIndex: (pollution.main.aqi !== undefined ? pollution.main.aqi : 0),
             pollutants: pollution.components,
         };
@@ -243,8 +247,6 @@ async function getCurrentWeather(weatherData) {
     let weatherResult = {};
     if (weatherData.cod == 200) {
         const countryNames = new Intl.DisplayNames(['en'], { type: 'region' });
-        const forecastDay = timestampToDate(weatherData.dt);
-        const forecastTime = timestampToTime(weatherData.dt);
 
         // Info om platsen
         weatherResult.location = {
@@ -256,11 +258,13 @@ async function getCurrentWeather(weatherData) {
 
         // Väder-info
         weatherResult.weather = {
-            date: forecastDay,
-            time: forecastTime,
+            date: timestampToDate(weatherData.dt),
+            longDate: timestampToLongDate(weatherData.dt),
+            time: timestampToTime(weatherData.dt),
+            timeHour: timestampToHour(weatherData.dt),
             cloudinessPercent: (weatherData.clouds.all !== undefined ? weatherData.clouds.all : 0),
-            temperature: weatherData.main.temp,
-            temperatureFeelsLike: weatherData.main.feels_like,
+            temperature: Math.round(weatherData.main.temp),
+            temperatureFeelsLike: Math.round(weatherData.main.feels_like),
             humidityPercent: weatherData.main.humidity,
             pressure: weatherData.main.pressure,
             visibilityMeters: weatherData.visibility,
@@ -379,7 +383,6 @@ async function getWeatherForecasts(weatherForecast) {
         forecastResult.forecasts = [];
         for (const forecastTime of weatherForecast.list) {
             const forecastDay = timestampToDate(forecastTime.dt);
-            const forecastDayTime = timestampToTime(forecastTime.dt);
 
             if ((forecastResult.forecasts[forecastDay] === undefined) || !Array.isArray(forecastResult.forecasts[forecastDay])) {
                 forecastResult.forecasts[forecastDay] = [];
@@ -387,12 +390,14 @@ async function getWeatherForecasts(weatherForecast) {
 
             const forecastData = {
                 dateTime: forecastTime.dt_txt,
-                date: forecastDay,
-                time: forecastDayTime,
+                date: timestampToDate(forecastTime.dt),
+                longDate: timestampToLongDate(forecastTime.dt),
+                time: timestampToTime(forecastTime.dt),
+                timeHour: timestampToHour(forecastTime.dt),
                 timeOfDay: (forecastTime.sys.pod == "n" ? "night" : "day"),
                 cloudinessPercent: (forecastTime.clouds.all !== undefined ? forecastTime.clouds.all : 0),
-                temperature: forecastTime.main.temp,
-                temperatureFeelsLike: forecastTime.main.feels_like,
+                temperature: Math.round(forecastTime.main.temp),
+                temperatureFeelsLike: Math.round(forecastTime.main.feels_like),
                 humidityPercent: forecastTime.main.humidity,
                 pressure: forecastTime.main.pressure,
                 visibilityMeters: forecastTime.visibility,

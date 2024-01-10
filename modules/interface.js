@@ -53,21 +53,22 @@ function buildWeatherForecastsCallback(weatherSearchResult) {
             // varje dag det finns väderprognos för staden
             for (const forecastDay in weather.forecasts) {
                 const forecastDayBox = createContainerElement('div', '', 'weather-forecasts-day', cityForecastsBox);
-                createTextElement('h4', forecastDay, '', '', 'weather-forecasts-day-title', forecastDayBox)
+                createTextElement('h4', weather.forecasts[forecastDay][0].longDate, '', '', 'weather-forecasts-day-title', forecastDayBox);
 
                 // Varje prognostillfälle för den dagen
                 for (const forecast of weather.forecasts[forecastDay]) {
                     const forecastBox = createContainerElement('div', '', 'weather-forecasts-day-time', forecastDayBox);
-                    createTextElement('h5', forecast.time, '', '', 'weather-forecasts-day-time-title', forecastBox);
+                    createTextElement('h5', forecast.timeHour, '', '', 'weather-forecasts-day-time-title', forecastBox);
                     createTextElement('div', forecast.weatherType[0].description, '', '', 'weather-forecasts-day-time-type', forecastBox);
                     createImageElement(`https://openweathermap.org/img/wn/${forecast.weatherType[0].icon}@2x.png`, forecast.weatherType[0].description, '', '', 'weather-forecasts-day-time-icon', forecastBox);
-                    createTextElementWithTitle('div', "Cloud coverage:", `${forecast.cloudinessPercent}%`, '-', '', 'weather-forecasts-day-time-clouds', forecastBox);
                     createTextElementWithTitle('div', "Temperature:", `${forecast.temperature}°C (${forecast.temperatureFeelsLike}°C)`, '-', '', 'weather-forecasts-day-time-temp', forecastBox);
 
                     const windWrapperBox = createContainerElement('div', '', 'weather-forecasts-day-time-wind-wrapper', forecastBox);
                     createTextElementWithTitle('span', "Wind:", `${forecast.windSpeed} m/s (${forecast.windSpeedGust} m/s)`, '-', '', 'weather-forecasts-day-time-wind', windWrapperBox);
                     const windDirectionArrow = createImageElement(`./images/direction-arrow.png`, `Wind direction ${forecast.windDirectionDegrees} degrees`, '', '', 'weather-forecasts-day-time-wind-dir', windWrapperBox);
                     windDirectionArrow.style.transform = `rotate(${forecast.windDirectionDegrees}deg)`;
+
+                    createTextElementWithTitle('div', "Cloud coverage:", `${forecast.cloudinessPercent}%`, '-', '', 'weather-forecasts-day-time-clouds', forecastBox);
 
                     createTextElementWithTitle('div', "Visibility range:", `${forecast.visibilityMeters}m`, '-', '', 'weather-forecasts-day-time-visibility', forecastBox);
 
@@ -106,7 +107,6 @@ function buildCurrentWeatherCallback(weatherSearchResult) {
 
             createTextElement('div', weatherData.weatherType[0].description, '', '', 'currentweather-city-weather-type', cityWeatherBox);
             createImageElement(`https://openweathermap.org/img/wn/${weatherData.weatherType[0].icon}@2x.png`, weatherData.weatherType[0].description, '', '', 'currentweather-city-weather-icon', cityWeatherBox);
-            createTextElementWithTitle('div', "Cloud coverage:", `${weatherData.cloudinessPercent}%`, '-', '', 'currentweather-city-weather-clouds', cityWeatherBox);
             createTextElementWithTitle('div', "Temperature:", `${weatherData.temperature}°C (${weatherData.temperatureFeelsLike}°C)`, '-', '', 'currentweather-city-weather-temp', cityWeatherBox);
 
             const windWrapperBox = createContainerElement('div', '', 'currentweather-city-weather-wind-wrapper', cityWeatherBox);
@@ -114,6 +114,7 @@ function buildCurrentWeatherCallback(weatherSearchResult) {
             const windDirectionArrow = createImageElement(`./images/direction-arrow.png`, `Wind direction ${weatherData.windDirectionDegrees} degrees`, '', '', 'currentweather-city-weather-wind-dir', windWrapperBox);
             windDirectionArrow.style.transform = `rotate(${weatherData.windDirectionDegrees}deg)`;
 
+            createTextElementWithTitle('div', "Cloud coverage:", `${weatherData.cloudinessPercent}%`, '-', '', 'currentweather-city-weather-clouds', cityWeatherBox);
             createTextElementWithTitle('div', "Visibility range:", `${weatherData.visibilityMeters}m`, '-', '', 'currentweather-city-weather-visibility', cityWeatherBox);
 
             if (weatherData.snowAmount > 0) {
@@ -187,9 +188,10 @@ pollutionData - array med (stad)objekt som innehåller:
     }
 }
 */
+//////////////////////////////////////////////////////////////////////////////////////////////////////
+// Callback-funktion för att visa prognos över föroreningar från sökresultat på städer
 function buildPollutionForecastCallback(pollutionCities) {
     const outputBox = document.querySelector("#pollutionresultsdiv");
-    //    console.log("Pollution Forecast Data", pollutionCities);
 
     if (getValueIsSet(pollutionCities, 1, true)) {
         for (const cityPollutionData of pollutionCities) {

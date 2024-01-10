@@ -1,8 +1,22 @@
+/*
+    Versionshantering projekt 1 (FE23)
+    Grupp 1
+
+    Huvudscript för sidan - event handlers för sid-element.
+*/
 
 import { getWeatherForecastByCity, getCurrentWeatherByCity, getCurrentPollutionByCity, getPollutionForecastByCity } from '../modules/api.js';
-import { buildWeatherForecastsCallback, buildCurrentWeatherCallback, buildCurrentPollutionCallback, buildPollutionForecastCallback, showErrorMessage, clearErrorMessages } from '../modules/interface.js';
+import {
+    buildWeatherForecastsCallback,
+    buildCurrentWeatherCallback,
+    buildCurrentPollutionCallback,
+    buildPollutionForecastCallback,
+    showErrorMessage,
+    clearErrorMessages
+} from '../modules/interface.js';
 
 
+///////////////////////////////////////////////////////////////////////////////////
 // Submit handler för väder-sökning
 document.querySelector("#homeform").addEventListener("submit", (event) => {
     event.preventDefault();
@@ -14,6 +28,7 @@ document.querySelector("#homeform").addEventListener("submit", (event) => {
 
         // Nuvarande väder
         getCurrentWeatherByCity(searchInput, 1).then(buildCurrentWeatherCallback);
+
         // Femdygnsprognos
         getWeatherForecastByCity(searchInput).then(buildWeatherForecastsCallback);
     }
@@ -23,8 +38,7 @@ document.querySelector("#homeform").addEventListener("submit", (event) => {
 });
 
 
-
-
+///////////////////////////////////////////////////////////////////////////////////
 // Submit handler för föroreningar-sökning
 document.querySelector("#pullutionform").addEventListener("submit", (event) => {
     event.preventDefault();
@@ -37,6 +51,7 @@ document.querySelector("#pullutionform").addEventListener("submit", (event) => {
 
         // Nuvarande föroreningar
         getCurrentPollutionByCity(searchInput, 1).then(buildCurrentPollutionCallback);
+
         // Prognos för föroreningar
         getPollutionForecastByCity(searchInput).then(buildPollutionForecastCallback);
     }
@@ -46,7 +61,7 @@ document.querySelector("#pullutionform").addEventListener("submit", (event) => {
 });
 
 
-
+///////////////////////////////////////////////////////////////////////////////////
 // Navlänkar - visa vald sid-sektion
 document.querySelectorAll("#headernav a").forEach((menuLink) => {
     menuLink.addEventListener("click", (event) => {
@@ -90,6 +105,8 @@ document.querySelectorAll("#headernav a").forEach((menuLink) => {
     });
 });
 
+
+///////////////////////////////////////////////////////////////////////////////////
 // Knapp för att växla darkmode
 document.querySelector("#darkmodebutton").addEventListener("click", (event) => {
     const darkMode = document.body.classList.contains("darkmode");
@@ -102,3 +119,10 @@ document.querySelector("#darkmodebutton").addEventListener("click", (event) => {
     event.target.innerText = (darkMode ? "Darkmode" : "Lightmode");
 });
 
+
+///////////////////////////////////////////////////////////////////////////////////
+// Submit av kontaktformuläret
+document.querySelector("#contactform").addEventListener("submit", (event) => {
+    event.preventDefault();
+    // ATT GÖRA: Fake-submit av formulär, rensa innehåll och visa "tack"-meddelande för användaren.
+});

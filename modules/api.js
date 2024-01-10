@@ -1,5 +1,6 @@
 /*
     Versionshantering projekt 1 (FE23)
+    Grupp 1
 
     Funktionalitet för att hämta ut väderdata från API. 
 */
@@ -266,11 +267,11 @@ async function getCurrentWeather(weatherData) {
             cloudinessPercent: (weatherData.clouds.all !== undefined ? weatherData.clouds.all : 0),
             temperature: Math.round(weatherData.main.temp),
             temperatureFeelsLike: Math.round(weatherData.main.feels_like),
-            humidityPercent: weatherData.main.humidity,
-            pressure: weatherData.main.pressure,
-            visibilityMeters: weatherData.visibility,
-            windSpeed: weatherData.wind.speed,
-            windSpeedGust: weatherData.wind.gust,
+            humidityPercent: (weatherData.main.humidity !== undefined ? weatherData.main.humidity : 0),
+            pressure: (weatherData.main.pressure !== undefined ? weatherData.main.pressure : weatherData.main.pressure),
+            visibilityMeters: (weatherData.visibility !== undefined ? weatherData.visibility : 0),
+            windSpeed: (weatherData.wind.speed !== undefined ? weatherData.wind.speed : 0),
+            windSpeedGust: (weatherData.wind.gust !== undefined ? weatherData.wind.gust : 0),
             windDirectionDegrees: weatherData.wind.deg, // Nord = 0, Öst = 90, Syd = 180, Väst 270
             snowAmount: (weatherData.snow !== undefined ? weatherData.snow['1h'] : 0),
             rainAmount: (weatherData.rain !== undefined ? weatherData.rain['1h'] : 0),
@@ -402,11 +403,11 @@ async function getWeatherForecasts(weatherForecast) {
                 cloudinessPercent: (forecastTime.clouds.all !== undefined ? forecastTime.clouds.all : 0),
                 temperature: Math.round(forecastTime.main.temp),
                 temperatureFeelsLike: Math.round(forecastTime.main.feels_like),
-                humidityPercent: forecastTime.main.humidity,
-                pressure: forecastTime.main.pressure,
-                visibilityMeters: forecastTime.visibility,
-                windSpeed: forecastTime.wind.speed,
-                windSpeedGust: forecastTime.wind.gust,
+                humidityPercent: (forecastTime.main.humidity !== undefined ? forecastTime.main.humidity : 0),
+                pressure: (forecastTime.main.pressure !== undefined ? forecastTime.main.pressure : 0),
+                visibilityMeters: (forecastTime.visibility !== undefined ? forecastTime.visibility : 0),
+                windSpeed: (forecastTime.wind.speed !== undefined ? forecastTime.wind.speed : 0),
+                windSpeedGust: (forecastTime.wind.gust !== undefined ? forecastTime.wind.gust : 0),
                 windDirectionDegrees: forecastTime.wind.deg, // Nord = 0, Öst = 90, Syd = 180, Väst 270
                 rainOrSnowChance: (forecastTime.pop * 100).toFixed(1),
                 snowAmount: (forecastTime.snow !== undefined ? forecastTime.snow['3h'] : 0),

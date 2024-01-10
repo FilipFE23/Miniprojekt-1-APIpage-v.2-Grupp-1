@@ -1,5 +1,6 @@
 /*
     Versionshantering projekt 1 (FE23)
+    Grupp 1
 
     Generella verktygsfunktioner.
 */

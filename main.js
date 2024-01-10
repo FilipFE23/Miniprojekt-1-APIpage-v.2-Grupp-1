@@ -89,3 +89,15 @@ document.querySelectorAll("#headernav a").forEach((menuLink) => {
     });
 });
 
+// Knapp för att växla darkmode
+document.querySelector("#darkmodebutton").addEventListener("click", (event) => {
+    const darkMode = document.body.classList.contains("darkmode");
+    if (darkMode) {
+        document.body.classList.remove("darkmode");
+    }
+    else {
+        document.body.classList.add("darkmode");
+    }
+    event.target.innerText = (darkMode ? "Darkmode" : "Lightmode");
+});
+

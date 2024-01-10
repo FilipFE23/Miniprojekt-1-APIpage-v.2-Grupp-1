@@ -76,8 +76,10 @@ function buildWeatherForecastsCallback(weatherSearchResult) {
                     createTextElement('h5', forecast.timeHour, '', '', 'weather-forecasts-day-time-title', forecastBox);
                     createTextElement('div', forecast.weatherType[0].description, '', '', 'weather-forecasts-day-time-type', forecastBox);
                     createImageElement(`https://openweathermap.org/img/wn/${forecast.weatherType[0].icon}@2x.png`, forecast.weatherType[0].description, '', '', 'weather-forecasts-day-time-icon', forecastBox);
-                    createTextElementWithTitle('div', "Temperature:", `${forecast.temperature}°C`, '-', '', 'weather-forecasts-day-time-temp', forecastBox);
-                    createTextElementWithTitle('div', "Feels like:", `${forecast.temperatureFeelsLike}°C`, '-', '', 'weather-forecasts-day-time-temp-feels', forecastBox);
+
+                    const tempWrapperBox = createContainerElement('div', '', 'weather-forecasts-day-time-temp-wrapper', forecastBox);
+                    createTextElementWithTitle('div', "Temperature:", `${forecast.temperature}°C`, '-', '', 'weather-forecasts-day-time-temp', tempWrapperBox);
+                    createTextElementWithTitle('div', "Feels like:", `${forecast.temperatureFeelsLike}°C`, '-', '', 'weather-forecasts-day-time-temp-feels', tempWrapperBox);
 
                     const windWrapperBox = createContainerElement('div', '', 'weather-forecasts-day-time-wind-wrapper', forecastBox);
                     createTextElementWithTitle('span', "Wind:", `${forecast.windSpeed} m/s`, '-', '', 'weather-forecasts-day-time-wind', windWrapperBox);
@@ -124,8 +126,10 @@ function buildCurrentWeatherCallback(weatherSearchResult) {
 
             createTextElement('div', weatherData.weatherType[0].description, '', '', 'currentweather-city-weather-type', cityWeatherBox);
             createImageElement(`https://openweathermap.org/img/wn/${weatherData.weatherType[0].icon}@2x.png`, weatherData.weatherType[0].description, '', '', 'currentweather-city-weather-icon', cityWeatherBox);
-            createTextElementWithTitle('div', "Temperature:", `${weatherData.temperature}°C`, '-', '', 'currentweather-city-weather-temp', cityWeatherBox);
-            createTextElementWithTitle('div', "Feels like:", `${weatherData.temperatureFeelsLike}°C`, '-', '', 'currentweather-city-weather-temp-feels', cityWeatherBox);
+
+            const tempWrapperBox = createContainerElement('div', '', 'currentweather-city-weather-temp-wrapper', cityWeatherBox);
+            createTextElementWithTitle('div', "Temperature:", `${weatherData.temperature}°C`, '-', '', 'currentweather-city-weather-temp', tempWrapperBox);
+            createTextElementWithTitle('div', "Feels like:", `${weatherData.temperatureFeelsLike}°C`, '-', '', 'currentweather-city-weather-temp-feels', tempWrapperBox);
 
             const windWrapperBox = createContainerElement('div', '', 'currentweather-city-weather-wind-wrapper', cityWeatherBox);
             createTextElementWithTitle('span', "Wind:", `${weatherData.windSpeed} m/s`, '-', '', 'currentweather-city-weather-wind', windWrapperBox);

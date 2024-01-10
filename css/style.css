@@ -337,8 +337,6 @@ p:nth-last-child(1) {
 
 
 /********* Weather forecast *****/
-
-
 .weather-city-info{
   display: flex;
   flex-wrap: wrap;
@@ -365,7 +363,11 @@ p:nth-last-child(1) {
   margin:0;
   padding:0;
   font-size: 0.9em;
+  cursor: pointer;
   /* box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px; */
+}
+.weather-forecasts-day:hover{
+  opacity: 0.75;
 }
 
 

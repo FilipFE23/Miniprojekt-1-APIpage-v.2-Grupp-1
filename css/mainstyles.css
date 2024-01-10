@@ -79,6 +79,7 @@ p:nth-last-child(1) {
   color: #fff;
   height: 50px;
   padding: 1.4em;
+  z-index: 10;
 }
 .top-nav a {
   color: #fff;
@@ -189,14 +190,13 @@ p:nth-last-child(1) {
   background-color: #e0be9f;
   /* border: 1px solid rgb(209,213,219); */
   border: 1px solid #a7672c;
-  
   border-radius: .5rem;
   /* box-sizing: border-box; */
   color: #111827;
   font-size: .875rem;
   font-weight: 600;
   /* line-height: 1.25rem; */
-  padding: .4rem 1rem;
+  padding: .15rem 0.5rem;
   text-align: center;
   /* text-decoration: none #D1D5DB solid; */
   text-decoration: none #D1D5DB solid;
@@ -229,6 +229,7 @@ p:nth-last-child(1) {
   display: flex;
   position: relative;
   width: 100%;
+  /* z-index: -1; */
 
   /* gap:15px;
   margin:10px 0 10px 0; */

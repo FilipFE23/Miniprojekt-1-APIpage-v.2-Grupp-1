@@ -360,7 +360,6 @@ p:nth-last-child(1) {
 }
 
 .weather-forecasts-day{
-  padding:5px;
   margin:5px 0 0 0;
   border-bottom:1px solid #535378;
   border-bottom:1px solid #bfbfdc;
@@ -370,6 +369,7 @@ p:nth-last-child(1) {
   /* box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px; */
 }
 
+/**********/
 .weather-forecasts-day-title{
   width:100%;
   font-size: 1rem;
@@ -381,17 +381,22 @@ p:nth-last-child(1) {
   border-bottom: 1px solid #ccc;
   text-align: center;
   margin:0;
+  flex:1;
 }
 
 
 .weather-forecasts-day-time{
   border-bottom: 1px solid #d2d1d1;
-  padding:10px;
-  margin:0 auto;
+  padding:8px;
+  /* margin:0 auto; */
   display: flex;
-  flex-wrap: wrap;
+  /* flex-wrap: wrap; */
   align-items: center;
-  gap:0 10px;
+  justify-content:space-evenly;
+  gap:0px 10px;
+}
+.weather-forecasts-day-time > * { 
+  flex: 4; 
 }
 
 
@@ -402,31 +407,42 @@ p:nth-last-child(1) {
   color:#e2a266;
   margin:0 20px 0 0 ;
   margin:0;
+  flex:1;
 }
 
 .weather-forecasts-day-time-type{
-  text-transform: capitalize;
+  /* text-transform: capitalize; */
+  line-break: loose;
+  font-size: 1em;
+  flex:1;
 }
 .weather-forecasts-day-time-icon{
-  height:40px;
+  /* height:40px; */
+  width:10px;
+  flex:2;
 }
 
 .weather-forecasts-day-time-temp{
   font-size: 1.1em;
+  flex:2;
 }
 .weather-forecasts-day-time-temp span{
   display:none;
 } 
 
 .weather-forecasts-day-time-wind-wrapper{
-  width:100%;
+  /* width:100%; */
   display:flex;
   align-items: center;
+  font-size:0.95em;
+  
+}
+.weather-forecasts-day-time-wind{
+  line-break: loose;
 }
 
 .weather-forecasts-day-time-wind span{
-  /* font-weight: 500; */
-  margin-right:2px;
+  display:none;
 }
 .weather-forecasts-day-time-wind-dir{
   height:25px;
@@ -505,10 +521,7 @@ p:nth-last-child(1) {
     height: 2.5em;
     padding: 0.5em;
     transition: height 400ms cubic-bezier(0.23, 1, 0.32, 1);
-  }
-
-
-
+  }  
 
 }
 
@@ -564,7 +577,30 @@ p:nth-last-child(1) {
   .weather-forecasts-day-time-wind-wrapper{
     width:auto;
   }
+  .weather-forecasts-day-time-wind{
+    font-size:1.1em;
+  }
+  .weather-forecasts-day-time-wind span{
+    margin-right:2px;
+  }
 
+  /* .weather-forecasts-day-time > * { 
+    flex: 2; 
+  } */
+  .weather-forecasts-day-time-type{
+    flex:2;
+  }
+
+  .weather-forecasts-day-time-icon{
+    flex:2;
+  }
+  
+  .weather-forecasts-day-time-temp{
+    flex:3;
+  }
+  .weather-forecasts-day-time-title{
+    flex:1;
+  }
 
 
 }

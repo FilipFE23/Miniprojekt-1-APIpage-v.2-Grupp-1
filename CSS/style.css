@@ -288,6 +288,7 @@ p:nth-last-child(1) {
 .currentweather-city-weather-type{
   /* background-color: cyan; */
   width:100%;
+  text-transform: capitalize;
 }
 
 .currentweather-city-weather-icon{
@@ -342,7 +343,6 @@ p:nth-last-child(1) {
 .weather-city-info{
   display: flex;
   flex-wrap: wrap;
-  gap:10px;
   padding:10px;
   font-size:0.8em;
 }
@@ -396,13 +396,17 @@ p:nth-last-child(1) {
 
 
 .weather-forecasts-day-time-title{
-  width:100%;
+  /* width:100%; */
   font-size: 1rem;
   font-weight: 500;
   color:#e2a266;
+  margin:0 20px 0 0 ;
   margin:0;
 }
 
+.weather-forecasts-day-time-type{
+  text-transform: capitalize;
+}
 .weather-forecasts-day-time-icon{
   height:40px;
 }
@@ -418,6 +422,14 @@ p:nth-last-child(1) {
   width:100%;
   display:flex;
   align-items: center;
+}
+
+.weather-forecasts-day-time-wind span{
+  /* font-weight: 500; */
+  margin-right:2px;
+}
+.weather-forecasts-day-time-wind-dir{
+  height:25px;
 }
 
 

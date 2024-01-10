@@ -251,6 +251,7 @@ async function getCurrentWeather(weatherData) {
         // Info om platsen
         weatherResult.location = {
             cityName: weatherData.name,
+            cityId: weatherData.id,
             countryName: countryNames.of(weatherData.sys.country),
             sunrise: timestampToTime(weatherData.sys.sunrise),
             sunset: timestampToTime(weatherData.sys.sunset),
@@ -376,6 +377,7 @@ async function getWeatherForecasts(weatherForecast) {
         // Info om platsen
         forecastResult.location = {
             cityName: weatherForecast.city.name,
+            cityId: weatherForecast.city.id,
             countryName: countryNames.of(weatherForecast.city.country),
             sunrise: timestampToTime(weatherForecast.city.sunrise),
             sunset: timestampToTime(weatherForecast.city.sunset),

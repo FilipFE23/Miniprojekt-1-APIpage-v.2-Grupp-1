@@ -50,7 +50,7 @@ p:nth-last-child(1) {
 
 .wrapper {
   margin: 0 auto 0 auto;
-  width:90vw;
+  width:97vw;
   flex: 1 0 auto;
 
 }
@@ -260,8 +260,6 @@ p:nth-last-child(1) {
 }
 
 
-
-
 .currentweather-city-name{
   width:100%;
   font-size: 1.3em;
@@ -272,6 +270,7 @@ p:nth-last-child(1) {
 
 .currentweather-city-sunset span, .currentweather-city-sunrise span{ 
   font-weight: 500;
+  margin-right:3px;
 }
 
 .currentweather-city-weather{
@@ -394,9 +393,11 @@ p:nth-last-child(1) {
   align-items: center;
   justify-content:space-evenly;
   gap:0px 10px;
+  text-align: center;
 }
 .weather-forecasts-day-time > * { 
   flex: 4; 
+  text-align: center;
 }
 
 
@@ -414,7 +415,7 @@ p:nth-last-child(1) {
   /* text-transform: capitalize; */
   line-break: loose;
   font-size: 1em;
-  flex:1;
+  flex:2;
 }
 .weather-forecasts-day-time-icon{
   /* height:40px; */
@@ -434,6 +435,7 @@ p:nth-last-child(1) {
   /* width:100%; */
   display:flex;
   align-items: center;
+  justify-content: center;
   font-size:0.95em;
   
 }
@@ -444,9 +446,9 @@ p:nth-last-child(1) {
 .weather-forecasts-day-time-wind span{
   display:none;
 }
-.weather-forecasts-day-time-wind-dir{
+/* .weather-forecasts-day-time-wind-dir{
   height:25px;
-}
+} */
 
 
 .weather-forecasts-day-time-visibility,
@@ -562,6 +564,40 @@ p:nth-last-child(1) {
     display: block;
   }
 
+
+    /****Weather****/
+    #homeresultsdiv{
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      align-items: flex-start;
+      gap:1em;
+    }
+
+    #homeresultsdiv article{
+      width: 30%;
+    }
+    #homeresultsdiv article:first-child{
+      width: 50%;
+      max-width: 500px;
+      
+    }
+    #homeresultsdiv article:nth-child(2){
+      width: 48%;
+      max-width: 500px;
+    }
+    /* #homeresultsdiv .weather-city-forecasts:first-child{
+      width: 50%;
+    } */
+    /* #homeresultsdiv > article{
+      width: 50%;
+    } */
+
+
+  .currentweather-city-weather-icon {
+      height: auto;
+  }
+
   .weather-forecasts-day-time{
     padding:10px;
     display: flex;
@@ -592,7 +628,9 @@ p:nth-last-child(1) {
   }
 
   .weather-forecasts-day-time-icon{
-    flex:2;
+    flex:1;
+    /* height:30px;
+    width:30px; */
   }
   
   .weather-forecasts-day-time-temp{

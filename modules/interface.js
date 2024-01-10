@@ -44,23 +44,35 @@ function buildWeatherForecastsCallback(weatherSearchResult) {
 
     if (getValueIsSet(weatherSearchResult, 1, true)) {
         // väder på varje stad som matchar sökningen
+        let cityCount = 0;
         for (const weather of weatherSearchResult) {
+            cityCount++;
             const resultBox = createContainerElement('article', '', 'weather-city', outputBox);
             const cityInfoBox = createContainerElement('div', '', 'weather-city-info', resultBox);
             const cityForecastsBox = createContainerElement('div', '', 'weather-city-forecasts', resultBox);
+            cityInfoBox.addEventListener("click", (event) => { cityForecastsBox.classList.toggle("hide"); });
+            if (cityCount > 1) {
+                cityForecastsBox.classList.add("hide");
+            }
 
             createTextElement('h3', `${weather.location.cityName} (${weather.location.countryName})`, '', '', 'weather-city-info-name', cityInfoBox);
             createTextElementWithTitle('div', "Sunrise:", weather.location.sunrise, '', '', 'weather-city-info-sunrise', cityInfoBox);
             createTextElementWithTitle('div', "Sunset:", weather.location.sunset, '', '', 'weather-city-info-sunset', cityInfoBox);
 
             // varje dag det finns väderprognos för staden
+            let dayCount = 0;
             for (const forecastDay in weather.forecasts) {
+                dayCount++;
                 const forecastDayBox = createContainerElement('div', '', 'weather-forecasts-day', cityForecastsBox);
-                createTextElement('h4', weather.forecasts[forecastDay][0].longDate, '', '', 'weather-forecasts-day-title', forecastDayBox);
-
+                const forecastsHeader = createTextElement('h4', weather.forecasts[forecastDay][0].longDate, '', '', 'weather-forecasts-day-title', forecastDayBox);
+                const forecastsWrapperBox = createContainerElement('div', `weather-forecasts-${weather.location.cityId}-day-${forecastDay}`, 'weather-forecasts-day-times-wrapper', forecastDayBox);
+                forecastsHeader.addEventListener("click", (event) => { forecastsWrapperBox.classList.toggle("hide"); });
+                if (dayCount > 1) {
+                    forecastsWrapperBox.classList.add("hide");
+                }
                 // Varje prognostillfälle för den dagen
                 for (const forecast of weather.forecasts[forecastDay]) {
-                    const forecastBox = createContainerElement('div', '', 'weather-forecasts-day-time', forecastDayBox);
+                    const forecastBox = createContainerElement('div', '', 'weather-forecasts-day-time', forecastsWrapperBox);
                     createTextElement('h5', forecast.timeHour, '', '', 'weather-forecasts-day-time-title', forecastBox);
                     createTextElement('div', forecast.weatherType[0].description, '', '', 'weather-forecasts-day-time-type', forecastBox);
                     createImageElement(`https://openweathermap.org/img/wn/${forecast.weatherType[0].icon}@2x.png`, forecast.weatherType[0].description, '', '', 'weather-forecasts-day-time-icon', forecastBox);
@@ -198,7 +210,7 @@ function buildPollutionForecastCallback(pollutionCities) {
 
     if (getValueIsSet(pollutionCities, 1, true)) {
         for (const cityPollutionData of pollutionCities) {
-            console.log("PollutionData", cityPollutionData);
+            // console.log("PollutionData", cityPollutionData);
             const cityForecastsBox = createContainerElement('article', '', 'pollution-forecast-city', outputBox);
             createTextElement('h3', `${cityPollutionData.location.cityName} (${cityPollutionData.location.state !== undefined ? cityPollutionData.location.state + "," : ""} ${cityPollutionData.location.countryName})`, '', '', 'pollution-forecast-city-name', cityForecastsBox);
 

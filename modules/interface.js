@@ -9,37 +9,6 @@ import { createContainerElement, createImageElement, createTextElement, createTe
 
 
 
-/*
-Parameter weatherSearchResult som skickas till callbackfunktionen är en Array med objekt för varje plats/stad med följande properties:
-    location: objekt med info om platsen vädenprognosen gäller: {
-        cityName:               Namn på staden
-        countryName:            Namn på landet staden ligger i
-        sunrise                 Tid då solen går upp på platsen
-        sunset                  Tid då solen går ner på platsen
-    }
-    forecasts: objekt med datum som property som innehåller en array av forecast-objekt med prognoser för den dagen {
-        dateTime:               datum och tid för denna prognos som text
-        date:                   datum för denna prognos som text
-        longDate:               datum i längre format typ "Onsdag 10 januari"
-        time:                   klockslag för denna prognos som text
-        timeHour:               enbart timmen i klockslaget
-        timeOfDay:              Tid på dygnet (Day/Night)
-        cloudinessPercent:      molnighet i procent [0-100]
-        temperature:            temperatur i celsius
-        temperatureFeelsLike:    upplevd temperatur pga blåst i celsius
-        humidityPercent         luftfuktighet i procent [0-100]
-        pressure:               atmosfäriskt lufttryck (hPa)
-        visibilityMeters:       sikt i meter [0-10000]
-        windSpeed:              vindhastighet i meter per sekund
-        windSpeedGust:          vindhastighet i vindbyar i meter per sekund
-        windDirectionDegrees:   vindriktning i grader (Nord = 0, Öst = 90, Syd = 180, Väst 270)
-        rainOrSnowChance:       chans för nederbörd i procent [0-100]
-        snowAmount:             snömängd i mm
-        rainAmount:             regnmängd i mm
-        weatherType:            Objekt: main = vädertyp (t.ex "Clouds"), description = kort beskrivning (t.ex "overcast clouds"), icon = ID för väder-ikon från API utan filändelse och sökväg (t.ex "02n")
-                                För betydelse av ID, se https://openweathermap.org/weather-conditions
-    }
-*/
 //////////////////////////////////////////////////////////////////////////////////////////////////////
 // Callback-funktion för att visa väderprognos från sökresultat på städer
 function buildWeatherForecastsCallback(weatherSearchResult) {
@@ -157,29 +126,8 @@ function buildCurrentWeatherCallback(weatherSearchResult) {
 }
 
 
-
-/*
-pollutionData - array med (stad)objekt som innehåller: 
-{
-    location = {
-        cityName:       Name of city (in English),
-        country:        country code,
-        countryName:    Name of country (in English)
-        state:          Name of state, if applicable (in English)
-    }
-    qualityIndex : [1, 2, 3, 4, 5] 1 = Good, 2 = Fair, 3 = Moderate, 4 = Poor, 5 = Very Poor
-    pollutants = {
-        "co":       concentration of CO (Carbon monoxide), μg/m3
-        "no":       concentration of NO (Nitrogen monoxide), μg/m3
-        "no2":      concentration of NO2 (Nitrogen dioxide), μg/m3
-        "o3":       concentration of O3 (Ozone), μg/m3
-        "so2":      concentration of SO2 (Sulphur dioxide), μg/m3
-        "pm2_5":     concentration of PM2.5 (Fine particles matter), μg/m3
-        "pm10":     concentration of PM10 (Coarse particulate matter), μg/m3
-        "nh3":      concentration of NH3 (Ammonia), μg/m3
-      }
-}
-*/
+//////////////////////////////////////////////////////////////////////////////////////////////////////
+// Callback-funktion för att visa nuvarande luftföroreningar från sökresultat på städer
 function buildCurrentPollutionCallback(pollutionData) {
     const outputBox = document.querySelector("#currentpollutionresultsdiv");
 
@@ -202,40 +150,11 @@ function buildCurrentPollutionCallback(pollutionData) {
         createTextElementWithTitle('div', "Coarse particulate matter:", `${pollutionData[0].pollutants.pm10} μg/m3`, '-', '', 'current-pollution-forecast-pollutants-type', pollutantsBox);
         createTextElementWithTitle('div', "Ammonia:", `${pollutionData[0].pollutants.nh3} μg/m3`, '-', '', 'current-pollution-forecast-pollutants-type', pollutantsBox);
     }
-    console.log("Current Pollution Data", pollutionData);
 }
 
 
-/*
-pollutionData - array med (stad)objekt som innehåller: 
-{
-    location = {
-        cityName:       Name of city (in English),
-        country:        country code,
-        countryName:    Name of country (in English)
-        state:          Name of state, if applicable (in English)
-    }
-    pollution = {       Array med prognos-objekt som innehåller följande
-        {
-            date:           Datum för prognosen
-            time:           Tidpunkt för prognosen
-            qualityIndex : [1, 2, 3, 4, 5] 1 = Good, 2 = Fair, 3 = Moderate, 4 = Poor, 5 = Very Poor
-            pollutants = {
-                "co":       concentration of CO (Carbon monoxide), μg/m3
-                "no":       concentration of NO (Nitrogen monoxide), μg/m3
-                "no2":      concentration of NO2 (Nitrogen dioxide), μg/m3
-                "o3":       concentration of O3 (Ozone), μg/m3
-                "so2":      concentration of SO2 (Sulphur dioxide), μg/m3
-                "pm2_5":     concentration of PM2.5 (Fine particles matter), μg/m3
-                "pm10":     concentration of PM10 (Coarse particulate matter), μg/m3
-                "nh3":      concentration of NH3 (Ammonia), μg/m3
-            }
-        }
-    }
-}
-*/
 //////////////////////////////////////////////////////////////////////////////////////////////////////
-// Callback-funktion för att visa prognos över föroreningar från sökresultat på städer
+// Callback-funktion för att visa prognos över luftföroreningar från sökresultat på städer
 function buildPollutionForecastCallback(pollutionCities) {
     const outputBox = document.querySelector("#pollutionresultsdiv");
 
@@ -244,7 +163,6 @@ function buildPollutionForecastCallback(pollutionCities) {
         let cityCount = 0;
         for (const cityPollutionData of pollutionCities) {
             cityCount++;
-            // console.log("PollutionData", cityPollutionData);
             const cityForecastsBox = createContainerElement('article', '', 'pollution-forecast-city', outputBox);
 
             const cityName = createTextElement('h3', `${cityPollutionData.location.cityName} (${cityPollutionData.location.state !== undefined ? cityPollutionData.location.state + "," : ""} ${cityPollutionData.location.countryName})`, '', '', 'pollution-forecast-city-name', cityForecastsBox);

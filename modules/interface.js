@@ -85,8 +85,8 @@ function buildWeatherForecastsCallback(weatherSearchResult) {
                     createTextElementWithTitle('div', "Feels like:", `${forecast.temperatureFeelsLike}°C`, '-', '', 'weather-forecasts-day-time-temp-feels', tempWrapperBox);
 
                     const windWrapperBox = createContainerElement('div', '', 'weather-forecasts-day-time-wind-wrapper', forecastBox);
-                    createTextElementWithTitle('span', "Wind:", `${forecast.windSpeed} m/s`, '-', '', 'weather-forecasts-day-time-wind', windWrapperBox);
-                    createTextElementWithTitle('span', "Wind gust:", `${forecast.windSpeedGust} m/s`, '-', '', 'weather-forecasts-day-time-wind-gust', windWrapperBox);
+                    createTextElementWithTitle('span', "Wind:", `${forecast.windSpeed.toFixed(1)} m/s`, '-', '', 'weather-forecasts-day-time-wind', windWrapperBox);
+                    createTextElementWithTitle('span', "Wind gust:", `${forecast.windSpeedGust.toFixed(1)} m/s`, '-', '', 'weather-forecasts-day-time-wind-gust', windWrapperBox);
                     const windDirectionArrow = createImageElement(`./images/direction-arrow.png`, `Wind direction ${forecast.windDirectionDegrees} degrees`, '', '', 'weather-forecasts-day-time-wind-dir', windWrapperBox);
                     windDirectionArrow.style.transform = `rotate(${forecast.windDirectionDegrees}deg)`;
 
@@ -95,10 +95,10 @@ function buildWeatherForecastsCallback(weatherSearchResult) {
                     createTextElementWithTitle('div', "Visibility range:", `${forecast.visibilityMeters}m`, '-', '', 'weather-forecasts-day-time-visibility', forecastBox);
 
                     if (forecast.snowAmount > 0) {
-                        createTextElementWithTitle('div', "Precipitation:", `${forecast.rainOrSnowChance}% (${forecast.snowAmount} mm)`, '-', '', 'weather-forecasts-day-time-snow', forecastBox);
+                        createTextElementWithTitle('div', "Snow:", `${Math.round(forecast.rainOrSnowChance)}% (${forecast.snowAmount} mm)`, '-', '', 'weather-forecasts-day-time-snow', forecastBox);
                     }
                     else if (forecast.rainAmount > 0) {
-                        createTextElementWithTitle('div', "Precipitation:", `${forecast.rainOrSnowChance}% (${forecast.rainAmount} mm)`, '-', '', 'weather-forecasts-day-time-rain', forecastBox);
+                        createTextElementWithTitle('div', "Rain:", `${Math.round(forecast.rainOrSnowChance)}% (${forecast.rainAmount} mm)`, '-', '', 'weather-forecasts-day-time-rain', forecastBox);
                     }
                     else {
                         createTextElementWithTitle('div', "Precipitation:", `${forecast.rainOrSnowChance}%`, '-', '', 'weather-forecasts-day-time-rainsnow', forecastBox);
@@ -135,8 +135,8 @@ function buildCurrentWeatherCallback(weatherSearchResult) {
             createTextElementWithTitle('div', "Feels like:", `${weatherData.temperatureFeelsLike}°C`, '-', '', 'currentweather-city-weather-temp-feels', tempWrapperBox);
 
             const windWrapperBox = createContainerElement('div', '', 'currentweather-city-weather-wind-wrapper', cityWeatherBox);
-            createTextElementWithTitle('span', "Wind:", `${weatherData.windSpeed} m/s`, '-', '', 'currentweather-city-weather-wind', windWrapperBox);
-            createTextElementWithTitle('span', "Wind gust:", `${weatherData.windSpeedGust} m/s`, '-', '', 'currentweather-city-weather-wind-gust', windWrapperBox);
+            createTextElementWithTitle('span', "Wind:", `${weatherData.windSpeed.toFixed(1)} m/s`, '-', '', 'currentweather-city-weather-wind', windWrapperBox);
+            createTextElementWithTitle('span', "Wind gust:", `${weatherData.windSpeedGust.toFixed(1)} m/s`, '-', '', 'currentweather-city-weather-wind-gust', windWrapperBox);
             const windDirectionArrow = createImageElement(`./images/direction-arrow.png`, `Wind direction ${weatherData.windDirectionDegrees} degrees`, '', '', 'currentweather-city-weather-wind-dir', windWrapperBox);
             windDirectionArrow.style.transform = `rotate(${weatherData.windDirectionDegrees}deg)`;
 
@@ -144,10 +144,10 @@ function buildCurrentWeatherCallback(weatherSearchResult) {
             createTextElementWithTitle('div', "Visibility range:", `${weatherData.visibilityMeters}m`, '-', '', 'currentweather-city-weather-visibility', cityWeatherBox);
 
             if (weatherData.snowAmount > 0) {
-                createTextElementWithTitle('div', "Precipitation:", `${weatherData.rainOrSnowChance}% (${weatherData.snowAmount} mm)`, '-', '', 'currentweather-city-weather-snow', cityWeatherBox);
+                createTextElementWithTitle('div', "Snow:", `${Math.round(weatherData.rainOrSnowChance)}% (${weatherData.snowAmount} mm)`, '-', '', 'currentweather-city-weather-snow', cityWeatherBox);
             }
             else if (weatherData.rainAmount > 0) {
-                createTextElementWithTitle('div', "Precipitation:", `${weatherData.rainOrSnowChance}% (${weatherData.rainAmount} mm)`, '-', '', 'currentweather-city-weather-rain', cityWeatherBox);
+                createTextElementWithTitle('div', "Rain:", `${Math.round(weatherData.rainOrSnowChance)}% (${weatherData.rainAmount} mm)`, '-', '', 'currentweather-city-weather-rain', cityWeatherBox);
             }
             else {
                 createTextElementWithTitle('div', "Precipitation:", `0`, '-', '', 'currentweather-city-weather-rainsnow', cityWeatherBox);
@@ -291,6 +291,7 @@ function buildPollutionForecastCallback(pollutionCities) {
 // Visa felmeddelande överst på sidan
 function showErrorMessage(errorText) {
     const errorBox = document.querySelector("#errorsection");
+    errorBox.innerHTML = "";
 
     if (errorText.length > 0) {
         const errorMessage = document.createElement("div");
@@ -298,8 +299,6 @@ function showErrorMessage(errorText) {
         errorBox.appendChild(errorMessage);
         errorBox.classList.remove("hide");
     }
-    // TODO: Visa på sidan istället...
-    // alert(errorText);
 }
 
 

@@ -1,6 +1,19 @@
+/*
+    Versionshantering projekt 1 (FE23)
+    Grupp 1
+
+    Huvudscript för sidan - event handlers för sid-element.
+*/
 
 import { getWeatherForecastByCity, getCurrentWeatherByCity, getCurrentPollutionByCity, getPollutionForecastByCity } from '../modules/api.js';
-import { buildWeatherForecastsCallback, buildCurrentWeatherCallback, buildCurrentPollutionCallback, buildPollutionForecastCallback, showErrorMessage, clearErrorMessages } from '../modules/interface.js';
+import {
+    buildWeatherForecastsCallback,
+    buildCurrentWeatherCallback,
+    buildCurrentPollutionCallback,
+    buildPollutionForecastCallback,
+    showErrorMessage,
+    clearErrorMessages
+} from '../modules/interface.js';
 
 
 ///////////////////////////////////////////////////////////////////////////////////
@@ -15,6 +28,7 @@ document.querySelector("#homeform").addEventListener("submit", (event) => {
 
         // Nuvarande väder
         getCurrentWeatherByCity(searchInput, 1).then(buildCurrentWeatherCallback);
+
         // Femdygnsprognos
         getWeatherForecastByCity(searchInput).then(buildWeatherForecastsCallback);
     }
@@ -37,6 +51,7 @@ document.querySelector("#pullutionform").addEventListener("submit", (event) => {
 
         // Nuvarande föroreningar
         getCurrentPollutionByCity(searchInput, 1).then(buildCurrentPollutionCallback);
+
         // Prognos för föroreningar
         getPollutionForecastByCity(searchInput).then(buildPollutionForecastCallback);
     }

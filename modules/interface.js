@@ -111,6 +111,8 @@ function buildCurrentWeatherCallback(weatherSearchResult) {
 
             createTextElementWithTitle('div', "Cloud coverage:", `${weatherData.cloudinessPercent}%`, '-', '', 'currentweather-city-weather-clouds', cityWeatherBox);
             createTextElementWithTitle('div', "Visibility range:", `${weatherData.visibilityMeters}m`, '-', '', 'currentweather-city-weather-visibility', cityWeatherBox);
+            createTextElementWithTitle('div', "Humidity:", `${weatherData.humidityPercent}%`, '-', '', 'currentweather-city-weather-humidity', cityWeatherBox);
+            createTextElementWithTitle('div', "Air pressure:", `${weatherData.pressure} hPa`, '-', '', 'currentweather-city-weather-pressure', cityWeatherBox);
 
             if (weatherData.snowAmount > 0) {
                 createTextElementWithTitle('div', "Snow:", `${Math.round(weatherData.rainOrSnowChance)}% (${weatherData.snowAmount} mm)`, '-', '', 'currentweather-city-weather-snow', cityWeatherBox);

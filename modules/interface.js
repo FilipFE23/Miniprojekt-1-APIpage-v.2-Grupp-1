@@ -201,9 +201,9 @@ function buildPollutionForecastCallback(pollutionCities) {
                     const forecastBox = createContainerElement('div', '', 'pollution-forecast-item', forecastsWrapperBox);
                     const forecastDataBox = createContainerElement('div', '', 'pollution-forecast-data', forecastBox);
                     const pollutantsBox = createContainerElement('div', '', 'pollution-forecast-pollutants', forecastBox);
+                    createTextElement('div', `${pollutionData.timeHour}`, '', '', 'pollution-forecast-datetime', forecastDataBox);
 
-                    const forecastHeader = createTextElement('div', `${pollutionData.timeHour}`, '', '', 'pollution-forecast-datetime', forecastDataBox);
-                    forecastHeader.addEventListener("click", (event) => {
+                    forecastDataBox.addEventListener("click", (event) => {
                         pollutantsBox.classList.toggle("hide");
                     });
                     if (forecastCount > 1) {

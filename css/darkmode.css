@@ -20,6 +20,10 @@
   text-decoration: none #D1D5DB solid;
 }
 
+.darkmode h1{
+  color:#fff;
+}
+
 
 /**** Search ***/
 .darkmode .search-query{

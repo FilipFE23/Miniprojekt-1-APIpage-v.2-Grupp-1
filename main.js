@@ -5,7 +5,13 @@
     Huvudscript för sidan - event handlers för sid-element.
 */
 
-import { getWeatherForecastByCity, getCurrentWeatherByCity, getCurrentPollutionByCity, getPollutionForecastByCity } from '../modules/api.js';
+import {
+    getWeatherForecastByCity,
+    getCurrentWeatherByCity,
+    getCurrentPollutionByCity,
+    getPollutionForecastByCity
+} from './modules/api.js';
+
 import {
     buildWeatherForecastsCallback,
     buildCurrentWeatherCallback,

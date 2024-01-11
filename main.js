@@ -12,8 +12,12 @@ import {
     buildCurrentPollutionCallback,
     buildPollutionForecastCallback,
     showErrorMessage,
-    clearErrorMessages
+    clearErrorMessages,
+    toggleDarkMode
 } from '../modules/interface.js';
+
+// Ställ in darkmode standardläge beroende på besökarens OS-setting
+toggleDarkMode(!window.matchMedia('(prefers-color-scheme: dark)').matches);
 
 
 ///////////////////////////////////////////////////////////////////////////////////
@@ -112,14 +116,14 @@ document.querySelectorAll("#headernav a").forEach((menuLink) => {
 ///////////////////////////////////////////////////////////////////////////////////
 // Knapp för att växla darkmode
 document.querySelector("#darkmodebutton").addEventListener("click", (event) => {
-    const darkMode = document.body.classList.contains("darkmode");
-    if (darkMode) {
-        document.body.classList.remove("darkmode");
-    }
-    else {
-        document.body.classList.add("darkmode");
-    }
-    event.target.innerText = (darkMode ? "Darkmode" : "Lightmode");
+    toggleDarkMode(document.body.classList.contains("darkmode"));
+});
+
+
+///////////////////////////////////////////////////////////////////////////////////
+// Uppdatera ändring av Darkmode i OS
+window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (event) => {
+    toggleDarkMode(!event.matches);
 });
 
 

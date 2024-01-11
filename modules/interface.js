@@ -246,4 +246,18 @@ function clearErrorMessages() {
     document.querySelector("#errorsection").classList.add("hide");
 }
 
-export { buildWeatherForecastsCallback, buildCurrentWeatherCallback, buildCurrentPollutionCallback, buildPollutionForecastCallback, showErrorMessage, clearErrorMessages }
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////
+// Slå av/på Darkmode
+function toggleDarkMode(toggleDarkMode) {
+    if (!toggleDarkMode) {
+        document.body.classList.add("darkmode");
+    }
+    else {
+        document.body.classList.remove("darkmode");
+    }
+    document.querySelector("#darkmodebutton").innerText = (toggleDarkMode ? "Darkmode" : "Lightmode");
+}
+
+
+export { buildWeatherForecastsCallback, buildCurrentWeatherCallback, buildCurrentPollutionCallback, buildPollutionForecastCallback, showErrorMessage, clearErrorMessages, toggleDarkMode }

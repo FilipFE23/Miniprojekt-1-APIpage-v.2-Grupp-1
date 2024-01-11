@@ -28,6 +28,7 @@ function buildWeatherForecastsCallback(weatherSearchResult) {
             const resultBox = createContainerElement('article', '', 'weather-city', outputBox);
             const cityInfoBox = createContainerElement('div', '', 'weather-city-info', resultBox);
             const cityForecastsBox = createContainerElement('div', '', 'weather-city-forecasts', resultBox);
+
             cityInfoBox.addEventListener("click", (event) => { cityForecastsBox.classList.toggle("hide"); });
             if (cityCount > 1) {
                 cityForecastsBox.classList.add("hide");
@@ -44,10 +45,12 @@ function buildWeatherForecastsCallback(weatherSearchResult) {
                 const forecastDayBox = createContainerElement('div', '', 'weather-forecasts-day', cityForecastsBox);
                 const forecastsHeader = createTextElement('h4', weather.forecasts[forecastDay][0].longDate, '', '', 'weather-forecasts-day-title', forecastDayBox);
                 const forecastsWrapperBox = createContainerElement('div', `weather-forecasts-${weather.location.cityId}-day-${forecastDay}`, 'weather-forecasts-day-times-wrapper', forecastDayBox);
+
                 forecastsHeader.addEventListener("click", (event) => { forecastsWrapperBox.classList.toggle("hide"); });
                 if (dayCount > 1) {
                     forecastsWrapperBox.classList.add("hide");
                 }
+
                 // Varje prognostillfälle för den dagen
                 for (const forecast of weather.forecasts[forecastDay]) {
                     const forecastBox = createContainerElement('div', '', 'weather-forecasts-day-time', forecastsWrapperBox);
@@ -158,8 +161,8 @@ function buildCurrentPollutionCallback(pollutionData) {
         createTextElementWithTitle('div', "Nitrogen dioxide:", `${pollutionData[0].pollutants.no2} μg/m3`, '-', '', 'current-pollution-forecast-pollutants-type', pollutantsBox);
         createTextElementWithTitle('div', "Ozone:", `${pollutionData[0].pollutants.o3} μg/m3`, '-', '', 'current-pollution-forecast-pollutants-type', pollutantsBox);
         createTextElementWithTitle('div', "Sulphur dioxide:", `${pollutionData[0].pollutants.so2} μg/m3`, '-', '', 'current-pollution-forecast-pollutants-type', pollutantsBox);
-        createTextElementWithTitle('div', "Fine particles matter:", `${pollutionData[0].pollutants.pm2_5} μg/m3`, '-', '', 'current-pollution-forecast-pollutants-type', pollutantsBox);
-        createTextElementWithTitle('div', "Coarse particulate matter:", `${pollutionData[0].pollutants.pm10} μg/m3`, '-', '', 'current-pollution-forecast-pollutants-type', pollutantsBox);
+        createTextElementWithTitle('div', "Fine particles:", `${pollutionData[0].pollutants.pm2_5} μg/m3`, '-', '', 'current-pollution-forecast-pollutants-type', pollutantsBox);
+        createTextElementWithTitle('div', "Coarse particles:", `${pollutionData[0].pollutants.pm10} μg/m3`, '-', '', 'current-pollution-forecast-pollutants-type', pollutantsBox);
         createTextElementWithTitle('div', "Ammonia:", `${pollutionData[0].pollutants.nh3} μg/m3`, '-', '', 'current-pollution-forecast-pollutants-type', pollutantsBox);
 
         qualityIndexElement.setAttribute("title", getAirQualityIndexLabel(pollutionData[0].qualityIndex));
@@ -180,18 +183,21 @@ function buildPollutionForecastCallback(pollutionCities) {
             const cityForecastsBox = createContainerElement('article', '', 'pollution-forecast-city', outputBox);
             const cityName = createTextElement('h3', `${cityPollutionData.location.cityName} (${cityPollutionData.location.state !== undefined ? cityPollutionData.location.state + ", " : ""}${cityPollutionData.location.countryName})`, '', '', 'pollution-forecast-city-name', cityForecastsBox);
             const cityForecastsWrapper = createContainerElement('article', '', 'pollution-forecast-city-wrapper', cityForecastsBox);
+
             cityName.addEventListener("click", (event) => {
                 cityForecastsWrapper.classList.toggle("hide");
             });
             if (cityCount > 1) {
                 cityForecastsWrapper.classList.add("hide");
             }
+
             let dayCount = 0;
             for (const forecastDay in cityPollutionData.pollution) {
                 dayCount++;
                 const forecastDayBox = createContainerElement('div', '', 'pollution-forecasts-day', cityForecastsWrapper);
                 const forecastsHeader = createTextElement('h4', cityPollutionData.pollution[forecastDay][0].longDate, '', '', 'pollution-forecasts-day-title', forecastDayBox);
                 const forecastsWrapperBox = createContainerElement('div', '', 'pollution-forecasts-day-times-wrapper', forecastDayBox);
+
                 forecastsHeader.addEventListener("click", (event) => { forecastsWrapperBox.classList.toggle("hide"); });
                 if (dayCount > 1) {
                     forecastsWrapperBox.classList.add("hide");
@@ -218,8 +224,8 @@ function buildPollutionForecastCallback(pollutionCities) {
                     createTextElementWithTitle('div', "Nitrogen dioxide:", `${pollutionData.pollutants.no2} μg/m3`, '-', '', 'pollution-forecast-pollutants-type', pollutantsBox);
                     createTextElementWithTitle('div', "Ozone:", `${pollutionData.pollutants.o3} μg/m3`, '-', '', 'pollution-forecast-pollutants-type', pollutantsBox);
                     createTextElementWithTitle('div', "Sulphur dioxide:", `${pollutionData.pollutants.so2} μg/m3`, '-', '', 'pollution-forecast-pollutants-type', pollutantsBox);
-                    createTextElementWithTitle('div', "Fine particles matter:", `${pollutionData.pollutants.pm2_5} μg/m3`, '-', '', 'pollution-forecast-pollutants-type', pollutantsBox);
-                    createTextElementWithTitle('div', "Coarse particulate matter:", `${pollutionData.pollutants.pm10} μg/m3`, '-', '', 'pollution-forecast-pollutants-type', pollutantsBox);
+                    createTextElementWithTitle('div', "Fine particles:", `${pollutionData.pollutants.pm2_5} μg/m3`, '-', '', 'pollution-forecast-pollutants-type', pollutantsBox);
+                    createTextElementWithTitle('div', "Coarse particles:", `${pollutionData.pollutants.pm10} μg/m3`, '-', '', 'pollution-forecast-pollutants-type', pollutantsBox);
                     createTextElementWithTitle('div', "Ammonia:", `${pollutionData.pollutants.nh3} μg/m3`, '-', '', 'pollution-forecast-pollutants-type', pollutantsBox);
 
                     qualityIndexElement.setAttribute("title", getAirQualityIndexLabel(pollutionData.qualityIndex));

@@ -258,7 +258,7 @@ function toggleDarkMode(enableDarkMode) {
     else {
         document.body.classList.remove("darkmode");
     }
-    document.querySelector("#darkmodebutton").innerText = (!enableDarkMode ? "Dark Mode" : "Light Mode");
+    document.querySelector("#darkmodebutton").innerText = (!enableDarkMode ? "DarkMode" : "LightMode");
 }
 
 

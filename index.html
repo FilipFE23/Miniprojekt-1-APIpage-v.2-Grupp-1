@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="./css/weather.css" />
     <link rel="stylesheet" href="./css/pollution.css" />
     <link rel="stylesheet" href="./css/darkmode.css" />
+    <link rel="stylesheet" href="./css/contactus.css">
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -118,16 +119,16 @@
       <section id="contactsection" class="hide">
         <h2 id="contacttitle">Contact</h2>
 
-        <form id="contactform">
-          <label for="name" id="contacformlabel1"> Name</label>
-          <input type="text" id="name" name="name" placeholder="..." />
+        <form id="contactform" class="contactusForm">
+          <label for="name" id="contacformlabel1"></label>
+          <input type="text" id="name" name="name" class="name-query" placeholder="Name.." />
           <label
             for="message"
             style="display: block"
             id="contactformlabel2"
           ></label>
-          <textarea name="message" id="message" cols="30" rows="10"></textarea>
-          <button id="contactformbutton" class="search-button">Submit</button>
+          <textarea name="message" id="message" class="contactus-query" cols="30" rows="7" placeholder="Your enquiry.."></textarea>
+          <button id="contactformbutton" class="submit-button">Submit</button>
         </form>
         <div id="thankyoumsg"></div>
       </section>

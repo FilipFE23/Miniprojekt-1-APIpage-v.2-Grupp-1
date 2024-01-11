@@ -1,0 +1,43 @@
+.contactusForm {
+    /* display: flex;
+    position: relative;
+    justify-content: left;
+    align-items: inherit; */
+}
+
+.name-query {
+    width: 50vw;
+    font-size: 1em;
+    border: 2px solid #3b3b76;
+    padding: 5px;
+    border-radius: 0.5rem 0.5rem 0.5rem 0.5rem;
+    outline: none;
+    color: #3b3b76;
+  }
+
+  .contactus-query {
+    width: 50vw;
+    font-size: 1em;
+    border: 2px solid #3b3b76;
+    padding: 5px;
+    border-radius: 0.5rem 0.5rem 0.5rem 0.5rem;
+    outline: none;
+    color: #3b3b76;
+  }
+
+  .submit-button {
+    border: 1px solid #3b3b76;
+    background: #3b3b76;
+    text-align: center;
+    color: #fff;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    font-size: 20px;
+    font-size: 1em;
+    padding: 10px;
+  }
+  
+  .submit-button:hover {
+    opacity: 0.75;
+  
+  }

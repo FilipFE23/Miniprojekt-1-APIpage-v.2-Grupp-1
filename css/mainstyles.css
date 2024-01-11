@@ -6,46 +6,6 @@
   Main interface css
 **************************************/
 
-/*********SECTIONS - flyttar nog till egen css sen ************/
-
-/*********************
-  About
-************************/
-
-#aboutsection{
-  background-image: url(../images/93-2000x1334.jpg);
-  background-size: cover;
-  background-position: center; 
-  width:110vw;
-  height:130vh;
-  margin:-55px 0px 0 -20px;
-  padding: 60px 0px 0 0px;
-  color:#3b3b76;
-}
-#aboutsection  div, #abouttitle{
-  /* max-width:90vw; */
-  padding:0 60px 0 30px;
-}
-
-
-/* Desktop Styles */
-@media only screen and (min-width: 701px) {
-  #aboutsection{
-    background-size: cover;
-    width:100vw;
-    height:130vh;
-    margin:-56px 0 0 -60px;
-    padding: 60px;
-  }
-  #aboutsection  div, #abouttitle{
-    max-width:700px;
-    padding:0px;
-  }
-}
-
-
-/********************************************************************/
-
 * {
   box-sizing: border-box;
   margin: 0;
@@ -484,7 +444,4 @@ p:nth-last-child(1) {
 
 
 
-}
-
-@media only screen and (min-width: 1024px) {
 }

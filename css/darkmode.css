@@ -13,6 +13,14 @@
 }
 
 
+.darkmode #darkmodebutton{
+  background-color: #e0be9f;
+  border: 1px solid #b08d6d;
+  color: #111827;
+  text-decoration: none #D1D5DB solid;
+}
+
+
 /**** Search ***/
 .darkmode .search-query{
   border: 2px solid #e2a266; 
@@ -113,25 +121,7 @@
   background-color: #000;;
 }
 
-.darkmode .search-query{
-  border: 2px solid #e2a266; 
-  outline: none;
-  color: #e9dfd7;
-  background-color: #000;;
-}
-.darkmode input::placeholder {
-  opacity: 0.5;
-  color: #3b3b76;
-  color: #dcdcff;
-}
-
-.darkmode .search-button {
-  border: 1px solid #e2a266;
-  background: #e2a266;
-  color: #fff;
-}
-
-.submit-button {
+.darkmode .submit-button {
   border: 1px solid #e2a266;
   background: #e2a266;
   color: #fff;

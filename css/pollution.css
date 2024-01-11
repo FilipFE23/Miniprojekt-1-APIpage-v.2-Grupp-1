@@ -30,9 +30,7 @@ Pollution css
   padding-bottom: 10px;
   border-bottom:1px solid #3B3B76;
 }
-.current-pollution-forecast-quality-index::before {
-  content: "Forecast quality: ";
-}
+
 
 .current-pollution-forecast-pollutants{
   display: flex;

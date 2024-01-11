@@ -78,7 +78,11 @@ p:nth-last-child(1) {
 }
 
 
-
+/*********ERROR SECTION*****/
+#errorsection{
+  position: relative;
+  top:8.5em;
+}
 
 /****** Header Menu *******/
 

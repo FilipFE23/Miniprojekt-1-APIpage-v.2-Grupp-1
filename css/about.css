@@ -24,9 +24,9 @@
 
 
 .centerInfoAboutUs {
-  width: 200px;
+  width: 200vw;
   text-align: center;
-  margin:0 auto;
+  margin:auto;
 }
 
 

@@ -33,6 +33,8 @@ document.querySelector("#homeform").addEventListener("submit", (event) => {
     const searchInput = document.querySelector("#homesearch").value.trim();
     clearErrorMessages();
 
+    document.querySelector("#homesection h2").classList.add("hide");
+
     if (searchInput.length > 0) {
         document.querySelector("#homeresultsdiv").innerHTML = "";
 
@@ -84,32 +86,21 @@ document.querySelectorAll("#headernav a").forEach((menuLink) => {
 
         clearErrorMessages();
 
+        homeSection.classList.add("hide");
+        pollutionSection.classList.add("hide");
+        aboutSection.classList.add("hide");
+        contactSection.classList.add("hide");
+
         if (event.currentTarget.id == "headernavhome") {
-            // Visa Home
             homeSection.classList.remove("hide");
-            pollutionSection.classList.add("hide");
-            aboutSection.classList.add("hide");
-            contactSection.classList.add("hide");
         }
         else if (event.currentTarget.id == "headernavpollution") {
-            // Visa air pollution
-            homeSection.classList.add("hide");
             pollutionSection.classList.remove("hide");
-            aboutSection.classList.add("hide");
-            contactSection.classList.add("hide");
         }
         else if (event.currentTarget.id == "headernavabout") {
-            // Visa about
-            homeSection.classList.add("hide");
-            pollutionSection.classList.add("hide");
             aboutSection.classList.remove("hide");
-            contactSection.classList.add("hide");
         }
         else if (event.currentTarget.id == "headernavcontact") {
-            // Visa contact
-            homeSection.classList.add("hide");
-            pollutionSection.classList.add("hide");
-            aboutSection.classList.add("hide");
             contactSection.classList.remove("hide");
         }
 

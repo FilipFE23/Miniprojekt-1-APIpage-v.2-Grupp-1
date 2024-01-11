@@ -8,41 +8,57 @@
 
 
 #aboutsection{
-  /* background-image: url(../images/93-2000x1334.jpg);
-  background-size: cover;
-  background-position: center;  */
-  /* width:110vw;
-  height:130vh;
-  margin:-55px 0px 0 -20px;
-  padding: 60px 0px 0 0px; */
   color:#3b3b76;
 }
-#aboutsection  div, #abouttitle{
-  /* max-width:90vw; */
-  padding:0 60px 0 30px;
+#aboutsection h1{
+  text-align: center;
+  margin-bottom:1em;
 }
 
+/* #aboutsection {
+  width: 90vw;
+} */
 
-.centerInfoAboutUs {
+
+
+.about-us-text{
+  text-align: center;
+}
+.about-us-image{
+  display: none;
+}
+
+/* .centerInfoAboutUs {
   width: 200vw;
   text-align: center;
-  margin:auto;
-}
-
+  margin:0 auto;
+} */
 
 /* Desktop Styles */
 @media only screen and (min-width: 701px) {
-  #aboutsection{
-    background-size: cover;
-    width:100vw;
-    height:130vh;
-    margin:-56px 0 0 -60px;
-    padding: 60px;
+
+  .about-us-text{
+    text-align: center;
+    flex:1;
   }
-  #aboutsection  div, #abouttitle{
-    max-width:700px;
-    padding:0px;
+
+  .about-us-image{
+    display: block;
+    flex:0.8;
+    /* width:100%; */
   }
+  .about-us-image img{
+    width:100%
+  }
+
+  #aboutsection > div{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    gap:10vw;
+    gap:50px;
+  }
+
 }
 
 

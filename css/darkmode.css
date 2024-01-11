@@ -19,6 +19,10 @@
   color: #111827;
   text-decoration: none #D1D5DB solid;
 }
+.darkmode #darkmodebutton:hover{
+  background-color: #e2a266;
+  color:#fff;
+}
 
 .darkmode h1{
   color:#fff;

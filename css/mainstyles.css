@@ -206,7 +206,8 @@ p:nth-last-child(1) {
 
 #darkmodebutton:hover {
   background-color: rgb(249,250,251);
-  background-color: #e2a266;
+  opacity:0.75;
+
 }
 
 #darkmodebuttonfocus {
@@ -370,7 +371,5 @@ p:nth-last-child(1) {
   .copyright{
     font-size: 0.7em;
   }
-
-
 
 }

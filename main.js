@@ -14,7 +14,7 @@ import {
     showErrorMessage,
     clearErrorMessages,
     toggleDarkMode
-} from '../modules/interface.js';
+} from './modules/interface.js';
 
 // Ställ in darkmode standardläge beroende på besökarens OS-setting
 toggleDarkMode(window.matchMedia('(prefers-color-scheme: dark)').matches);

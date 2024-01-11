@@ -202,13 +202,12 @@ function buildPollutionForecastCallback(pollutionCities) {
                     const pollutantsBox = createContainerElement('div', '', 'pollution-forecast-pollutants', forecastBox);
 
                     const forecastHeader = createTextElement('div', `${pollutionData.timeHour}`, '', '', 'pollution-forecast-datetime', forecastDataBox);
-                    /*                     forecastHeader.addEventListener("click", (event) => {
-                                            pollutantsBox.classList.toggle("hide");
-                                        });
-                                        if (forecastCount > 1) {
-                                            pollutantsBox.classList.add("hide");
-                                        } */
-
+                    forecastHeader.addEventListener("click", (event) => {
+                        pollutantsBox.classList.toggle("hide");
+                    });
+                    if (forecastCount > 1) {
+                        pollutantsBox.classList.add("hide");
+                    }
 
                     createTextElement('div', `${pollutionData.qualityIndex}`, '0', '', ['pollution-forecast-quality-index', `pollution-forecast-quality-index-${pollutionData.qualityIndex}`], forecastDataBox);
                     createTextElementWithTitle('div', "Carbon monoxide:", `${pollutionData.pollutants.co} μg/m3`, '-', '', 'pollution-forecast-pollutants-type', pollutantsBox);

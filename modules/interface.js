@@ -150,7 +150,9 @@ function buildCurrentPollutionCallback(pollutionData) {
 
         createTextElement('div', `${pollutionData[0].date}`, '', '', 'current-pollution-forecast-date', forecastDataBox);
         createTextElement('div', `${pollutionData[0].time}`, '', '', 'current-pollution-forecast-time', forecastDataBox);
-        const qualityIndexElement = createTextElementWithTitle('div', 'Air quality:', `${pollutionData[0].qualityIndex}`, '-', '', ['current-pollution-forecast-quality-index', `pollution-forecast-quality-index-${pollutionData[0].qualityIndex}`], forecastDataBox);
+        const qualityIndexWrapper = createContainerElement('div', '', 'current-pollution-forecast-quality-wrapper', forecastDataBox);
+        createTextElement('span', "Air quality:", '', '', 'current-pollution-forecast-quality-label', qualityIndexWrapper);
+        const qualityIndexElement = createTextElement('div', `${pollutionData[0].qualityIndex}`, '-', '', ['current-pollution-forecast-quality-index', `pollution-forecast-quality-index-${pollutionData[0].qualityIndex}`], qualityIndexWrapper);
         createTextElementWithTitle('div', "Carbon monoxide:", `${pollutionData[0].pollutants.co} μg/m3`, '-', '', 'current-pollution-forecast-pollutants-type', pollutantsBox);
         createTextElementWithTitle('div', "Nitrogen monoxide:", `${pollutionData[0].pollutants.no} μg/m3`, '-', '', 'current-pollution-forecast-pollutants-type', pollutantsBox);
         createTextElementWithTitle('div', "Nitrogen dioxide:", `${pollutionData[0].pollutants.no2} μg/m3`, '-', '', 'current-pollution-forecast-pollutants-type', pollutantsBox);

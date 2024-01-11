@@ -59,7 +59,6 @@ document.querySelector("#pullutionform").addEventListener("submit", (event) => {
 
     if (searchInput.length > 0) {
         document.querySelector("#pollutionresultsdiv").innerHTML = "";
-        document.querySelector("#currentpollutionresultsdiv").innerHTML = "";
 
         // Nuvarande föroreningar
         getCurrentPollutionByCity(searchInput, 1).then(buildCurrentPollutionCallback);

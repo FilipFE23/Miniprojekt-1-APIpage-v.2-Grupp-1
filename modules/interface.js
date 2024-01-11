@@ -16,7 +16,7 @@ import {
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////
-// Callback-funktion för att visa väderprognos från sökresultat på städer
+// Callback-funktion för att visa väderprognos från sökresultat på städer                    [stoffe]
 function buildWeatherForecastsCallback(weatherSearchResult) {
     const outputBox = document.querySelector("#homeresultsdiv");
 
@@ -86,7 +86,7 @@ function buildWeatherForecastsCallback(weatherSearchResult) {
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////
-// Callback-funktion för att visa nuvarande väder från sökresultat på städer
+// Callback-funktion för att visa nuvarande väder från sökresultat på städer                 [stoffe]
 function buildCurrentWeatherCallback(weatherSearchResult) {
     const outputBox = document.querySelector("#homeresultsdiv");
 
@@ -135,7 +135,7 @@ function buildCurrentWeatherCallback(weatherSearchResult) {
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////
-// Callback-funktion för att visa nuvarande luftföroreningar från sökresultat på städer
+// Callback-funktion för att visa nuvarande luftföroreningar från sökresultat på städer       [filip]
 function buildCurrentPollutionCallback(pollutionData) {
     const outputBox = document.querySelector("#pollutionresultsdiv");
 
@@ -150,7 +150,7 @@ function buildCurrentPollutionCallback(pollutionData) {
 
         createTextElement('div', `${pollutionData[0].date}`, '', '', 'current-pollution-forecast-date', forecastDataBox);
         createTextElement('div', `${pollutionData[0].time}`, '', '', 'current-pollution-forecast-time', forecastDataBox);
-        createTextElementWithTitle('div', "Forecast quality:", `${pollutionData[0].qualityIndex}`, '-', '', 'current-pollution-forecast-quality-index', forecastDataBox);
+        createTextElement('div', `${pollutionData[0].qualityIndex}`, '-', '', ['current-pollution-forecast-quality-index', `pollution-forecast-quality-index-${pollutionData[0].qualityIndex}`], forecastDataBox);
         createTextElementWithTitle('div', "Carbon monoxide:", `${pollutionData[0].pollutants.co} μg/m3`, '-', '', 'current-pollution-forecast-pollutants-type', pollutantsBox);
         createTextElementWithTitle('div', "Nitrogen monoxide:", `${pollutionData[0].pollutants.no} μg/m3`, '-', '', 'current-pollution-forecast-pollutants-type', pollutantsBox);
         createTextElementWithTitle('div', "Nitrogen dioxide:", `${pollutionData[0].pollutants.no2} μg/m3`, '-', '', 'current-pollution-forecast-pollutants-type', pollutantsBox);
@@ -164,11 +164,9 @@ function buildCurrentPollutionCallback(pollutionData) {
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////
-// Callback-funktion för att visa prognos över luftföroreningar från sökresultat på städer
+// Callback-funktion för att visa prognos över luftföroreningar från sökresultat på städer   [stoffe]
 function buildPollutionForecastCallback(pollutionCities) {
     const outputBox = document.querySelector("#pollutionresultsdiv");
-
-
 
     if (getValueIsSet(pollutionCities, 1, true)) {
         // Varje stad med sökresultat
@@ -227,7 +225,7 @@ function buildPollutionForecastCallback(pollutionCities) {
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////
-// Visa felmeddelande överst på sidan
+// Visa felmeddelande överst på sidan                                                        [stoffe]
 function showErrorMessage(errorText) {
     const errorBox = document.querySelector("#errorsection");
     errorBox.innerHTML = "";
@@ -242,7 +240,7 @@ function showErrorMessage(errorText) {
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////
-// Rensa ev. felmeddelanden
+// Rensa ev. felmeddelanden                                                                  [stoffe]
 function clearErrorMessages() {
     document.querySelector("#errorsection").innerHTML = "";
     document.querySelector("#errorsection").classList.add("hide");
@@ -250,7 +248,7 @@ function clearErrorMessages() {
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////
-// Slå av/på Darkmode
+// Slå av/på Darkmode                                                                        [stoffe]
 function toggleDarkMode(enableDarkMode) {
     if (enableDarkMode) {
         document.body.classList.add("darkmode");

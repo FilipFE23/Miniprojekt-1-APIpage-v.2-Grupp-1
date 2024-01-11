@@ -23,8 +23,8 @@ const API_KEY = "5261d802270baa988556276b1069665e";
  * FÖRORENINGAR - NUVARANDE
  **********************************************************************************/
 
-///////////////////////////////////////////////////////////////////////////////////
-// Returnera promise för hämtning av nuvarande föroreningar för en angiven stad.
+/////////////////////////////////////////////////////////////////////////////////////////////
+// Returnera promise för hämtning av nuvarande föroreningar för en angiven stad.    [stoffe]
 async function getCurrentPollutionByCity(cityName, maxResults = 5) {
     const requestURL = new URL('https://api.openweathermap.org/geo/1.0/direct');
     requestURL.searchParams.append("q", cityName);
@@ -34,8 +34,8 @@ async function getCurrentPollutionByCity(cityName, maxResults = 5) {
 }
 
 
-///////////////////////////////////////////////////////////////////////////////////
-// Bygg array med nuvarande föroreningar-info för platser med angivna koordinater
+/////////////////////////////////////////////////////////////////////////////////////////////
+// Bygg array med nuvarande föroreningar-info för platser med angivna koordinater   [stoffe]
 async function getCurrentPollutionByCoords(cityCoordsList) {
     try {
         if (Array.isArray(cityCoordsList) && (cityCoordsList.length > 0)) {
@@ -69,8 +69,8 @@ async function getCurrentPollutionByCoords(cityCoordsList) {
 }
 
 
-///////////////////////////////////////////////////////////////////////////////////
-// Sammanställ info om föroreningar på en plats
+/////////////////////////////////////////////////////////////////////////////////////////////
+// Sammanställ info om föroreningar på en plats                                     [stoffe]
 async function getCurrentPollution(pollutionData) {
     const pollution = pollutionData.list[0];
     const pollutionResult = {
@@ -89,8 +89,8 @@ async function getCurrentPollution(pollutionData) {
  * FÖRORENINGAR - PROGNOS
  **********************************************************************************/
 
-///////////////////////////////////////////////////////////////////////////////////
-// Returnera promise för hämtning av prognos för föroreningar för en angiven stad.
+/////////////////////////////////////////////////////////////////////////////////////////////
+// Returnera promise för hämtning av prognos för föroreningar för en angiven stad.  [stoffe]
 async function getPollutionForecastByCity(cityName, maxResults = 5) {
     const requestURL = new URL('https://api.openweathermap.org/geo/1.0/direct');
     requestURL.searchParams.append("q", cityName);
@@ -99,8 +99,8 @@ async function getPollutionForecastByCity(cityName, maxResults = 5) {
     return fetchJSON(requestURL, getPollutionForecastByCoords);
 }
 
-///////////////////////////////////////////////////////////////////////////////////
-// Bygg array med prognos för föroreningar för platser med angivna koordinater
+/////////////////////////////////////////////////////////////////////////////////////////////
+// Bygg array med prognos för föroreningar för platser med angivna koordinater      [stoffe]
 async function getPollutionForecastByCoords(cityCoordsList) {
     try {
         if (Array.isArray(cityCoordsList) && (cityCoordsList.length > 0)) {
@@ -134,8 +134,8 @@ async function getPollutionForecastByCoords(cityCoordsList) {
     }
 }
 
-///////////////////////////////////////////////////////////////////////////////////
-// Sammanställ prognoser om föroreningar på en plats
+/////////////////////////////////////////////////////////////////////////////////////////////
+// Sammanställ prognoser om föroreningar på en plats                                [stoffe]
 async function getPollutionForecast(pollutionData) {
     const pollutionResults = {};
     for (const pollution of pollutionData.list) {
@@ -162,8 +162,8 @@ async function getPollutionForecast(pollutionData) {
  * VÄDER - NUVARANDE
  **********************************************************************************/
 
-///////////////////////////////////////////////////////////////////////////////////
-// Returnera promise för hämtning av nuvarande väder för en angiven stad.
+/////////////////////////////////////////////////////////////////////////////////////////////
+// Returnera promise för hämtning av nuvarande väder för en angiven stad.           [stoffe]
 async function getCurrentWeatherByCity(cityName, maxResults = 5) {
     const requestURL = new URL('https://api.openweathermap.org/geo/1.0/direct');
     requestURL.searchParams.append("q", cityName);
@@ -173,8 +173,8 @@ async function getCurrentWeatherByCity(cityName, maxResults = 5) {
 }
 
 
-///////////////////////////////////////////////////////////////////////////////////
-// Bygg array med nuvarande väder-info för platser med angivna koordinater
+/////////////////////////////////////////////////////////////////////////////////////////////
+// Bygg array med nuvarande väder-info för platser med angivna koordinater          [stoffe]
 async function getCurrentWeatherByCoords(cityCoordsList) {
     try {
         if (Array.isArray(cityCoordsList) && (cityCoordsList.length > 0)) {
@@ -201,8 +201,8 @@ async function getCurrentWeatherByCoords(cityCoordsList) {
 }
 
 
-///////////////////////////////////////////////////////////////////////////////////
-// Sammanställ väder-info om nuvarande väder på sökt plats
+/////////////////////////////////////////////////////////////////////////////////////////////
+// Sammanställ väder-info om nuvarande väder på sökt plats                          [stoffe]
 async function getCurrentWeather(weatherData) {
     let weatherResult = {};
     if (weatherData.cod == 200) {
@@ -245,8 +245,8 @@ async function getCurrentWeather(weatherData) {
  * VÄDER - FEMDYGNSPROGNOS
  **********************************************************************************/
 
-///////////////////////////////////////////////////////////////////////////////////
-// Returnera promise för hämtning av väderinformation för en angiven stad.
+/////////////////////////////////////////////////////////////////////////////////////////////
+// Returnera promise för hämtning av väderinformation för en angiven stad.          [stoffe]
 async function getWeatherForecastByCity(cityName, maxResults = 5) {
     const requestURL = new URL('https://api.openweathermap.org/geo/1.0/direct');
     requestURL.searchParams.append("q", cityName);
@@ -256,8 +256,8 @@ async function getWeatherForecastByCity(cityName, maxResults = 5) {
 }
 
 
-///////////////////////////////////////////////////////////////////////////////////
-// Bygg array med väderdata för platser med angivna koordinater
+/////////////////////////////////////////////////////////////////////////////////////////////
+// Bygg array med väderdata för platser med angivna koordinater                     [stoffe]
 async function getWeatherForecastsByCoords(cityCoordsList) {
     try {
         if (Array.isArray(cityCoordsList) && (cityCoordsList.length > 0)) {
@@ -284,8 +284,8 @@ async function getWeatherForecastsByCoords(cityCoordsList) {
 }
 
 
-///////////////////////////////////////////////////////////////////////////////////
-// Bygg väderprognos för angiven plats
+/////////////////////////////////////////////////////////////////////////////////////////////
+// Bygg väderprognos för angiven plats                                              [stoffe]
 async function getWeatherForecasts(weatherForecast) {
     let forecastResult = {};
 
@@ -344,8 +344,8 @@ async function getWeatherForecasts(weatherForecast) {
  **********************************************************************************/
 
 
-///////////////////////////////////////////////////////////////////////////////////
-// Hämta information från API
+/////////////////////////////////////////////////////////////////////////////////////////////
+// Hämta information från API                                                       [stoffe]
 async function fetchJSON(url, callbackFunc) {
     try {
         const response = await fetch(url);
@@ -364,8 +364,8 @@ async function fetchJSON(url, callbackFunc) {
 }
 
 
-///////////////////////////////////////////////////////////////////////////////////
-// Felhantering
+/////////////////////////////////////////////////////////////////////////////////////////////
+// Felhantering                                                                     [stoffe]
 function errorHandlerAPI(error) {
     if (error instanceof APIFetchError) {
         if (error.statusCode == 1) {

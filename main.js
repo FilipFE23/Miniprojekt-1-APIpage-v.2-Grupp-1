@@ -22,12 +22,13 @@ import {
     toggleDarkMode
 } from './modules/interface.js';
 
-// Ställ in darkmode standardläge beroende på besökarens OS-setting
+
+// Ställ in darkmode standardläge beroende på besökarens systeminställning
 toggleDarkMode(window.matchMedia('(prefers-color-scheme: dark)').matches);
 
 
 ///////////////////////////////////////////////////////////////////////////////////
-// Submit handler för väder-sökning
+// Submit handler för väder-sökning                                       [stoffe]
 document.querySelector("#homeform").addEventListener("submit", (event) => {
     event.preventDefault();
     const searchInput = document.querySelector("#homesearch").value.trim();
@@ -51,7 +52,7 @@ document.querySelector("#homeform").addEventListener("submit", (event) => {
 
 
 ///////////////////////////////////////////////////////////////////////////////////
-// Submit handler för föroreningar-sökning
+// Submit handler för föroreningar-sökning                         [stoffe, filip]
 document.querySelector("#pullutionform").addEventListener("submit", (event) => {
     event.preventDefault();
     const searchInput = document.querySelector("#pullutionsearch").value.trim();
@@ -73,7 +74,7 @@ document.querySelector("#pullutionform").addEventListener("submit", (event) => {
 
 
 ///////////////////////////////////////////////////////////////////////////////////
-// Navlänkar - visa vald sid-sektion
+// Navlänkar - visa vald sid-sektion                                      [stoffe]
 document.querySelectorAll("#headernav a").forEach((menuLink) => {
     menuLink.addEventListener("click", (event) => {
         event.preventDefault();
@@ -90,17 +91,11 @@ document.querySelectorAll("#headernav a").forEach((menuLink) => {
         aboutSection.classList.add("hide");
         contactSection.classList.add("hide");
 
-        if (event.currentTarget.id == "headernavhome") {
-            homeSection.classList.remove("hide");
-        }
-        else if (event.currentTarget.id == "headernavpollution") {
-            pollutionSection.classList.remove("hide");
-        }
-        else if (event.currentTarget.id == "headernavabout") {
-            aboutSection.classList.remove("hide");
-        }
-        else if (event.currentTarget.id == "headernavcontact") {
-            contactSection.classList.remove("hide");
+        switch (event.currentTarget.id) {
+            case "headernavhome": homeSection.classList.remove("hide"); break;
+            case "headernavpollution": pollutionSection.classList.remove("hide"); break;
+            case "headernavabout": aboutSection.classList.remove("hide"); break;
+            case "headernavcontact": contactSection.classList.remove("hide"); break;
         }
 
         // Stäng burger-menyn efter ett menyval gjorts
@@ -110,21 +105,21 @@ document.querySelectorAll("#headernav a").forEach((menuLink) => {
 
 
 ///////////////////////////////////////////////////////////////////////////////////
-// Knapp för att växla darkmode
+// Knapp för att växla darkmode                                           [stoffe]
 document.querySelector("#darkmodebutton").addEventListener("click", (event) => {
     toggleDarkMode(!document.body.classList.contains("darkmode"));
 });
 
 
 ///////////////////////////////////////////////////////////////////////////////////
-// Uppdatera ändring av Darkmode i OS
+// Uppdatera ändring av Darkmode i OS                                     [stoffe]
 window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (event) => {
     toggleDarkMode(event.matches);
 });
 
 
 ///////////////////////////////////////////////////////////////////////////////////
-// Submit av kontaktformuläret
+// Submit av kontaktformuläret                                              [kamy]
 document.querySelector("#contactform").addEventListener("submit", (event) => {
     event.preventDefault();
     const contactFormMessage = document.getElementById("thankyoumsg");

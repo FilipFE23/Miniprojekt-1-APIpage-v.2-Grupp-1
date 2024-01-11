@@ -157,39 +157,19 @@ h3.current-pollution-forecast-city-name{
 }
 
 
-
-
-.pollution-forecast-pollutants{
-  padding:10px;
-  font-size:0.9em;
-  line-height: 1.9em;
-} 
- .pollution-forecast-pollutants{
-  display: flex;
-  /* flex-direction: column; */
-  flex-wrap: wrap;
-  gap: 10px;
-  font-size:0.9em;
-  padding:10px;
-}
-/* .pollution-forecast-pollutants div{
-  flex:1;
-} */
-
 .pollution-forecast-pollutants{
   display:grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr;
+  padding:10px;
+  font-size:0.9em;
+  line-height: 1.9em;
 }
 
 .pollution-forecast-pollutants span{
   font-weight: 500;
   margin-right:1px;
 } 
-
-/* .pollution-forecast-pollutants-type{
-  justify-self: start;
-} */
 
 .pollution-forecast-quality-index {
     display: flex; 
@@ -248,14 +228,13 @@ h3.current-pollution-forecast-city-name{
   }
 
   .pollution-forecast-pollutants{
-    display:grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
+    font-size:0.97em;
+    line-height: 2em;
   }
 
   .pollution-forecast-pollutants span{
     font-weight: 500;
-    margin-right:5px;
+    margin-right:10px;
   } 
 
 }

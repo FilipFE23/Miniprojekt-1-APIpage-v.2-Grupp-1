@@ -268,6 +268,7 @@ function toggleDarkMode(enableDarkMode) {
 // Översätt air quality index värde till motsvarande textetikett                             [stoffe]
 function getAirQualityIndexLabel(qualityIndex) {
     switch (qualityIndex) {
+        case 0: return "Air quality index not available";
         case 1: return "Good air quality";
         case 2: return "Fair air quality";
         case 3: return "Moderate air quality;"

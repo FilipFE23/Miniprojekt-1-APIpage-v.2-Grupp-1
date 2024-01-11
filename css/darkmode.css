@@ -12,6 +12,8 @@
   color:#e2a266;
 }
 
+
+/**** Search ***/
 .darkmode .search-query{
   border: 2px solid #e2a266; 
   outline: none;
@@ -31,7 +33,7 @@
   color: #fff;
 }
 
-
+/**** Weather ***/
 .darkmode .currentweather-city-info{
   border-bottom:1px solid #e2a266;
 }
@@ -45,7 +47,7 @@
 }
 
 .darkmode .weather-forecasts-day-title{
-  background-color: #3b3b76;
+
   background-color: #e2a266;
   /* background-color: #9a9acf; */
   color:#fff;
@@ -55,9 +57,44 @@
 
 
 .darkmode .currentweather-city{
-  box-shadow: rgba(246, 244, 244, 0.25) 0px 6px 24px 0px, rgba(246, 245, 245, 0.12) 0px 0px 0px 1px;
+  box-shadow: rgba(177, 177, 177, 0.25) 0px 6px 24px 0px, rgba(122, 122, 122, 0.12) 0px 0px 0px 1px;
 }
 
 .darkmode .weather-city{
-  box-shadow: rgba(246, 244, 244, 0.25) 0px 6px 24px 0px, rgba(246, 245, 245, 0.12) 0px 0px 0px 1px;
+  box-shadow: rgba(177, 177, 177, 0.25) 0px 6px 24px 0px, rgba(122, 122, 122, 0.12) 0px 0px 0px 1px;
 }
+
+/**** Pollution ***/
+
+
+.darkmode .current-pollution-forecast-city {
+  box-shadow: rgba(177, 177, 177, 0.25) 0px 6px 24px 0px, rgba(122, 122, 122, 0.12) 0px 0px 0px 1px;
+}
+
+.darkmode .pollution-forecasts-day-title{
+  background-color: #e2a266;
+  color:#fff;
+  border-bottom:1px solid #e0be9f;
+}
+
+
+.darkmode .current-pollution-forecast-data {
+    border-bottom: 1px solid #e2a266;
+}
+
+
+.pollution-forecast-city {
+  box-shadow: rgba(177, 177, 177, 0.25) 0px 6px 24px 0px, rgba(122, 122, 122, 0.12) 0px 0px 0px 1px;
+}
+
+.darkmode .pollution-forecast-data {
+  background-color: #4a4a53;
+  border-bottom: 1px solid #242429;
+
+}
+
+.darkmode .pollution-forecast-quality-index {
+  color: #000;
+}
+
+

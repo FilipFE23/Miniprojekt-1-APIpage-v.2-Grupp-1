@@ -30,8 +30,10 @@ img {
 }
 
 .hide {
-  display: none;
+  display: none !important;
 }
+
+
 /* .button{
   display: none;
 } */
@@ -343,6 +345,7 @@ p:nth-last-child(1) {
   height: 50px;
   padding: 1.4em;
   flex-shrink: 0;
+  margin-top:40px;
 }
 .copyright{
   font-size: 0.7em;

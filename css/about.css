@@ -23,7 +23,12 @@
 }
 
 
-
+.centerInfoAboutUs {
+  width: 200%;
+  text-align: center;
+  justify-content: center; 
+  align-items: center;
+}
 
 
 

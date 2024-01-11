@@ -31,7 +31,32 @@ Pollution css
   border-bottom:1px solid #3B3B76;
 }
 
+h3.current-pollution-forecast-city-name{
+  width:100%;
+  font-size: 1.3em;
+  margin:0.2em 0 0.1em 0;
+  color:#e2a266;
+}
 
+
+.current-pollution-forecast-quality-index {
+  display: flex; 
+  height: 1.7rem;
+  width: 1.7rem;
+  font-size: 1rem;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  /* color: white; */
+  font-weight: 500; 
+
+}
+
+.current-pollution-forecast-quality-index span {
+  font-weight: 500;
+  margin-right:10px;
+  display: none;
+}
 .current-pollution-forecast-pollutants{
   display: flex;
   flex-direction: column;
@@ -49,7 +74,23 @@ Pollution css
   box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
 }
 
-.pollution-forecast-datetime{
+/* .pollution-forecast-city{
+  display: flex;
+  flex-wrap: wrap;
+  gap:10px;
+  border-bottom:1px solid #ccc;
+  padding-bottom:10px;
+} */
+
+/********* Pollution forecast Header *********************/
+
+.pollution-forecast-city-name{
+  font-size: 1.3em;
+  padding:15px 0 0 15px;
+}
+
+
+.pollution-forecasts-day-title{
   width:100%;
   font-size: 1rem;
   font-size: 0.9em;
@@ -60,23 +101,111 @@ Pollution css
   border-bottom:1px solid #bfbfdc;
   text-align: center;
   margin:0;
+  padding:10px 0 10px 0;
   cursor: pointer;
 }
-.pollution-forecast-datetime:hover{
+
+
+.pollution-forecast-data{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap:10px;
+  background-color: #bfbfdc;
+  margin: 0;
+  border-bottom: 1px solid #3B3B76;
+
+  padding:5px 0 5px 0;
+  cursor: pointer;
+  
+}
+.pollution-forecast-data:hover{
   opacity: 0.75;
 }
 
-.pollution-forecast-quality-index{
-  display: none;
+.pollution-forecast-datetime{
+  /* width:100%; */
+  font-size: 1rem;
+  font-weight: 600;
+  color:#e2a266;
+  color:#fff;
+  /* margin:0 20px 0 0 ; */
+  margin:0;
 }
 
-/********* Pollution forecast Header *********************/
+/* .pollution-forecast-datetime:hover{
+  opacity: 0.75;
+} */
 
-.pollution-forecast-city-name{
-  font-size: 1.3em;
-  padding:15px 0 0 15px;
+.pollution-forecast-item{
+  /* display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: space-around; */
+  /* align-items: center; */
+
+ 
+  /* background-color: aliceblue; */
+}
+.pollution-forecast-pollutants{
+  padding:10px;
+  font-size:0.9em;
+} 
+ /* .pollution-forecast-pollutants{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-size:0.9em;
+  padding:10px;
+} */
+
+/* .pollution-forecast-quality-index{
+  color:#fff;
+  text-align:center;
+  width:25px;
+  height:25px;
+  border-radius: 25px;
+  position: relative;
+  margin:0;
+  padding:0;
+  line-height: 1.7;
+  font-weight: 500; 
+} */
+
+.pollution-forecast-quality-index {
+    display: flex; 
+    height: 1.7rem;
+    width: 1.7rem;
+    font-size: 1rem;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    color: white;
+    font-weight: 500; 
 }
 
+
+.pollution-forecast-quality-index-1{
+  background-color: #4ADE80;
+}
+.pollution-forecast-quality-index-2{
+  background-color: #A3E635;
+}
+.pollution-forecast-quality-index-3{
+  background-color: #FACC15;
+}
+.pollution-forecast-quality-index-4{
+  background-color: #FB923C;
+}
+.pollution-forecast-quality-index-5{
+  background-color: #F87171;
+}
+
+
+
+
+
+/* eller inline-flex */
 
 /********************* MEDIA QUERIES ****************/
 
@@ -85,12 +214,12 @@ Pollution css
 
 @media only screen and (min-width: 701px) {
 
-  /* #pullutionsection{
+  #pullutionsection{
     display: flex;
     flex-wrap: wrap;
     align-items: flex-start;
     gap:1em;
-  } */
+  }
 
   #currentpollutionresultsdiv{
     width:45vw;

@@ -346,8 +346,9 @@
   }
 
   .currentweather-city{
-  width: 40vw;
-  max-width: 500px;
+  width: 35vw;
+  min-width: 385px;
+  max-width: 450px;
   }
 
   /* #homeresultsdiv article:nth-child(2){
@@ -356,8 +357,8 @@
   } */
 
   .weather-city{
-  width: 55vw;
-  max-width: 700px;
+    width: 55vw;
+    max-width: 700px;
   }
 
   .weather-forecasts-day-time{

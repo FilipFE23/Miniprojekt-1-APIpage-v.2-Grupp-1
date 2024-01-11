@@ -38,7 +38,7 @@ h3.current-pollution-forecast-city-name{
   color:#e2a266;
 }
 
-
+/* 
 .current-pollution-forecast-quality-index {
   display: flex; 
   height: 1.7rem;
@@ -47,10 +47,21 @@ h3.current-pollution-forecast-city-name{
   justify-content: center;
   align-items: center;
   border-radius: 50%;
-  /* color: white; */
   font-weight: 500; 
+} */
+/* .current-pollution-forecast-quality-index {
+  color:#fff;
+  text-align:center;
+  width:25px;
+  height:25px;
+  border-radius: 25px;
+  position: relative;
+  margin:0;
+  padding:0;
+  line-height: 1.7;
+  font-weight: 500; 
+} */
 
-}
 
 .current-pollution-forecast-quality-index span {
   font-weight: 500;
@@ -71,6 +82,7 @@ h3.current-pollution-forecast-city-name{
 
 .pollution-forecast-city{
   box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+  margin:20px 0 0 0;
 }
 
 /* .pollution-forecast-city{
@@ -158,18 +170,7 @@ h3.current-pollution-forecast-city-name{
   padding:10px;
 } */
 
-/* .pollution-forecast-quality-index{
-  color:#fff;
-  text-align:center;
-  width:25px;
-  height:25px;
-  border-radius: 25px;
-  position: relative;
-  margin:0;
-  padding:0;
-  line-height: 1.7;
-  font-weight: 500; 
-} */
+
 
 .pollution-forecast-quality-index {
     display: flex; 
@@ -221,8 +222,8 @@ h3.current-pollution-forecast-city-name{
   }
 
   .current-pollution-forecast-city{
-      width: 35vw;
-      min-width: 385px;
+      width: 40vw;
+      min-width: 390px;
       max-width: 450px;
   }
 
@@ -230,18 +231,18 @@ h3.current-pollution-forecast-city-name{
     width: 55vw;
     max-width: 700px;
   }
-
+/* 
   #pullutionsection{
     display: flex;
     flex-wrap: wrap;
     align-items: flex-start;
     gap:1em;
-  }
+  } */
 
 
-  .current-pollution-forecast-city, .pollution-forecast-city-name{
+  /* .current-pollution-forecast-city, .pollution-forecast-city-name{
     margin-top:20px;
-  }
+  } */
 
 }
 

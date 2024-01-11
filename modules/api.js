@@ -26,7 +26,7 @@ const API_KEY = "5261d802270baa988556276b1069665e";
 ///////////////////////////////////////////////////////////////////////////////////
 // Returnera promise för hämtning av nuvarande föroreningar för en angiven stad.
 async function getCurrentPollutionByCity(cityName, maxResults = 5) {
-    const requestURL = new URL('http://api.openweathermap.org/geo/1.0/direct');
+    const requestURL = new URL('https://api.openweathermap.org/geo/1.0/direct');
     requestURL.searchParams.append("q", cityName);
     requestURL.searchParams.append("limit", maxResults);
     requestURL.searchParams.append("appid", API_KEY);
@@ -43,7 +43,7 @@ async function getCurrentPollutionByCoords(cityCoordsList) {
             const cityPollution = [];
 
             for (const cityCoords of cityCoordsList) {
-                const requestURL = new URL("http://api.openweathermap.org/data/2.5/air_pollution");
+                const requestURL = new URL("https://api.openweathermap.org/data/2.5/air_pollution");
                 requestURL.searchParams.append("lat", cityCoords.lat);
                 requestURL.searchParams.append("lon", cityCoords.lon);
                 requestURL.searchParams.append("appid", API_KEY);
@@ -92,7 +92,7 @@ async function getCurrentPollution(pollutionData) {
 ///////////////////////////////////////////////////////////////////////////////////
 // Returnera promise för hämtning av prognos för föroreningar för en angiven stad.
 async function getPollutionForecastByCity(cityName, maxResults = 5) {
-    const requestURL = new URL('http://api.openweathermap.org/geo/1.0/direct');
+    const requestURL = new URL('https://api.openweathermap.org/geo/1.0/direct');
     requestURL.searchParams.append("q", cityName);
     requestURL.searchParams.append("limit", maxResults);
     requestURL.searchParams.append("appid", API_KEY);
@@ -108,7 +108,7 @@ async function getPollutionForecastByCoords(cityCoordsList) {
             const cityPollution = [];
 
             for (const cityCoords of cityCoordsList) {
-                const requestURL = new URL("http://api.openweathermap.org/data/2.5/air_pollution/forecast");
+                const requestURL = new URL("https://api.openweathermap.org/data/2.5/air_pollution/forecast");
                 requestURL.searchParams.append("lat", cityCoords.lat);
                 requestURL.searchParams.append("lon", cityCoords.lon);
                 requestURL.searchParams.append("appid", API_KEY);
@@ -165,7 +165,7 @@ async function getPollutionForecast(pollutionData) {
 ///////////////////////////////////////////////////////////////////////////////////
 // Returnera promise för hämtning av nuvarande väder för en angiven stad.
 async function getCurrentWeatherByCity(cityName, maxResults = 5) {
-    const requestURL = new URL('http://api.openweathermap.org/geo/1.0/direct');
+    const requestURL = new URL('https://api.openweathermap.org/geo/1.0/direct');
     requestURL.searchParams.append("q", cityName);
     requestURL.searchParams.append("limit", maxResults);
     requestURL.searchParams.append("appid", API_KEY);
@@ -248,7 +248,7 @@ async function getCurrentWeather(weatherData) {
 ///////////////////////////////////////////////////////////////////////////////////
 // Returnera promise för hämtning av väderinformation för en angiven stad.
 async function getWeatherForecastByCity(cityName, maxResults = 5) {
-    const requestURL = new URL('http://api.openweathermap.org/geo/1.0/direct');
+    const requestURL = new URL('https://api.openweathermap.org/geo/1.0/direct');
     requestURL.searchParams.append("q", cityName);
     requestURL.searchParams.append("limit", maxResults);
     requestURL.searchParams.append("appid", API_KEY);
@@ -263,7 +263,7 @@ async function getWeatherForecastsByCoords(cityCoordsList) {
         if (Array.isArray(cityCoordsList) && (cityCoordsList.length > 0)) {
             const cityForecasts = [];
             for (const cityCoords of cityCoordsList) {
-                const requestURL = new URL("http://api.openweathermap.org/data/2.5/forecast");
+                const requestURL = new URL("https://api.openweathermap.org/data/2.5/forecast");
                 requestURL.searchParams.append("units", "metric");
                 requestURL.searchParams.append("lat", cityCoords.lat);
                 requestURL.searchParams.append("lon", cityCoords.lon);

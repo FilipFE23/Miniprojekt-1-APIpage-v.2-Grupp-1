@@ -5,7 +5,13 @@
     Funktionalitet för att bygga gränssnitt och presentera sökresultat.
 */
 
-import { createContainerElement, createImageElement, createTextElement, createTextElementWithTitle, getValueIsSet } from './modules/utilities.js';
+import {
+    createContainerElement,
+    createImageElement,
+    createTextElement,
+    createTextElementWithTitle,
+    getValueIsSet
+} from '../modules/utilities.js';
 
 
 

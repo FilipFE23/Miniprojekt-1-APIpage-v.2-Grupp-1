@@ -5,8 +5,14 @@
     Funktionalitet för att hämta ut väderdata från API. 
 */
 
-import { timestampToTime, timestampToDate, timestampToLongDate, timestampToHour } from './modules/utilities.js';
-import { showErrorMessage } from './modules/interface.js';
+import {
+    timestampToTime,
+    timestampToDate,
+    timestampToLongDate,
+    timestampToHour
+} from '../modules/utilities.js';
+
+import { showErrorMessage } from '../modules/interface.js';
 
 
 const API_KEY = "5261d802270baa988556276b1069665e";

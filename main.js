@@ -17,7 +17,7 @@ import {
 } from '../modules/interface.js';
 
 // Ställ in darkmode standardläge beroende på besökarens OS-setting
-toggleDarkMode(!window.matchMedia('(prefers-color-scheme: dark)').matches);
+toggleDarkMode(window.matchMedia('(prefers-color-scheme: dark)').matches);
 
 
 ///////////////////////////////////////////////////////////////////////////////////
@@ -116,14 +116,14 @@ document.querySelectorAll("#headernav a").forEach((menuLink) => {
 ///////////////////////////////////////////////////////////////////////////////////
 // Knapp för att växla darkmode
 document.querySelector("#darkmodebutton").addEventListener("click", (event) => {
-    toggleDarkMode(document.body.classList.contains("darkmode"));
+    toggleDarkMode(!document.body.classList.contains("darkmode"));
 });
 
 
 ///////////////////////////////////////////////////////////////////////////////////
 // Uppdatera ändring av Darkmode i OS
 window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (event) => {
-    toggleDarkMode(!event.matches);
+    toggleDarkMode(event.matches);
 });
 
 

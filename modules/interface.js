@@ -249,14 +249,14 @@ function clearErrorMessages() {
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////
 // Slå av/på Darkmode
-function toggleDarkMode(toggleDarkMode) {
-    if (!toggleDarkMode) {
+function toggleDarkMode(enableDarkMode) {
+    if (enableDarkMode) {
         document.body.classList.add("darkmode");
     }
     else {
         document.body.classList.remove("darkmode");
     }
-    document.querySelector("#darkmodebutton").innerText = (toggleDarkMode ? "Darkmode" : "Lightmode");
+    document.querySelector("#darkmodebutton").innerText = (!enableDarkMode ? "Darkmode" : "Lightmode");
 }
 
 

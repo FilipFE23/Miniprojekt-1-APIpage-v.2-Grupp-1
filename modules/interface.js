@@ -150,7 +150,7 @@ function buildCurrentPollutionCallback(pollutionData) {
 
         createTextElement('div', `${pollutionData[0].date}`, '', '', 'current-pollution-forecast-date', forecastDataBox);
         createTextElement('div', `${pollutionData[0].time}`, '', '', 'current-pollution-forecast-time', forecastDataBox);
-        createTextElement('div', `${pollutionData[0].qualityIndex}`, '-', '', ['current-pollution-forecast-quality-index', `pollution-forecast-quality-index-${pollutionData[0].qualityIndex}`], forecastDataBox);
+        const qualityIndexElement = createTextElement('div', `${pollutionData[0].qualityIndex}`, '-', '', ['current-pollution-forecast-quality-index', `pollution-forecast-quality-index-${pollutionData[0].qualityIndex}`], forecastDataBox);
         createTextElementWithTitle('div', "Carbon monoxide:", `${pollutionData[0].pollutants.co} μg/m3`, '-', '', 'current-pollution-forecast-pollutants-type', pollutantsBox);
         createTextElementWithTitle('div', "Nitrogen monoxide:", `${pollutionData[0].pollutants.no} μg/m3`, '-', '', 'current-pollution-forecast-pollutants-type', pollutantsBox);
         createTextElementWithTitle('div', "Nitrogen dioxide:", `${pollutionData[0].pollutants.no2} μg/m3`, '-', '', 'current-pollution-forecast-pollutants-type', pollutantsBox);
@@ -159,6 +159,8 @@ function buildCurrentPollutionCallback(pollutionData) {
         createTextElementWithTitle('div', "Fine particles matter:", `${pollutionData[0].pollutants.pm2_5} μg/m3`, '-', '', 'current-pollution-forecast-pollutants-type', pollutantsBox);
         createTextElementWithTitle('div', "Coarse particulate matter:", `${pollutionData[0].pollutants.pm10} μg/m3`, '-', '', 'current-pollution-forecast-pollutants-type', pollutantsBox);
         createTextElementWithTitle('div', "Ammonia:", `${pollutionData[0].pollutants.nh3} μg/m3`, '-', '', 'current-pollution-forecast-pollutants-type', pollutantsBox);
+
+        qualityIndexElement.setAttribute("title", getAirQualityIndexLabel(pollutionData[0].qualityIndex));
     }
 }
 
@@ -208,7 +210,7 @@ function buildPollutionForecastCallback(pollutionCities) {
                         pollutantsBox.classList.add("hide");
                     }
 
-                    createTextElement('div', `${pollutionData.qualityIndex}`, '0', '', ['pollution-forecast-quality-index', `pollution-forecast-quality-index-${pollutionData.qualityIndex}`], forecastDataBox);
+                    const qualityIndexElement = createTextElement('div', `${pollutionData.qualityIndex}`, '0', '', ['pollution-forecast-quality-index', `pollution-forecast-quality-index-${pollutionData.qualityIndex}`], forecastDataBox);
                     createTextElementWithTitle('div', "Carbon monoxide:", `${pollutionData.pollutants.co} μg/m3`, '-', '', 'pollution-forecast-pollutants-type', pollutantsBox);
                     createTextElementWithTitle('div', "Nitrogen monoxide:", `${pollutionData.pollutants.no} μg/m3`, '-', '', 'pollution-forecast-pollutants-type', pollutantsBox);
                     createTextElementWithTitle('div', "Nitrogen dioxide:", `${pollutionData.pollutants.no2} μg/m3`, '-', '', 'pollution-forecast-pollutants-type', pollutantsBox);
@@ -217,6 +219,8 @@ function buildPollutionForecastCallback(pollutionCities) {
                     createTextElementWithTitle('div', "Fine particles matter:", `${pollutionData.pollutants.pm2_5} μg/m3`, '-', '', 'pollution-forecast-pollutants-type', pollutantsBox);
                     createTextElementWithTitle('div', "Coarse particulate matter:", `${pollutionData.pollutants.pm10} μg/m3`, '-', '', 'pollution-forecast-pollutants-type', pollutantsBox);
                     createTextElementWithTitle('div', "Ammonia:", `${pollutionData.pollutants.nh3} μg/m3`, '-', '', 'pollution-forecast-pollutants-type', pollutantsBox);
+
+                    qualityIndexElement.setAttribute("title", getAirQualityIndexLabel(pollutionData.qualityIndex));
                 }
             }
         }
@@ -257,6 +261,19 @@ function toggleDarkMode(enableDarkMode) {
         document.body.classList.remove("darkmode");
     }
     document.querySelector("#darkmodebutton").innerText = (!enableDarkMode ? "DarkMode" : "LightMode");
+}
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////
+// Översätt air quality index värde till motsvarande textetikett                             [stoffe]
+function getAirQualityIndexLabel(qualityIndex) {
+    switch (qualityIndex) {
+        case 1: return "Good air quality";
+        case 2: return "Fair air quality";
+        case 3: return "Moderate air quality;"
+        case 4: return "Poor air quality";
+        case 5: return "Very Poor air quality";
+    }
 }
 
 

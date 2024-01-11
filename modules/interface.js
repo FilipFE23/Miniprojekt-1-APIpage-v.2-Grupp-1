@@ -164,15 +164,11 @@ function buildPollutionForecastCallback(pollutionCities) {
 
 
     if (getValueIsSet(pollutionCities, 1, true)) {
-        console.log("POLLUTION DATA", pollutionCities);
         // Varje stad med sökresultat
         let cityCount = 0;
         for (const cityPollutionData of pollutionCities) {
             cityCount++;
             const cityForecastsBox = createContainerElement('article', '', 'pollution-forecast-city', outputBox);
-
-            console.log("CITY DATA", cityPollutionData);
-
             const cityName = createTextElement('h3', `${cityPollutionData.location.cityName} (${cityPollutionData.location.state !== undefined ? cityPollutionData.location.state + "," : ""} ${cityPollutionData.location.countryName})`, '', '', 'pollution-forecast-city-name', cityForecastsBox);
             const cityForecastsWrapper = createContainerElement('article', '', 'pollution-forecast-city-wrapper', cityForecastsBox);
             cityName.addEventListener("click", (event) => {
@@ -191,11 +187,9 @@ function buildPollutionForecastCallback(pollutionCities) {
                 if (dayCount > 1) {
                     forecastsWrapperBox.classList.add("hide");
                 }
-                console.log("DAY FORECASTS", cityPollutionData.pollution[forecastDay]);
 
                 let forecastCount = 0;
                 for (const pollutionData of cityPollutionData.pollution[forecastDay]) {
-                    console.log("HOURLY FORECAST", pollutionData);
                     forecastCount++;
                     const forecastBox = createContainerElement('div', '', 'pollution-forecast-item', forecastsWrapperBox);
                     const forecastDataBox = createContainerElement('div', '', 'pollution-forecast-data', forecastBox);

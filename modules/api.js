@@ -117,7 +117,6 @@ async function getPollutionForecastByCoords(cityCoordsList) {
                 pollutionResult.pollution = await fetchJSON(requestURL, getPollutionForecast);
                 cityPollution.push(pollutionResult);
             }
-            console.log("DEBUG", cityPollution);
             return cityPollution;
         }
         else {

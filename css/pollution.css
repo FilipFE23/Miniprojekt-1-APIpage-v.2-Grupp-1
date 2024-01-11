@@ -213,6 +213,24 @@ h3.current-pollution-forecast-city-name{
 
 @media only screen and (min-width: 701px) {
 
+  #pollutionresultsdiv{
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-start;
+      gap:1em;
+  }
+
+  .current-pollution-forecast-city{
+      width: 35vw;
+      min-width: 385px;
+      max-width: 450px;
+  }
+
+  .pollution-forecast-city{
+    width: 55vw;
+    max-width: 700px;
+  }
+
   #pullutionsection{
     display: flex;
     flex-wrap: wrap;
@@ -220,20 +238,10 @@ h3.current-pollution-forecast-city-name{
     gap:1em;
   }
 
-  #currentpollutionresultsdiv{
-    width:45vw;
-    margin:0;
+
+  .current-pollution-forecast-city, .pollution-forecast-city-name{
+    margin-top:20px;
   }
-  #pollutionresultsdiv{
-    width:45vw;
 
-  }
-.current-pollution-forecast-city, .pollution-forecast-city-name{
-  margin-top:20px;
-}
-
-}
-
-@media only screen and (min-width: 1024px) {
 }
 

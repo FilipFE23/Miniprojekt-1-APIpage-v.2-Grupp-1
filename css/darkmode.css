@@ -106,7 +106,7 @@
 
 /**** About us *****/
 
-#aboutsection{
+.darkmode #aboutsection{
   background-image: none;
   color:#e2a266;
 }

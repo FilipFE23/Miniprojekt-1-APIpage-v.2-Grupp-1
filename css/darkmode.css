@@ -29,7 +29,6 @@
 .darkmode .search-button {
   border: 1px solid #e2a266;
   background: #e2a266;
-  text-align: center;
   color: #fff;
 }
 
@@ -98,3 +97,42 @@
 }
 
 
+/**** Contact us *****/
+
+.darkmode .name-query {
+  border: 2px solid #e2a266; 
+  outline: none;
+  color: #e9dfd7;
+  background-color: #000;;
+}
+
+.darkmode .contactus-query {
+  border: 2px solid #e2a266; 
+  outline: none;
+  color: #e9dfd7;
+  background-color: #000;;
+}
+
+.darkmode .search-query{
+  border: 2px solid #e2a266; 
+  outline: none;
+  color: #e9dfd7;
+  background-color: #000;;
+}
+.darkmode input::placeholder {
+  opacity: 0.5;
+  color: #3b3b76;
+  color: #dcdcff;
+}
+
+.darkmode .search-button {
+  border: 1px solid #e2a266;
+  background: #e2a266;
+  color: #fff;
+}
+
+.submit-button {
+  border: 1px solid #e2a266;
+  background: #e2a266;
+  color: #fff;
+  }

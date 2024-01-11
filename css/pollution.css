@@ -126,9 +126,7 @@ h3.current-pollution-forecast-city-name{
   display: flex;
   justify-content: center;
   align-items: center;
-  gap:10px;
-  background-color: #bfbfdc;
-  background-color: #d8d8ea;
+  gap:20px;
   background-color: #e9e9f2;
   margin: 0;
   border-bottom: 1px solid #3B3B76;

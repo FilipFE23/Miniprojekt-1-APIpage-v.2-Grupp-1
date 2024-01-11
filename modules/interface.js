@@ -121,7 +121,7 @@ function buildCurrentWeatherCallback(weatherSearchResult) {
                 createTextElementWithTitle('div', "Rain:", `${Math.round(weatherData.rainOrSnowChance)}% (${weatherData.rainAmount} mm)`, '-', '', 'currentweather-city-weather-rain', cityWeatherBox);
             }
             else {
-                createTextElementWithTitle('div', "Precipitation:", `0`, '-', '', 'currentweather-city-weather-rainsnow', cityWeatherBox);
+                createTextElementWithTitle('div', "Precipitation:", `None`, '-', '', 'currentweather-city-weather-rainsnow', cityWeatherBox);
             }
         }
     }

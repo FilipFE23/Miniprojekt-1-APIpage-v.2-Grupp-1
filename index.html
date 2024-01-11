@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="./css/weather.css" />
     <link rel="stylesheet" href="./css/pollution.css" />
     <link rel="stylesheet" href="./css/darkmode.css" />
-    <link rel="stylesheet" href="./css/contactus.css">
+    <link rel="stylesheet" href="./css/contactus.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -45,7 +45,6 @@
 
     <!--------------- main --------------->
     <main class="wrapper">
-
       <section id="errorsection" class="hide"></section>
 
       <!------------ home ------------>
@@ -87,10 +86,9 @@
 
       <!---------- about ---------->
       <section id="aboutsection" class="hide">
-        <h1 id="abouttitle">About us</h1>
-        <div id="aboutimage"></div><!-- Behövs denna?-->
+        <h1 id="abouttitle" class="centerInfoAboutUs">About us</h1>
 
-        <div>
+        <div class="centerInfoAboutUs">
           <p>
             Welcome to WeatherWhiz, where weather reporting meets innovation!
             Established by a team of dedicated meteorology enthusiasts, we take
@@ -118,13 +116,26 @@
 
         <form id="contactform" class="contactusForm">
           <label for="name" id="contacformlabel1"></label>
-          <input type="text" id="name" name="name" class="name-query" placeholder="Name.." />
+          <input
+            type="text"
+            id="name"
+            name="name"
+            class="name-query"
+            placeholder="Name.."
+          />
           <label
             for="message"
             style="display: block"
             id="contactformlabel2"
           ></label>
-          <textarea name="message" id="message" class="contactus-query" cols="30" rows="7" placeholder="Your enquiry.."></textarea>
+          <textarea
+            name="message"
+            id="message"
+            class="contactus-query"
+            cols="30"
+            rows="7"
+            placeholder="Your enquiry.."
+          ></textarea>
           <button id="contactformbutton" class="submit-button">Submit</button>
         </form>
         <div id="thankyoumsg"></div>

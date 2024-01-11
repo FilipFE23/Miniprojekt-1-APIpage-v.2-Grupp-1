@@ -14,24 +14,30 @@
 
 .darkmode .search-query{
   border: 2px solid #e2a266; 
-  border-radius: 0.5rem 0 0 0.5rem;
   outline: none;
-  color: #e2a266; 
+  color: #e9dfd7;
   background-color: #000;;
+}
+.darkmode input::placeholder {
+  opacity: 0.5;
+  color: #3b3b76;
+  color: #dcdcff;
 }
 
 .darkmode .search-button {
-  /* width: 40px;
-  height: 36px; */
   border: 1px solid #e2a266;
   background: #e2a266;
   text-align: center;
   color: #fff;
-  border-radius: 0 0.5rem 0.5rem 0;
-  cursor: pointer;
-  font-size: 20px;
-  font-size: 1em;
-  padding:10px;
+}
+
+
+.darkmode .currentweather-city-info{
+  border-bottom:1px solid #e2a266;
+}
+
+.currentweather-city-weather-wind-gust{
+  color:#b28051;
 }
 
 .darkmode .weather-forecasts-day-time{
@@ -39,11 +45,19 @@
 }
 
 .darkmode .weather-forecasts-day-title{
-  background-color: #4f4f9c;
+  background-color: #3b3b76;
+  background-color: #e2a266;
   /* background-color: #9a9acf; */
   color:#fff;
-
-
   border-bottom:1px solid #e0be9f;
-  cursor: pointer;
+}
+
+
+
+.darkmode .currentweather-city{
+  box-shadow: rgba(246, 244, 244, 0.25) 0px 6px 24px 0px, rgba(246, 245, 245, 0.12) 0px 0px 0px 1px;
+}
+
+.darkmode .weather-city{
+  box-shadow: rgba(246, 244, 244, 0.25) 0px 6px 24px 0px, rgba(246, 245, 245, 0.12) 0px 0px 0px 1px;
 }

@@ -117,6 +117,7 @@ async function getPollutionForecastByCoords(cityCoordsList) {
                 pollutionResult.pollution = await fetchJSON(requestURL, getPollutionForecast);
                 cityPollution.push(pollutionResult);
             }
+            console.log("DEBUG", cityPollution);
             return cityPollution;
         }
         else {
@@ -131,8 +132,13 @@ async function getPollutionForecastByCoords(cityCoordsList) {
 ///////////////////////////////////////////////////////////////////////////////////
 // Sammanställ prognoser om föroreningar på en plats
 async function getPollutionForecast(pollutionData) {
-    const pollutionResults = [];
+    const pollutionResults = {};
     for (const pollution of pollutionData.list) {
+        const forecastDay = timestampToDate(pollution.dt);
+        if ((pollutionResults[forecastDay] === undefined) || !Array.isArray(pollutionResults[forecastDay])) {
+            pollutionResults[forecastDay] = [];
+        }
+
         const pollutionResult = {
             date: timestampToDate(pollution.dt),
             longDate: timestampToLongDate(pollution.dt),
@@ -141,11 +147,11 @@ async function getPollutionForecast(pollutionData) {
             qualityIndex: (pollution.main.aqi !== undefined ? pollution.main.aqi : 0),
             pollutants: pollution.components,
         };
-        pollutionResults.push(pollutionResult);
+        pollutionResults[forecastDay].push(pollutionResult);
     }
+
     return pollutionResults;
 }
-
 
 /**********************************************************************************
  * VÄDER - NUVARANDE

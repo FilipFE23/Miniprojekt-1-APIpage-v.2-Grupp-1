@@ -137,11 +137,11 @@ function buildCurrentWeatherCallback(weatherSearchResult) {
 //////////////////////////////////////////////////////////////////////////////////////////////////////
 // Callback-funktion för att visa nuvarande luftföroreningar från sökresultat på städer
 function buildCurrentPollutionCallback(pollutionData) {
-    const outputBox = document.querySelector("#currentpollutionresultsdiv");
+    const outputBox = document.querySelector("#pollutionresultsdiv");
 
     if (getValueIsSet(pollutionData, 1, true)) {
         const cityForecastsBox = createContainerElement('article', '', 'current-pollution-forecast-city', outputBox);
-        createTextElement('h3', `${pollutionData[0].location.cityName} (${pollutionData[0].location.state !== undefined ? pollutionData[0].location.state + "," : ""} ${pollutionData[0].location.countryName})`, '', '', 'current-pollution-forecast-city-name', cityForecastsBox);
+        createTextElement('h3', `${pollutionData[0].location.cityName} (${pollutionData[0].location.state !== undefined ? pollutionData[0].location.state + "," : ""}${pollutionData[0].location.countryName})`, '', '', 'current-pollution-forecast-city-name', cityForecastsBox);
         createTextElement('h4', `Current pollution`, '', '', 'current-pollution-forecast-city-name', cityForecastsBox);
 
         const forecastBox = createContainerElement('div', '', 'current-pollution-forecast-item', cityForecastsBox);

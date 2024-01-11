@@ -141,7 +141,7 @@ function buildCurrentPollutionCallback(pollutionData) {
 
     if (getValueIsSet(pollutionData, 1, true)) {
         const cityForecastsBox = createContainerElement('article', '', 'current-pollution-forecast-city', outputBox);
-        createTextElement('h3', `${pollutionData[0].location.cityName} (${pollutionData[0].location.state !== undefined ? pollutionData[0].location.state + "," : ""}${pollutionData[0].location.countryName})`, '', '', 'current-pollution-forecast-city-name', cityForecastsBox);
+        createTextElement('h3', `${pollutionData[0].location.cityName} (${pollutionData[0].location.state !== undefined ? pollutionData[0].location.state + ", " : ""}${pollutionData[0].location.countryName})`, '', '', 'current-pollution-forecast-city-name', cityForecastsBox);
         createTextElement('h4', `Current pollution`, '', '', 'current-pollution-forecast-city-name', cityForecastsBox);
 
         const forecastBox = createContainerElement('div', '', 'current-pollution-forecast-item', cityForecastsBox);
@@ -176,7 +176,7 @@ function buildPollutionForecastCallback(pollutionCities) {
         for (const cityPollutionData of pollutionCities) {
             cityCount++;
             const cityForecastsBox = createContainerElement('article', '', 'pollution-forecast-city', outputBox);
-            const cityName = createTextElement('h3', `${cityPollutionData.location.cityName} (${cityPollutionData.location.state !== undefined ? cityPollutionData.location.state + "," : ""} ${cityPollutionData.location.countryName})`, '', '', 'pollution-forecast-city-name', cityForecastsBox);
+            const cityName = createTextElement('h3', `${cityPollutionData.location.cityName} (${cityPollutionData.location.state !== undefined ? cityPollutionData.location.state + ", " : ""}${cityPollutionData.location.countryName})`, '', '', 'pollution-forecast-city-name', cityForecastsBox);
             const cityForecastsWrapper = createContainerElement('article', '', 'pollution-forecast-city-wrapper', cityForecastsBox);
             cityName.addEventListener("click", (event) => {
                 cityForecastsWrapper.classList.toggle("hide");

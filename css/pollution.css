@@ -8,8 +8,8 @@ Pollution css
 
 
 
-
 /**** Current pollution *****/
+
 .current-pollution-forecast-city{
   font-size: 1.15em;
   padding:1em;
@@ -17,9 +17,11 @@ Pollution css
   box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
 }
 
-
 .current-pollution-forecast-data{
   display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
   flex-wrap: wrap;
   gap:10px;
   margin-bottom:20px;
@@ -34,11 +36,46 @@ h3.current-pollution-forecast-city-name{
   color:#e2a266;
 }
 
+.current-pollution-forecast-quality-wrapper{
+  display:flex;
+  justify-content: space-around;
+  align-items: center;
+  gap:20px;
+}
+
+.current-pollution-forecast-quality-index{
+  display: flex; 
+  height: 2.8rem;
+  width: 2.8rem;
+  font-size: 1.7rem;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  color: white;
+  font-weight: 500; 
+}
+
+.current-pollution-forecast-quality-index-1{
+  background-color: #4ADE80;
+}
+.current-pollution-forecast-quality-index-2{
+  background-color: #A3E635;
+}
+.current-pollution-forecast-quality-index-3{
+  background-color: #FACC15;
+}
+.current-pollution-forecast-quality-index-4{
+  background-color: #FB923C;
+}
+.current-pollution-forecast-quality-index-5{
+  background-color: #F87171;
+}
 
 .current-pollution-forecast-quality-index span {
   font-weight: 500;
   margin-right:10px;
 }
+
 .current-pollution-forecast-pollutants{
   display: flex;
   flex-direction: column;
@@ -57,9 +94,6 @@ h3.current-pollution-forecast-city-name{
   margin:20px 0 0 0;
 }
 
-
-
-/********* Pollution forecast Header *********************/
 
 .pollution-forecast-city-name{
   font-size: 1.3em;
@@ -81,6 +115,10 @@ h3.current-pollution-forecast-city-name{
   padding:10px 0 10px 0;
   cursor: pointer;
 }
+
+
+
+
 
 
 .pollution-forecast-data{

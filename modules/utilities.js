@@ -6,7 +6,7 @@
 */
 
 
-//////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////
 // Skapa ett wrapper/container-element
 export function createContainerElement(elementType = 'div', elementId = '', cssClass = '', parentContainer = null) {
     const containerElement = document.createElement(elementType);
@@ -18,7 +18,7 @@ export function createContainerElement(elementType = 'div', elementId = '', cssC
 }
 
 
-//////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////
 // Skapa ett nytt bild-element
 export function createImageElement(imageUrl, altText, noImageUrl = '', elementId = '', cssClass = '', parentContainer = null) {
     const imageElement = document.createElement("img");
@@ -34,7 +34,7 @@ export function createImageElement(imageUrl, altText, noImageUrl = '', elementId
 }
 
 
-//////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////
 // Skapa ett element med textinnehåll
 export function createTextElement(elementType, textContent, textNoContent = '', elementId = '', cssClass = '', parentContainer = null) {
     const textElement = document.createElement(elementType);
@@ -49,7 +49,7 @@ export function createTextElement(elementType, textContent, textNoContent = '', 
 }
 
 
-//////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////
 // Skapa ett element med textinnehåll och en rubriks-etikett före
 export function createTextElementWithTitle(elementType, textTitle, textContent, textNoContent = '', elementId = '', cssClass = '', parentContainer = null) {
     const textElement = document.createElement(elementType);
@@ -69,7 +69,7 @@ export function createTextElementWithTitle(elementType, textTitle, textContent, 
 }
 
 
-//////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////
 // Lägg till CSS-klasser till ett element.
 export function addIdentifiersToElement(targetElement, classesToAdd = '', elementId = '') {
     if (classesToAdd.length > 0) {
@@ -86,7 +86,7 @@ export function addIdentifiersToElement(targetElement, classesToAdd = '', elemen
 }
 
 
-//////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////
 // Kolla om parametern innehåller ett värde av tillräcklig längd
 export function getValueIsSet(valueToCheck, minLength = 1, isArray = false) {
     return (valueToCheck !== undefined) && (valueToCheck !== null) && (valueToCheck.length >= minLength) && (!isArray || (isArray && Array.isArray(valueToCheck)));
@@ -94,14 +94,14 @@ export function getValueIsSet(valueToCheck, minLength = 1, isArray = false) {
 
 
 ///////////////////////////////////////////////////////////////////////////////////
-// Konvertera Unix-timestamp till tid som en textsträng (HH:MM:SS)
+// Konvertera Unix-timestamp till tid som en textsträng (HH:MM:SS)         [stoffe]
 export function timestampToTime(timeStamp) {
     const dateObj = new Date(timeStamp * 1000);
     return dateObj.toLocaleTimeString('sv-SE');
 }
 
 ///////////////////////////////////////////////////////////////////////////////////
-// Konvertera Unix-timestamp till timme på dagen (t.ex kl "10")
+// Konvertera Unix-timestamp till timme på dagen (t.ex kl "10")           [stoffe]
 export function timestampToHour(timeStamp) {
     const dateObj = new Date(timeStamp * 1000);
     const formatOptions = {
@@ -112,7 +112,7 @@ export function timestampToHour(timeStamp) {
 
 
 ///////////////////////////////////////////////////////////////////////////////////
-// Konvertera Unix-timestamp till datum som en textsträng (YYYY-MM-DD)
+// Konvertera Unix-timestamp till datum som en textsträng (YYYY-MM-DD)    [stoffe]
 export function timestampToDate(timeStamp) {
     const dateObj = new Date(timeStamp * 1000);
     return dateObj.toLocaleDateString('sv-SE');
@@ -120,7 +120,7 @@ export function timestampToDate(timeStamp) {
 
 
 ///////////////////////////////////////////////////////////////////////////////////
-// Konvertera Unix-timestamp till längre datum som en textsträng
+// Konvertera Unix-timestamp till längre datum som en textsträng          [stoffe]
 // T.ex: "Onsdag 10 januari" (sv-SE), Wednesday, January 10 (en-US)
 export function timestampToLongDate(timeStamp) {
     const dateObj = new Date(timeStamp * 1000);

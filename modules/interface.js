@@ -139,7 +139,8 @@ function buildCurrentPollutionCallback(pollutionData) {
         const forecastDataBox = createContainerElement('div', '', 'current-pollution-forecast-data', forecastBox);
         const pollutantsBox = createContainerElement('div', '', 'current-pollution-forecast-pollutants', forecastBox);
 
-        createTextElement('div', `${pollutionData[0].date} ${pollutionData[0].time}`, '', '', 'current-pollution-forecast-datetime', forecastDataBox);
+        createTextElement('div', `${pollutionData[0].date}`, '', '', 'current-pollution-forecast-date', forecastDataBox);
+        createTextElement('div', `${pollutionData[0].time}`, '', '', 'current-pollution-forecast-time', forecastDataBox);
         createTextElement('div', `${pollutionData[0].qualityIndex}`, '0', '', 'current-pollution-forecast-quality-index', forecastDataBox);
         createTextElementWithTitle('div', "Carbon monoxide:", `${pollutionData[0].pollutants.co} μg/m3`, '-', '', 'current-pollution-forecast-pollutants-type', pollutantsBox);
         createTextElementWithTitle('div', "Nitrogen monoxide:", `${pollutionData[0].pollutants.no} μg/m3`, '-', '', 'current-pollution-forecast-pollutants-type', pollutantsBox);

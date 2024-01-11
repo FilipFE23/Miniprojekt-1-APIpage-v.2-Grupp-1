@@ -123,17 +123,35 @@
 
 .currentweather-city-weather-visibility{
   width:100%;
-  display: none;
 }
 
-/* .currentweather-city-weather-visibility span{
+.currentweather-city-weather-visibility span{
   font-weight: 500;
   margin-right:5px;
-} */
+}
+
+.currentweather-city-weather-humidity{
+  width: 100%;
+}
+
+.currentweather-city-weather-humidity span{
+  font-weight: 500;
+  margin-right:5px;
+}
+
+.currentweather-city-weather-pressure{
+  width: 100%;
+}
+
+.currentweather-city-weather-pressure span{
+  font-weight: 500;
+  margin-right:5px;
+}
 
 .currentweather-city-weather-rainsnow{
   width: 100%;
 }
+
 .currentweather-city-weather-rainsnow span{
   font-weight: 500;
   margin-right:5px;

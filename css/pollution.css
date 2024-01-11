@@ -55,7 +55,6 @@ h3.current-pollution-forecast-city-name{
 .current-pollution-forecast-quality-index span {
   font-weight: 500;
   margin-right:10px;
-  display: none;
 }
 .current-pollution-forecast-pollutants{
   display: flex;

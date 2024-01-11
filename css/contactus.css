@@ -32,7 +32,7 @@
   .submit-button {
     display: flex;
     position: relative;
-    justify-content: left;
+    left: 48%;
     border: 1px solid #3b3b76;
     background: #3b3b76;
     text-align: center;
@@ -57,5 +57,9 @@
   }  
   .contactus-query {
     width: 100%;
+  }
+  .submit-button {
+    position: relative;
+    left: 76%
   }
   }

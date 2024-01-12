@@ -58,6 +58,7 @@ h3.current-pollution-forecast-city-name{
 
 .current-pollution-forecast-quality-index-1{
   background-color: #4ADE80;
+  background:radial-gradient(at 30% 30%,#0000,#000a) #4ADE80;
 }
 .current-pollution-forecast-quality-index-2{
   background-color: #A3E635;
@@ -179,19 +180,24 @@ h3.current-pollution-forecast-city-name{
 
 .pollution-forecast-quality-index-1{
   background-color: #4ADE80;
-
+  /* background:radial-gradient(at 2% 2%,#72727200,rgba(83, 82, 82, 0.667)) #4ADE80; */
 }
 .pollution-forecast-quality-index-2{
   background-color: #A3E635;
+  /* background:radial-gradient(at 2% 2%,#72727200,rgba(83, 82, 82, 0.667)) #A3E635; */
+
 }
 .pollution-forecast-quality-index-3{
   background-color: #FACC15;
+  /* background:radial-gradient(at 5% 5%,#0000,#000a) #FACC15; */
 }
 .pollution-forecast-quality-index-4{
   background-color: #FB923C;
+  /* background:radial-gradient(at 5% 5%,#0000,#000a) #FB923C; */
 }
 .pollution-forecast-quality-index-5{
   background-color: #F87171;
+  /* background:radial-gradient(at 5% 5%,#0000,#000a) #F87171; */
 }
 .pollution-forecast-quality-index-0{
   background-color: #fff;

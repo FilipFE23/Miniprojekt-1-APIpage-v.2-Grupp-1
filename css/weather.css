@@ -6,15 +6,12 @@
  Weather/startpage css
 **************************************/
 
-
-
 /**** CURRENT WEATHER *****/
 
 .currentweather-city{
   font-size: 1.15em;
   padding:1em;
   margin:20px 0 0 0;
-  /* box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px; */
   box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
 }
 
@@ -95,8 +92,6 @@
   align-items: center;
   gap:10px;
   width:100%;
-  /* border-top:1px solid #ccc;
-  padding-top:10px; */
 }
 
 .currentweather-city-weather-wind span{
@@ -157,14 +152,10 @@
   margin-right:5px;
 }
 
-
-
 /********* Weather forecast Header *********************/
 .weather-city{
   margin:20px 0 0 0;
   padding-bottom:10px;
-  /* box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px; */
-  /* box-shadow: none; */
   box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
 }
 
@@ -353,11 +344,6 @@
   max-width: 450px;
   }
 
-  /* #homeresultsdiv article:nth-child(2){
-  width: 55vw;
-  max-width: 700px;
-  } */
-
   .weather-city{
     width: 50vw;
     max-width: 700px;
@@ -372,11 +358,8 @@
   gap:0 10px;
   }
 
-
-  
   .weather-forecasts-day-time-title{
     flex:1;
-    /* width:auto; */
   }
   
   .weather-forecasts-day-time-type{
@@ -397,10 +380,6 @@
   .weather-forecasts-day-time-temp{
     font-size: 1.1em;
   }
-  
-  /* .weather-forecasts-day-time-temp-feels{
-    font-size: 0.9em;
-  } */
 
   .weather-forecasts-day-time-wind-wrapper{
     flex:2;
@@ -411,8 +390,6 @@
   .weather-forecasts-day-time-wind-dir{
     flex:0.7;
   }
-
 }
 
-/* @media only screen and (min-width: 1024px) {
-} */
+

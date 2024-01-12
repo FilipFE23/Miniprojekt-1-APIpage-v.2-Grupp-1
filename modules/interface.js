@@ -124,10 +124,10 @@ function buildCurrentWeatherCallback(weatherSearchResult) {
             createTextElementWithTitle('div', "Air pressure:", `${weatherData.pressure} hPa`, '-', '', 'currentweather-city-weather-pressure', cityWeatherBox);
 
             if (weatherData.snowAmount > 0) {
-                createTextElementWithTitle('div', "Snow:", `${Math.round(weatherData.rainOrSnowChance)}% (${weatherData.snowAmount} mm)`, '-', '', 'currentweather-city-weather-snow', cityWeatherBox);
+                createTextElementWithTitle('div', "Snow:", `${weatherData.snowAmount} mm`, '-', '', 'currentweather-city-weather-snow', cityWeatherBox);
             }
             else if (weatherData.rainAmount > 0) {
-                createTextElementWithTitle('div', "Rain:", `${Math.round(weatherData.rainOrSnowChance)}% (${weatherData.rainAmount} mm)`, '-', '', 'currentweather-city-weather-rain', cityWeatherBox);
+                createTextElementWithTitle('div', "Rain:", `${weatherData.rainAmount} mm`, '-', '', 'currentweather-city-weather-rain', cityWeatherBox);
             }
             else {
                 createTextElementWithTitle('div', "Precipitation:", `None`, '-', '', 'currentweather-city-weather-rainsnow', cityWeatherBox);

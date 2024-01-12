@@ -32,13 +32,12 @@ toggleDarkMode(window.matchMedia('(prefers-color-scheme: dark)').matches);
 document.querySelector("#homeform").addEventListener("submit", (event) => {
     event.preventDefault();
     const searchInput = document.querySelector("#homesearch").value.trim();
-    clearErrorMessages();
 
+    clearErrorMessages();
+    document.querySelector("#homeresultsdiv").innerHTML = "";
     document.querySelector("#homesection h2").classList.add("hide");
 
     if (searchInput.length > 0) {
-        document.querySelector("#homeresultsdiv").innerHTML = "";
-
         // Nuvarande väder
         getCurrentWeatherByCity(searchInput, 1).then(buildCurrentWeatherCallback);
 
@@ -56,11 +55,11 @@ document.querySelector("#homeform").addEventListener("submit", (event) => {
 document.querySelector("#pullutionform").addEventListener("submit", (event) => {
     event.preventDefault();
     const searchInput = document.querySelector("#pullutionsearch").value.trim();
+
     clearErrorMessages();
+    document.querySelector("#pollutionresultsdiv").innerHTML = "";
 
     if (searchInput.length > 0) {
-        document.querySelector("#pollutionresultsdiv").innerHTML = "";
-
         // Nuvarande föroreningar
         getCurrentPollutionByCity(searchInput, 1).then(buildCurrentPollutionCallback);
 

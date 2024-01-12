@@ -1,8 +1,9 @@
 .contactusForm {
-    /* display: flex;
+    display: flex;
     position: relative;
     justify-content: left;
-    align-items: inherit; */
+    align-items: inherit;
+    flex-direction: column;
 }
 
 .name-query {
@@ -30,12 +31,10 @@
   }
 
   .submit-button {
-    display: flex;
-    position: relative;
-    left: 48%;
     border: 1px solid #3b3b76;
     background: #3b3b76;
     text-align: center;
+    width: 50vw;
     color: #fff;
     border-radius: 0.5rem;
     cursor: pointer;
@@ -50,6 +49,10 @@
   
   }
 
+#thankyoumsg {
+  margin-top: 2rem;
+}
+
   @media only screen and (max-width: 700px) {
 
   .name-query{
@@ -60,6 +63,6 @@
   }
   .submit-button {
     position: relative;
-    left: 76%
+    width: 100%;
   }
   }
